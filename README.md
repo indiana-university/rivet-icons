@@ -15,4 +15,4 @@ You can view the current set of Rivet icons on CodePen.
 
 [View full set on CodePen](https://codepen.io/levimcg/pen/zPmYyO)
 
-![Rivet icons screenshot](https://github.iu.edu/storage/user/1874/files/96e2d04e-381d-11e8-89b5-9285638d5c3c)
+![Rivet icons screenshot](https://github.iu.edu/storage/user/1874/files/39bd7d22-70af-11e8-982f-e848da115016)
