@@ -72,7 +72,8 @@ description: A minimal set of icons for the Rivet design system
             <div>
               {% include iconInclude %}
             </div>
-            <div class="rvt-icons-demo__title">{{ icon.name | replace('.svg', '') }}</div>
+            {% set iconTitle = icon.name | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
+            <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
           </li>
         {% endfor %}
       </ul>
