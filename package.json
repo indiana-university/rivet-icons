@@ -1,0 +1,25 @@
+{
+  "name": "rivet-icons",
+  "version": "0.1.0",
+  "description": "Icon set for Indiana University's Rivet design system",
+  "main": "index.js",
+  "scripts": {
+    "build:json": "node scripts/createIconData.js",
+    "build": "npm run build:json && npx eleventy",
+    "start": "npx eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/indiana-university/rivet-icons"
+  },
+  "author": "Indiana University",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/indiana-university/rivet-icons/issues"
+  },
+  "homepage": "https://github.com/indiana-university/rivet-icons#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.7.1",
+    "directory-tree": "^2.2.1"
+  }
+}
