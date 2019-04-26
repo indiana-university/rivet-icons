@@ -20,6 +20,10 @@
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.7.1",
-    "directory-tree": "^2.2.1"
+    "del": "^4.1.0",
+    "directory-tree": "^2.2.1",
+    "gulp": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-svg-sprite": "^1.5.0"
   }
 }
