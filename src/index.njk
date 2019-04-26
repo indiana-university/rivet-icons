@@ -56,6 +56,11 @@ description: A minimal set of icons for the Rivet design system
       background-color: #333333;
       color: #ffffff;
     }
+    
+    .rvt-icon {
+      width: 1rem;
+      height: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -70,7 +75,9 @@ description: A minimal set of icons for the Rivet design system
         {% for icon in collections.icons %}
           <li>
             <div>
-              {% include icon %}
+              <svg class="rvt-icon">
+                <use xlink:href="./svg/rivet-icons.svg#{{ icon | replace('.svg', '')}}"></use>
+              </svg>
             </div>
             {% set iconTitle = icon | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
             <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
@@ -90,7 +97,9 @@ description: A minimal set of icons for the Rivet design system
       </g>
     </svg>
   </button>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/svg4everybody@2.1.9/dist/svg4everybody.min.js"></script>
+  
   <script>
     // Toggles .inverted class on the body element
     (function () {
