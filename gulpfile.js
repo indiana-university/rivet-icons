@@ -19,15 +19,22 @@ function renameSymbol() {
     .pipe(dest('./dist'));
 }
 
-function deleteGeneratedFiles() {
-  return del('./dist/symbol/');
+/**
+ * Cleans up folders from svgSprite and moves a copy of rvt-icons.svg into
+ * the docs folder to use with icon preview page.
+ */
+function buildFileStructure(callback) {
+  del('./dist/symbol/');
+  
+  src('./dist/rivet-icons.svg')
+    .pipe(dest('./docs/svg/'));
+  
+  callback();
 }
-
-exports.buildSymbol = buildSymbol;
 
 // Builds SVG sprite sheet
 exports.build = series(
   buildSymbol,
   renameSymbol,
-  deleteGeneratedFiles
+  buildFileStructure
 );
