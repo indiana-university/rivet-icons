@@ -2,9 +2,10 @@ const { src, dest, series } = require('gulp');
 const svgSprite = require('gulp-svg-sprite');
 const rename = require('gulp-rename');
 const del = require('del');
+const config = require('./svg.config');
 
 function buildSymbol() {
-  return src('./src/svg/**/*.svg')
+  return src(config.svgFilePaths)
     .pipe(svgSprite({
       mode: {
         symbol: true
@@ -15,7 +16,7 @@ function buildSymbol() {
 
 function renameSymbol() {
   return src('./dist/symbol/svg/sprite.symbol.svg')
-    .pipe(rename('rivet-icons.svg'))
+    .pipe(rename(`${config.symbolFileName}.svg`))
     .pipe(dest('./dist'));
 }
 
@@ -26,7 +27,7 @@ function renameSymbol() {
 function buildFileStructure(callback) {
   del('./dist/symbol/');
   
-  src('./dist/rivet-icons.svg')
+  src(`./dist/${config.symbolFileName}.svg`)
     .pipe(dest('./docs/svg/'));
     
   src('./src/svg/**.svg')
