@@ -28,6 +28,9 @@ function buildFileStructure(callback) {
   
   src('./dist/rivet-icons.svg')
     .pipe(dest('./docs/svg/'));
+    
+  src('./src/svg/**.svg')
+    .pipe(dest('./dist/svgs/'));
   
   callback();
 }
