@@ -66,6 +66,7 @@ By default the `rvt-icons.svg` sprite sheet comes with [all of the Rivet icons](
 1. Clone the repository: `git clone https://github.com/indiana-university/rivet-icons.git`
 1. `cd rivet-icons` and install the necessary dependencies `npm install`
 1. Open the `svg.config.js` file in a text editor and modify the contents of the `svgFilePaths` array. The default value is a [glob](https://gulpjs.com/docs/en/api/concepts#globs) of all the `.svg`s in the `./src/svg/` directory. Remove that value then add the paths to the individual icons that you would like to include in your custom sprite sheet.
+1. Type `npm run build` into your terminal to run a Gulp task that will build your custom sprite sheet.
 
 #### Custom `svg.config.js` example:
 
