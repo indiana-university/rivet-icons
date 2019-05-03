@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx gulp build && npx eleventy --serve",
-    "build": "npx gulp build && npx eleventy"
+    "build": "npx gulp build && npx eleventy",
+    "deploy": "npm run build && npx gh-pages -d docs"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "@11ty/eleventy": "^0.7.1",
     "del": "^4.1.0",
     "directory-tree": "^2.2.1",
+    "gh-pages": "^2.0.1",
     "gulp": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-svg-sprite": "^1.5.0"
