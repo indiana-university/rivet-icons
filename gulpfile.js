@@ -1,3 +1,8 @@
+/*!
+ * Copyright (C) 2019 The Trustees of Indiana University
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 const { src, dest, series } = require('gulp');
 const svgSprite = require('gulp-svg-sprite');
 const rename = require('gulp-rename');
