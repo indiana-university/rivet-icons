@@ -2,7 +2,6 @@
   "name": "rivet-icons",
   "version": "0.1.0",
   "description": "Icon set for Indiana University's Rivet design system",
-  "main": "index.js",
   "files": [
     "dist/**/*"
   ],
