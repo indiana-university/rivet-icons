@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "description": "Icon set for Indiana University's Rivet design system",
   "main": "index.js",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
-    "build:json": "node scripts/createIconData.js",
-    "build": "npm run build:json && npx eleventy",
-    "start": "npx eleventy --serve"
+    "start": "npx gulp build && npx eleventy --serve",
+    "build": "npx gulp build && npx eleventy",
+    "deploy": "npm run build && npx gh-pages -d docs"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,11 @@
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.7.1",
-    "directory-tree": "^2.2.1"
+    "del": "^4.1.0",
+    "directory-tree": "^2.2.1",
+    "gh-pages": "^2.0.1",
+    "gulp": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-svg-sprite": "^1.5.0"
   }
 }

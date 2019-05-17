@@ -1,0 +1,13 @@
+<script src="https://cdn.jsdelivr.net/npm/svg4everybody@2.1.9/dist/svg4everybody.min.js"></script>
+<script>
+  // Toggles .inverted class on the body element
+  (function () {
+    const toggle = document.getElementById('switcher-button');
+
+    const handleClick = () => {
+      document.body.classList.toggle('inverted');
+    }
+
+    toggle.addEventListener('click', handleClick, false);
+  })();
+</script>
