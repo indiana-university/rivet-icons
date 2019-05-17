@@ -1,108 +1,26 @@
 ---
 title: Rivet icons
 description: A minimal set of icons for the Rivet design system
+layout: "layouts/base.njk"
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.2.0/rivet.min.css">
-  <style>
-    body {
-      position: relative;
-    }
-
-    .rvt-icons-demo {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      flex-wrap: wrap;
-    }
-
-    .rvt-icons-demo li {
-      width: 16rem;
-      display: block;
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .rvt-icons-demo__title {
-      font-size: .825rem;
-      margin-top: 1.5rem;
-      background-color: #f7f7f7;
-      display: inline-block;
-      padding: .25rem .5rem;
-      border-radius: .25rem;
-    }
-
-    .rvt-demo-switcher {
-      position: fixed;
-      right: 2rem;
-      top: 2rem;
-      background-color: #006298;
-      -webkit-appearance: none;
-    }
-
-    .inverted {
-      background-color: #222222;
-      color: #ffffff;
-    }
-
-    .inverted .rvt-icons-demo__title {
-      background-color: #333333;
-      color: #ffffff;
-    }
-  </style>
-</head>
-<body>
-  <div class="rvt-container rvt-m-top-xxl">
-    <div class="rvt-p-all-xl">
-      <span class="rvt-color-orange rvt-text-uppercase rvt-text-bold">Prototype</span>
-      <h1 class="rvt-ts-46 rvt-text-bold rvt-lh-title">{{ title }}</h1>
-      <p class="rvt-ts-20">{{ description }}</p>
-      <hr>
-      <ul class="rvt-icons-demo rvt-p-top-xxl">
-        {% for icon in icons %}
-          {% set iconInclude = icon.name %}
-          <li>
-            <div>
-              {% include iconInclude %}
-            </div>
-            {% set iconTitle = icon.name | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
-            <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+<div class="rvt-container rvt-m-top-xxl">
+  <div class="rvt-p-all-xl">
+    <span class="rvt-color-orange rvt-text-uppercase rvt-text-bold">Prototype</span>
+    <h1 class="rvt-ts-46 rvt-text-bold rvt-lh-title">{{ title }}</h1>
+    <p class="rvt-ts-20">{{ description }}</p>
+    <hr>
+    <ul class="rvt-icons-demo rvt-p-top-xxl">
+      {% for icon in collections.icons %}
+        <li>
+          <div>
+            <svg class="rvt-icon">
+              <use xlink:href="./svg/rvt-icons.svg#{{ icon | replace('.svg', '')}}"></use>
+            </svg>
+          </div>
+          {% set iconTitle = icon | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
+          <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
-
-  <button class="rvt-demo-switcher rvt-button" id="switcher-button">
-    <span class="rvt-sr-only">Invert colors</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-      <title>Invert</title>
-      <g fill="currentColor">
-        <path d="M2,5h9.59L10.29,6.29a1,1,0,1,0,1.41,1.41l3-3a1,1,0,0,0,0-1.42l-3-3a1,1,0,0,0-1.41,1.41L11.59,3H2A1,1,0,0,0,2,5Z"/>
-        <path d="M14,11H4.41L5.71,9.71A1,1,0,0,0,4.29,8.29l-3,3a1,1,0,0,0,0,1.42l3,3a1,1,0,0,0,1.41-1.41L4.41,13H14a1,1,0,0,0,0-2Z"/>
-      </g>
-    </svg>
-  </button>
-
-  <script>
-    // Toggles .inverted class on the body element
-    (function () {
-      const toggle = document.getElementById('switcher-button')
-
-      const handleClick = () => {
-        document.body.classList.toggle('inverted');
-      }
-
-      toggle.addEventListener('click', handleClick, false);
-    })();
-
-  </script>
-</body>
-</html>
+</div>
