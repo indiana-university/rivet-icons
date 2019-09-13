@@ -50,7 +50,7 @@ To add a newly-created icon to the preview page, follow these steps.
 
 1. Create a new feature branch off of `develop`.
 1. Create the new icon artwork in the `/src/rivet-icons-source.ai` file.
-1. Export the icon as an .svg with the strokes outlined and flattened into the `/src/svg` folder. Using the _Export for Screens..._ option. From the main Illustrator menu go to `File` > `Export` > `Export for Screens...`
+1. Export the icon as an .svg with the strokes outlined and flattened into the `/src/svg` folder. Using the _Export for Screens..._ option. From the main Illustrator menu go to `File` > `Export` > `Export for Screens...` Select the `src/svg` folder as the destination and select the artboard for the new icon that you want to export as an SVG.
 1. Once the new icon artwork has been expanded, flattened and exported to the `src/svg` folder, type `npm run build` into your terminal to build the preview page. This will generate a preview for every file currently in the `/src/svg/` directory.
 1. Follow [the instructions below](#demo-page) to run the the demo page locally and preview your new icon.
 1. Open a pull request against `develop`.
