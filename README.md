@@ -50,9 +50,9 @@ To add a newly-created icon to the preview page, follow these steps.
 
 1. Create a new feature branch off of `develop`.
 1. Create the new icon artwork in the `/src/rivet-icons-source.ai` file.
-1. Export the icon as an .svg with the strokes outlined and flattened into the `/src/svg` folder.
-1. Type `npm run build` into your terminal to build the preview page. This will generate a preview for every file currently in the `/src/svg/` directory.
-1. Follow the instructions below to run the the demo page locally and preview your new icon.
+1. Export the icon as an .svg with the strokes outlined and flattened into the `/src/svg` folder. Using the _Export for Screens..._ option. From the main Illustrator menu go to `File` > `Export` > `Export for Screens...` Select the `src/svg` folder as the destination and select the artboard for the new icon that you want to export as an SVG.
+1. Once the new icon artwork has been expanded, flattened, and exported to the `src/svg` folder, type `npm run build` into your terminal to build the preview page. This will generate a preview for every file currently in the `/src/svg/` directory.
+1. Follow [the instructions below](#demo-page) to run the the demo page locally and preview your new icon.
 1. Open a pull request against `develop`.
 
 #### Demo page
@@ -63,6 +63,9 @@ Note: these instructions assume you have [NodeJS](https://nodejs.org/en/) and NP
 1. Run `npm install` in your terminal to install the necessary dependencies.
 1. Type `npm run start` to build a fresh copy of the demo site and start a local development server.
 1. Navigate to `http://localhost:8080/` in your web browser to view the demo site.
+
+### Deploying the demo site (Organization members only)
+The icons demo site is deployed using a [Github pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). To deploy a newly updated site (e.g. when a new icon has been added), run `npm run deploy`. This will build a fresh copy of the site and push it to the `gh-pages` branch updating [the demo site](https://indiana-university.github.io/rivet-icons/).
 
 ### Building a custom SVG sprite sheet
 By default the `rvt-icons.svg` sprite sheet comes with [all of the Rivet icons](https://github.com/indiana-university/rivet-icons/tree/develop/src/svg) included. If you only use a few icons in your app and want to reduce the size of your sprite sheet you can [download](https://github.com/indiana-university/rivet-icons/archive/develop.zip) or [clone this repository](https://github.com/indiana-university/rivet-icons.git) and do the following:
