@@ -10,7 +10,7 @@ layout: "layouts/base.njk"
     <hr>
     <ul class="rvt-icons-demo rvt-p-top-xxl">
       {% for icon in collections.icons %}
-        <li>
+        <li id="{{ icon | replace('.svg', '')}}">
           <div>
             <svg class="rvt-icon">
               <use xlink:href="./svg/rvt-icons.svg#{{ icon | replace('.svg', '')}}"></use>
