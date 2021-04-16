@@ -1,0 +1,41 @@
+---
+title: Rivet icons
+description: A minimal set of icons for the Rivet design system
+layout: "layouts/base.njk"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.4.0/rivet.min.css">
+  {% include "demo-styles.njk" %}
+</head>
+<body>
+  <div class="rvt-container rvt-m-top-xxl">
+    <div class="rvt-p-all-xl">
+      <h1 class="rvt-ts-46 rvt-text-bold rvt-lh-title">{{ title }}</h1>
+      <p class="rvt-ts-20">{{ description }}</p>
+      <hr>
+      <ul class="rvt-icons-demo rvt-p-top-xxl">
+        {% for icon in collections.icons %}
+          {% set iconHash = icon | replace('.svg', '') %}
+          <li id="{{ iconHash }}">
+            <a href="#{{ iconHash }}">
+              <svg class="rvt-icon">
+                <use xlink:href="./svg/rvt-icons.svg#{{ icon | replace('.svg', '')}}"></use>
+              </svg>
+              {% set iconTitle = icon | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
+              <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  {% include "demo-switcher.njk" %}
+  {% include "demo-scripts.njk" %}
+</body>
+</html>
