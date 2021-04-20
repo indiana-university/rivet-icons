@@ -1,5 +1,4 @@
 const fs = require('fs')
-const { parse } = require('node-html-parser')
 const { pathThatSvg } = require('path-that-svg')
 
 const namespace = 'rvt-icon'
@@ -12,9 +11,9 @@ async function convert () {
     const file = files[i]
     const source = fs.readFileSync(`./src/svg/${file}`, { encoding: 'utf8' })
     const svg = await pathThatSvg(source)
-    const root = parse(svg)
-    const paths = root.querySelectorAll('path')
-      .map((el) => el.getAttribute('d'))
+    const paths = [...svg.matchAll(/ d="([a-zA-Z0-9-,.\s]+)"/g)]
+      .filter((match) => match)
+      .map((match) => match[1])
       .map((d) => d.replace(/[\n\t]/g, ' '))
       .join(' ')
     const name = file.replace('.svg', '')
