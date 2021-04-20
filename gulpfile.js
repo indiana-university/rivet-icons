@@ -7,6 +7,7 @@ const { src, dest, series } = require('gulp');
 const svgSprite = require('gulp-svg-sprite');
 const rename = require('gulp-rename');
 const del = require('del');
+const { buildStyles } = require('./build.js');
 const config = require('./svg.config');
 
 function buildSymbol() {
@@ -46,6 +47,7 @@ function buildFileStructure(callback) {
 
 // Builds SVG sprite sheet
 exports.build = series(
+  buildStyles,
   buildSymbol,
   renameSymbol,
   buildFileStructure
