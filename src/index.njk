@@ -11,6 +11,22 @@ layout: "layouts/base.njk"
     <ul class="rvt-icons-demo rvt-p-top-xxl">
       {% for icon in collections.icons %}
         {% set iconHash = icon | replace('.svg', '') %}
+        {% set iconName = iconHash | replace('rvt-icon-', '') %}
+        {% set iconTitle = iconHash | replace('-', ' ') | replace('rvt icon ', '') | capitalize %}
+        <li id="{{ iconHash }}">
+          <a href="#{{ iconHash }}">
+            <div>
+              <span data-rvt-icon="{{ iconName }}"></span>
+            </div>
+            <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <hr>
+    <ul class="rvt-icons-demo rvt-p-top-xxl">
+      {% for icon in collections.icons %}
+        {% set iconHash = icon | replace('.svg', '') %}
         <li id="{{ iconHash }}">
           <a href="#{{ iconHash }}">
             <svg class="rvt-icon">

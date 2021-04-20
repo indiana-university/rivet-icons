@@ -31,13 +31,16 @@ function renameSymbol() {
  */
 function buildFileStructure(callback) {
   del('./dist/symbol/');
-  
+
   src(`./dist/${config.symbolFileName}.svg`)
     .pipe(dest('./docs/svg/'));
-    
+
   src('./src/svg/**.svg')
     .pipe(dest('./dist/svgs/'));
-  
+
+  src(`./dist/${config.symbolFileName}.css`)
+    .pipe(dest('./docs/'));
+
   callback();
 }
 
