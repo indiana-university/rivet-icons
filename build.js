@@ -35,7 +35,7 @@ async function buildStyles (options = {}) {
   const icons = await Promise.all(files)
 
   const iconVars = icons
-    .map(({ fullName, path }) => `  --${fullName}: path('${path}');`)
+    .map(({ fullName, path }) => `  --${fullName}: '${path}';`)
     .join('\n')
 
   const selectors = icons
@@ -60,7 +60,7 @@ ${iconVars}
 .${namespace}::before,
 [data-${namespace}]::before {
   background-color: currentColor;
-  clip-path: var(--${namespace});
+  clip-path: path(var(--${namespace}));
   content: '';
   display: inline-block;
   height: 1rem;
