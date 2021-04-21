@@ -7,28 +7,25 @@ const fs = require('fs/promises')
 const path = require('path')
 const { pathThatSvg } = require('path-that-svg')
 const SVGSpriter = require('svg-sprite')
-const { symbolFileName } = require('./svg.config')
+const { BUILD_DIR, FILE_NAME, PREFIX } = require('./constants.js')
 const { compileSpriter, readIcons } = require('./lib.js')
-
-const NAMESPACE = 'rvt-icon'
 
 async function buildSprite (options = {}) {
   const {
-    dir = './dist',
-    out = `${symbolFileName}.svg`
+    out = `${BUILD_DIR}/${FILE_NAME}.svg`
   } = options
   const spriter = new SVGSpriter({
     mode: {
       symbol: {
-        dest: 'dist',
-        sprite: out
+        dest: path.dirname(out),
+        sprite: path.basename(out)
       }
     }
   })
   await readIcons({
     ...options,
     process: async ({ filePath, source }) => {
-      spriter.add(path.resolve(filePath), null, source)
+      spriter.add(filePath, null, source)
     }
   })
   const result = await compileSpriter(spriter)
@@ -43,9 +40,8 @@ async function buildSprite (options = {}) {
 
 async function buildStyles (options = {}) {
   const {
-    dir = './dist',
-    namespace = NAMESPACE,
-    out = `${dir}/${symbolFileName}.css`
+    out = `${BUILD_DIR}/${FILE_NAME}.css`,
+    prefix = PREFIX
   } = options
   const icons = await readIcons({
     ...options,
@@ -65,9 +61,9 @@ async function buildStyles (options = {}) {
     .join('\n')
   const selectors = icons
     .map(({ fullName, shortName }) =>
-`.${namespace}--${shortName},
-[data-${namespace}="${shortName}"] {
-  --${namespace}: var(--${fullName});
+`.${prefix}--${shortName},
+[data-${prefix}="${shortName}"] {
+  --${prefix}: var(--${fullName});
 }`)
     .join('\n\n')
   const css =
@@ -75,16 +71,16 @@ async function buildStyles (options = {}) {
 ${iconVars}
 }
 
-.${namespace},
-[data-${namespace}] {
+.${prefix},
+[data-${prefix}] {
   display: inline-flex;
   padding: 0.25rem;
 }
 
-.${namespace}::before,
-[data-${namespace}]::before {
+.${prefix}::before,
+[data-${prefix}]::before {
   background-color: currentColor;
-  clip-path: path(var(--${namespace}));
+  clip-path: path(var(--${prefix}));
   content: '';
   display: inline-block;
   height: 1rem;
@@ -94,7 +90,7 @@ ${iconVars}
 ${selectors}
 `
   if (out) {
-    await fs.writeFile(out, css)
+    await fs.writeFile(path.resolve(out), css)
   }
 
   return css

@@ -4,8 +4,8 @@
  */
 
 const fs = require('fs/promises')
-
-const NAMESPACE = 'rvt-icon'
+const path = require('path')
+const { PREFIX, SVG_DIR } = require('./constants.js')
 
 function compileSpriter (spriter) {
   return new Promise((resolve, reject) => {
@@ -20,17 +20,17 @@ function compileSpriter (spriter) {
 
 async function readIcons (options = {}) {
   const {
-    src = './src/svg',
+    src = SVG_DIR,
     include = [],
-    namespace = NAMESPACE,
+    prefix = PREFIX,
     process
   } = options
-  const allFiles = await fs.readdir(src)
+  const allFiles = await fs.readdir(path.resolve(src))
   const files = allFiles
     .map((fileName) => {
-      const filePath = `${src}/${fileName}`
+      const filePath = path.resolve(`${src}/${fileName}`)
       const fullName = fileName.replace('.svg', '')
-      const shortName = fullName.replace(`${namespace}-`, '')
+      const shortName = fullName.replace(`${prefix}-`, '')
       const title = shortName.replace(/-/g, ' ')
       return { fileName, filePath, fullName, shortName, title }
     })
