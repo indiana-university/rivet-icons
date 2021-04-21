@@ -10,7 +10,7 @@
  * need/want to use in your app.
 */
 module.exports = {
-  symbolFileName: 'rvt-icons',
+  symbolFileName: 'rivet-icons',
   svgFilePaths: [
     './src/svg/**/*.svg'
   ]

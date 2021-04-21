@@ -30,7 +30,7 @@ layout: "layouts/base.njk"
         <li id="{{ iconHash }}">
           <a href="#{{ iconHash }}">
             <svg class="rvt-icon">
-              <use xlink:href="./svg/rvt-icons.svg#{{ icon | replace('.svg', '')}}"></use>
+              <use xlink:href="./rivet-icons.svg#{{ icon | replace('.svg', '')}}"></use>
             </svg>
             {% set iconTitle = icon | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
             <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
