@@ -5,6 +5,7 @@
   "files": [
     "dist/**/*"
   ],
+  "main": "build.js",
   "scripts": {
     "start": "npx gulp build && npx eleventy --serve",
     "build": "npx gulp build && npx eleventy",
