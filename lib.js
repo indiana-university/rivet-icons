@@ -29,8 +29,8 @@ async function readIcons (options = {}) {
   const files = allFiles
     .map((fileName) => {
       const filePath = path.resolve(`${src}/${fileName}`)
-      const fullName = fileName.replace('.svg', '')
-      const shortName = fullName.replace(`${prefix}-`, '')
+      const shortName = fileName.replace('.svg', '')
+      const fullName = `${prefix}-${shortName}`
       const title = shortName.replace(/-/g, ' ')
       return { fileName, filePath, fullName, shortName, title }
     })

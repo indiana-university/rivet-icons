@@ -12,9 +12,15 @@ const { compileSpriter, readIcons } = require('./lib.js')
 
 async function buildSprite (options = {}) {
   const {
-    out = `${BUILD_DIR}/${FILE_NAME}.svg`
+    out = `${BUILD_DIR}/${FILE_NAME}.svg`,
+    prefix = PREFIX
   } = options
   const spriter = new SVGSpriter({
+    shape: {
+      id: {
+        generator: `${prefix}-`
+      }
+    },
     mode: {
       symbol: {
         dest: path.dirname(out),
