@@ -4,20 +4,19 @@
  */
 
 const fs = require('fs/promises')
+const path = require('path')
+const { BUILD_DIR, DOCS_DIR, FILE_NAME } = require('./constants.js')
 const { buildSprite, buildStyles } = require('./index.js');
 
 async function build () {
-  const outDir = './dist'
-  const docDir = './docs'
-  const fileName = 'rivet-icons'
-  await fs.rmdir(outDir, { recursive: true })
-  await fs.rmdir(docDir, { recursive: true })
-  await fs.mkdir(outDir)
-  await fs.mkdir(docDir)
+  await fs.rmdir(BUILD_DIR, { recursive: true })
+  await fs.rmdir(DOCS_DIR, { recursive: true })
+  await fs.mkdir(BUILD_DIR)
+  await fs.mkdir(DOCS_DIR)
   await buildSprite()
   await buildStyles()
-  await fs.copyFile(`${outDir}/${fileName}.css`, `${docDir}/${fileName}.css`)
-  await fs.copyFile(`${outDir}/${fileName}.svg`, `${docDir}/${fileName}.svg`)
+  await fs.copyFile(path.resolve(`${BUILD_DIR}/${FILE_NAME}.css`), path.resolve(`${DOCS_DIR}/${FILE_NAME}.css`))
+  await fs.copyFile(path.resolve(`${BUILD_DIR}/${FILE_NAME}.svg`), path.resolve(`${DOCS_DIR}/${FILE_NAME}.svg`))
 }
 
 build()
