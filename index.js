@@ -8,6 +8,7 @@ const path = require('path')
 const { pathThatSvg } = require('path-that-svg')
 const SVGSpriter = require('svg-sprite')
 const { symbolFileName } = require('./svg.config')
+const { compileSpriter, readIcons } = require('./lib.js')
 
 const NAMESPACE = 'rvt-icon'
 
@@ -38,17 +39,6 @@ async function buildSprite (options = {}) {
   }
 
   return sprite.contents.toString('utf8')
-}
-
-function compileSpriter (spriter) {
-  return new Promise((resolve, reject) => {
-    spriter.compile((error, result) => {
-      if (error) {
-        return reject(error)
-      }
-      resolve(result)
-    })
-  })
 }
 
 async function buildStyles (options = {}) {
@@ -108,34 +98,6 @@ ${selectors}
   }
 
   return css
-}
-
-async function readIcons (options = {}) {
-  const {
-    src = './src/svg',
-    include = [],
-    namespace = NAMESPACE,
-    process = () => {}
-  } = options
-  const allFiles = await fs.readdir(src)
-  const files = allFiles
-    .map((fileName) => {
-      const filePath = `${src}/${fileName}`
-      const fullName = fileName.replace('.svg', '')
-      const shortName = fullName.replace(`${namespace}-`, '')
-      return { fileName, filePath, fullName, shortName }
-    })
-    .filter(({ shortName }) =>
-      include.length
-        ? include.includes(shortName)
-        : true
-    )
-    .map(async (data) => {
-      const { filePath } = data
-      const source = await fs.readFile(filePath, { encoding: 'utf8' })
-      return await process({ ...data, source })
-    })
-  return await Promise.all(files)
 }
 
 module.exports = {

@@ -9,31 +9,26 @@ layout: "layouts/base.njk"
     <p class="rvt-ts-20">{{ description }}</p>
     <hr>
     <ul class="rvt-icons-demo rvt-p-top-xxl">
-      {% for icon in collections.icons %}
-        {% set iconHash = icon | replace('.svg', '') %}
-        {% set iconName = iconHash | replace('rvt-icon-', '') %}
-        {% set iconTitle = iconHash | replace('-', ' ') | replace('rvt icon ', '') | capitalize %}
-        <li id="{{ iconHash }}">
-          <a href="#{{ iconHash }}">
+      {% for icon in icons %}
+        <li id="{{ icon.shortName }}">
+          <a href="#{{ icon.shortName }}">
             <div>
-              <span data-rvt-icon="{{ iconName }}"></span>
+              <span data-rvt-icon="{{ icon.shortName }}"></span>
             </div>
-            <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
+            <div class="rvt-icons-demo__title">{{ icon.title }}</div>
           </a>
         </li>
       {% endfor %}
     </ul>
     <hr>
     <ul class="rvt-icons-demo rvt-p-top-xxl">
-      {% for icon in collections.icons %}
-        {% set iconHash = icon | replace('.svg', '') %}
-        <li id="{{ iconHash }}">
-          <a href="#{{ iconHash }}">
+      {% for icon in icons %}
+        <li id="{{ icon.shortName }}">
+          <a href="#{{ icon.shortName }}">
             <svg class="rvt-icon">
-              <use xlink:href="./rivet-icons.svg#{{ icon | replace('.svg', '')}}"></use>
+              <use xlink:href="./rivet-icons.svg#{{ icon.fullName }}"></use>
             </svg>
-            {% set iconTitle = icon | replace('-', ' ') | replace('.svg', '') | replace('rvt icon ', '') | capitalize %}
-            <div class="rvt-icons-demo__title">{{ iconTitle }}</div>
+            <div class="rvt-icons-demo__title">{{ icon.title }}</div>
           </a>
         </li>
       {% endfor %}
