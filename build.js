@@ -71,6 +71,8 @@ ${selectors}
 `
 
   await fs.writeFile(out, css)
+
+  return css
 }
 
 module.exports = {
