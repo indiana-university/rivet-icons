@@ -35,8 +35,8 @@ npm install --save-dev rivet-icons
 ```js
 const { buildIcons } = require('rivet-icons')
 
-async function buildIcons () {
-  const iconStyles = await buildIcons({
+async function buildCustomIcons () {
+  await buildIcons({
     icons: [
       'arrow*',
       'plus'
@@ -50,7 +50,7 @@ async function buildIcons () {
   })
 }
 
-buildIcons()
+buildCustomIcons()
 ```
 
 ## API
@@ -69,9 +69,10 @@ const svg = await buildIcons({ type: 'svg' })
 // Useful if you want to manage the output in a custom way.
 ```
 
-#### options.icons
+### options.icons
 
 **Type:** `string[]`
+
 **Default:** `['*']`
 
 Specify the Rivet icons to include. By default, it includes the entire set. To include specific icons, pass an array of icon names or [glob patterns](https://github.com/mrmlnc/fast-glob). Exclude the `.svg` file extention. If an empty array is used, no icons will be included.
@@ -89,9 +90,10 @@ buildIcons({
 // plus
 ```
 
-#### options.include
+### options.include
 
 **Type:** `string[]`
+
 **Default:** `[]`
 
 Specify an array of custom icons to include in the icon set, using [glob patterns](https://github.com/mrmlnc/fast-glob). Any custom icons matching a Rivet icon name will override the Rivet icon. Any non-SVG files are ignored.
@@ -105,9 +107,10 @@ buildIcons({
 // and all SVG files in the local assets directory.
 ```
 
-#### options.out
+### options.out
 
 **Type:** `string | null`
+
 **Default:** `null`
 
 Specify the file name of the generated stylesheet. If `null`, then the file is not generated.
@@ -123,6 +126,7 @@ buildIcons({
 ### options.prefix
 
 **Type:** `string`
+
 **Default:** `'rvt-icon'`
 
 Specify the prefix that will be attached to CSS variable names and CSS selectors.
@@ -136,6 +140,7 @@ buildIcons({
 ### options.type
 
 **Type:** `'css' | 'svg'`
+
 **Default:** `'css'`
 
 Specify the type of icon set to generate.
