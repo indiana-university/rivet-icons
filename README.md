@@ -1,7 +1,147 @@
-## Rivet icons
+# Rivet icons
 Source files for the Rivet icon set
 
 [**View Demo**](https://indiana-university.github.io/rivet-icons/)
+
+## Quick start
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rivet icon example</title>
+    <link rel="stylesheet" http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.css">
+  </head>
+  <body>
+    <span data-rvt-icon="alarm"></span>
+  </body>
+</html>
+```
+
+## Usage
+
+### CSS icons
+
+### SVG sprite icons
+
+## Build a custom icon set
+
+The Rivet icon set includes dozens of icons. If you only need a few icons or want to include icons not in this set, then you can build a custom icon set.
+
+```
+npm install --save-dev rivet-icons
+```
+
+```js
+const { buildIcons } = require('rivet-icons')
+
+async function buildIcons () {
+  const iconStyles = await buildIcons({
+    icons: [
+      'arrow*',
+      'plus'
+    ]
+    include: [
+      './src/assets/*',
+      './favicon.svg'
+    ],
+    out: './build/icons.css',
+    type: 'css'
+  })
+}
+
+buildIcons()
+```
+
+## API
+
+### `buildIcons()`
+
+`buildIcons(options: Object) => Promise<string>`
+
+Returns a promise that resolves to the file contents of the icon set.
+
+```js
+const css = await buildIcons({ type: 'css' })
+const svg = await buildIcons({ type: 'svg' })
+
+// Save the generated file contents (string) to a variable.
+// Useful if you want to manage the output in a custom way.
+```
+
+#### options.icons
+
+**Type:** `string[]`
+**Default:** `['*']`
+
+Specify the Rivet icons to include. By default, it includes the entire set. To include specific icons, pass an array of icon names or [glob patterns](https://github.com/mrmlnc/fast-glob). Exclude the `.svg` file extention. If an empty array is used, no icons will be included.
+
+```js
+buildIcons({
+  icons: ['arrow*', 'plus']
+})
+
+// Generates icon set with:
+// arrow-down
+// arrow-left
+// arrow-right
+// arrow-up
+// plus
+```
+
+#### options.include
+
+**Type:** `string[]`
+**Default:** `[]`
+
+Specify an array of custom icons to include in the icon set, using [glob patterns](https://github.com/mrmlnc/fast-glob). Any custom icons matching a Rivet icon name will override the Rivet icon. Any non-SVG files are ignored.
+
+```js
+buildIcons({
+  include: ['assets/*']
+})
+
+// Generates icon set with all Rivet icons
+// and all SVG files in the local assets directory.
+```
+
+#### options.out
+
+**Type:** `string | null`
+**Default:** `null`
+
+Specify the file name of the generated stylesheet. If `null`, then the file is not generated.
+
+```js
+buildIcons({
+  out: './build/icons.css'
+})
+
+// Outputs icon set to file.
+```
+
+### options.prefix
+
+**Type:** `string`
+**Default:** `'rvt-icon'`
+
+Specify the prefix that will be attached to CSS variable names and CSS selectors.
+
+```js
+buildIcons({
+  prefix: 'app'
+})
+```
+
+### options.type
+
+**Type:** `'css' | 'svg'`
+**Default:** `'css'`
+
+Specify the type of icon set to generate.
+
+
+
 
 ### Usage
 Inside the `/dist` folder there is a file called `rvt-icons.svg` that a SVG sprite sheet that uses the `<symbol>` element to bundle all of the Rivet icons together into one file. To use the bundled SVGs in your project:

@@ -1,4 +1,4 @@
-const { DOCS_BUILD_DIR, DOCS_SRC_DIR } = require('./constants.js')
+const { DOCS_BUILD_DIR, DOCS_SRC_DIR } = require('./lib/constants.js')
 
 module.exports = () => ({
   dir: {

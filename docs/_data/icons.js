@@ -1,3 +1,3 @@
-const { readIcons } = require('../../lib.js')
+const { readIcons } = require('../../lib/lib.js')
 
 module.exports = readIcons
