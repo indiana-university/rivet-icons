@@ -1,8 +1,8 @@
 module.exports = {
-  BUILD_DIR: 'dist',
-  DOCS_DIR: 'docs',
-  FILE_NAME: 'rivet-icons',
-  PREFIX: 'rvt-icon',
-  SRC_DIR: 'src',
-  SVG_DIR: 'src/svg'
+  DOCS_BUILD_DIR: 'docs-build',
+  DOCS_SRC_DIR: 'docs',
+  ICON_BUILD_DIR: 'dist',
+  ICON_BUILD_FILE_NAME: 'rivet-icons',
+  ICON_PREFIX: 'rvt-icon',
+  ICON_SRC_DIR: 'src'
 }

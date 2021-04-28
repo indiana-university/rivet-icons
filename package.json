@@ -11,7 +11,7 @@
     "build-docs": "npx eleventy",
     "build-icons": "node build.js",
     "deploy": "run-s build gh-pages",
-    "gh-pages": "npx gh-pages -d docs",
+    "gh-pages": "npx gh-pages -d docs-build",
     "serve-docs": "npx eleventy --serve",
     "start": "run-s build-icons serve-docs"
   },

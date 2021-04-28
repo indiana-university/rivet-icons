@@ -5,7 +5,7 @@
 
 const fs = require('fs/promises')
 const path = require('path')
-const { PREFIX, SVG_DIR } = require('./constants.js')
+const { ICON_PREFIX, ICON_SRC_DIR } = require('./constants.js')
 
 function compileSpriter (spriter) {
   return new Promise((resolve, reject) => {
@@ -20,9 +20,9 @@ function compileSpriter (spriter) {
 
 async function readIcons (options = {}) {
   const {
-    src = SVG_DIR,
+    src = ICON_SRC_DIR,
     include = [],
-    prefix = PREFIX,
+    prefix = ICON_PREFIX,
     process
   } = options
   const allFiles = await fs.readdir(path.resolve(src))

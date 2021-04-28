@@ -1,8 +1,8 @@
-const { DOCS_DIR, SRC_DIR } = require('./constants.js')
+const { DOCS_BUILD_DIR, DOCS_SRC_DIR } = require('./constants.js')
 
 module.exports = () => ({
   dir: {
-    input: SRC_DIR,
-    output: DOCS_DIR
+    input: DOCS_SRC_DIR,
+    output: DOCS_BUILD_DIR
   }
 })

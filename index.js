@@ -7,13 +7,13 @@ const fs = require('fs/promises')
 const path = require('path')
 const { pathThatSvg } = require('path-that-svg')
 const SVGSpriter = require('svg-sprite')
-const { BUILD_DIR, FILE_NAME, PREFIX } = require('./constants.js')
+const { ICON_BUILD_DIR, ICON_BUILD_FILE_NAME, ICON_PREFIX } = require('./constants.js')
 const { compileSpriter, readIcons } = require('./lib.js')
 
 async function buildSprite (options = {}) {
   const {
-    out = `${BUILD_DIR}/${FILE_NAME}.svg`,
-    prefix = PREFIX
+    out = `${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}.svg`,
+    prefix = ICON_PREFIX
   } = options
   const spriter = new SVGSpriter({
     shape: {
@@ -46,8 +46,8 @@ async function buildSprite (options = {}) {
 
 async function buildStyles (options = {}) {
   const {
-    out = `${BUILD_DIR}/${FILE_NAME}.css`,
-    prefix = PREFIX
+    out = `${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}.css`,
+    prefix = ICON_PREFIX
   } = options
   const icons = await readIcons({
     ...options,
