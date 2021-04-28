@@ -203,11 +203,11 @@ To add a newly-created icon, follow these steps.
 
 To run the docs site locally or make updates to the page you'll need to do the following.
 
-Note: These instructions assume you have [NodeJS](https://nodejs.org/en/) and NPM installed on your computer.
+**Note:** These instructions assume [NodeJS](https://nodejs.org/en/) and NPM are installed.
 
 1. Run `npm install` in your terminal to install the necessary dependencies.
-1. Type `npm run start` to build a fresh copy of the demo site and start a local development server.
-1. Navigate to `http://localhost:8080/` in your web browser to view the demo site.
+1. Type `npm run start` to build a fresh copy of the site and start a local development server.
+1. Navigate to `http://localhost:8080/` in your web browser.
 
 ## Deploy the docs site (organization members only)
 
