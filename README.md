@@ -55,14 +55,17 @@ There are two primary ways to use Rivet icons: the CSS icon set or the SVG sprit
 
 | Consideration | CSS | SVG |
 | --- | --- | --- |
-| Works in latest browsers | Yes | Yes |
-| Works in IE | No<sup>1</sup> | Yes (polyfill optional) |
-| Change color | Yes | Yes |
+| Works in latest browsers<sup>1</sup> | Yes | Yes |
+| Works in IE | No<sup>2</sup> | Yes<sup>3</sup> |
+| Change color<sup>4</sup> | Yes | Yes |
 | Change icon with CSS | Yes | No |
 | Change icon with JavaScript | Yes | Yes |
 | Can build custom icon set | Yes | Yes |
 
+1. Latest browser versions of Chrome, Firefox, and Safari.
 1. IE11 does not support [CSS variables](https://caniuse.com/css-variables) or [`clip-path`](https://caniuse.com/css-clip-path).
+1. The [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) is needed if using an external SVG sprite file.
+1. Icons inherit their color from the CSS `color` property.
 
 ## Use CSS icons
 
