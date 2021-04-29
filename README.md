@@ -74,7 +74,7 @@ async function buildCustomIcons () {
     icons: [
       'arrow*',
       'plus'
-    ]
+    ],
     include: [
       './src/assets/*',
       './favicon.svg'
@@ -189,7 +189,7 @@ buildIcons({ type: 'css' })
 
 ## Icon specifications
 
-All of the Rivet icon artwork can be found in the Illustrator file in `./rivet-icons-source.ai`. Each icon is drawn on its own artboard to the following specifications:
+Original icon artwork is located in the Illustrator file in `./rivet-icons-source.ai`. Each icon is drawn on its own artboard to the following specifications:
 
 - 16&times;16px grid
 - 2px stroke for all icon outlines
@@ -202,7 +202,7 @@ To add a newly-created icon, follow these steps.
 
 1. Create a new feature branch off of `develop`.
 1. Create the new icon artwork in the `./rivet-icons-source.ai` file.
-1. Export the icon as an .svg with the strokes outlined and flattened into the `./src` folder. Using the _Export for Screens..._ option. From the main Illustrator menu go to `File` > `Export` > `Export for Screens...` Select the `./src` folder as the destination and select the artboard for the new icon that you want to export as an SVG.
+1. Export the icon as an `.svg` with the strokes outlined and flattened into the `./src` folder. Using the _Export for Screens..._ option. From the main Illustrator menu go to `File` > `Export` > `Export for Screens...` Select the `./src` folder as the destination and select the artboard for the new icon that you want to export as an SVG.
 1. Once the new icon artwork has been expanded, flattened, and exported to the `./src` folder, type `npm run build` into your terminal to build the preview page. This will generate a preview for every file currently in the `./src` directory.
 1. Follow [the instructions below](#run-the-docs-site) to run the the docs site locally and preview your new icon.
 1. Open a pull request against `develop`.
@@ -214,8 +214,8 @@ To run the docs site locally or make updates to the page you'll need to do the f
 **Note:** These instructions assume [NodeJS](https://nodejs.org/en/) and NPM are installed.
 
 1. Run `npm install` in your terminal to install the necessary dependencies.
-1. Type `npm run start` to build a fresh copy of the site and start a local development server.
-1. Navigate to `http://localhost:8080/` in your web browser.
+1. Run `npm run start` to build a fresh copy of the site and start a local development server.
+1. Open `http://localhost:8080/` in your web browser.
 
 ## Deploy the docs site (organization members only)
 
