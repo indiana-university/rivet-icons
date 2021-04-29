@@ -6,3 +6,6 @@ docs
 .idea/.name
 .idea/vcs.xml
 .idea/workspace.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/rivet-icons.iml
