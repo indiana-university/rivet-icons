@@ -1,7 +1,20 @@
 # Rivet icons
-Source files for the Rivet icon set
+
+Icons for the [Rivet Design System](https://rivet.iu.edu/).
 
 [**View Demo**](https://indiana-university.github.io/rivet-icons/)
+
+1. [Quick start](#quick-start)
+1. [Install](#install)
+1. [Package structure](#package-structure)
+1. [Use CSS icons](#use-css-icons)
+1. [Use SVG icons](#use-svg-icons)
+1. [Build a custom icon set](#build-a-custom-icon-set)
+1. [API](#api)
+1. [Icon specifications](#icon-specifications)
+1. [Add a new icon](#add-a-new-icon)
+1. [Run the docs site](#run-the-docs-site)
+1. [Deploy the docs site](#deploy-the-docs-site)
 
 ## Quick start
 
@@ -13,23 +26,87 @@ Source files for the Rivet icon set
     <link rel="stylesheet" http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.css">
   </head>
   <body>
-    <span data-rvt-icon="alarm"></span>
+    <span data-rvt-icon="heart"></span>
   </body>
 </html>
 ```
 
+## Install
+
+```
+npm install --save rivet-icons
+```
+
+## Package structure
+
+The following are some notable files and folders in this package.
+
+| Path | Description |
+| --- | --- |
+| `./dist/rivet-icons.css` | CSS classes and variables of all icons. |
+| `./dist/rivet-icons.svg` | SVG sprite of all icons. |
+| `./src` | Folder of individual SVG icons. These get bundled in the CSS and SVG icon sets. |
+| `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
+
 ## Usage
 
-### CSS icons
+## Use CSS icons
 
-### SVG sprite icons
+Add the Rivet CSS icon set to the HTML document.
 
-Inside the `/dist` folder there is a file called `rvt-icons.svg` that a SVG sprite sheet that uses the `<symbol>` element to bundle all of the Rivet icons together into one file. To use the bundled SVGs in your project:
+```html
+<link rel="stylesheet" http="/path/to/rivet-icons.css">
+```
 
-1. Download the `rvt-icons.svg` file.
-2. You can either A.) inline the `rvt-icons.svg` file's contents in your page or B.) add the file to your project and reference the `<symbol>` elements inside the sprite sheet with relative URLS. NOTE: this option requires [a small polyfill](https://github.com/jonathantneal/svg4everybody) to work in IE11).
-3. Reference the SVG icon you want to use by its `id` attribute.
-4. Choose a method for sizing your icons. In the examples below we're adding CSS class called `rvt-icon`, but you could use `width` and `height` HTML attributes also.
+There are two ways to render a CSS icon. First, you can use the `data-rvt-icon="[icon]"` attribute.
+
+```html
+<span data-rvt-icon="heart"></span>
+```
+
+This method makes it especially useful for dynamically changing the icon with JavaScript (like React).
+
+```jsx
+const iconName = isFavorited ? 'heart-solid' : 'heart'
+const icon = (<span data-rvt-icon={iconName} />)
+```
+
+Second, you can use [BEM-like classes](http://getbem.com/). The modifier class (`.rvt-icon--[icon]`) is based on the icon name.
+
+```html
+<span class="rvt-icon rvt-icon--heart"></span>
+```
+
+Icons are declared as CSS variables. This means, CSS can dynamically change the icon. In this example, the button toggles the value of `aria-expanded` for screen reader users, while the icon updates between up and down chevrons for visual users.
+
+```html
+<button aria-expanded="true" class="toggle">
+  Toggle
+  <span class="rvt-icon toggle__icon"></span>
+</button>
+```
+
+```css
+.toggle[aria-expanded="false"] .toggle__icon {
+  --rvt-icon: var(--rvt-icon-chevron-down);
+}
+
+.toggle[aria-expanded="true"] .toggle__icon {
+  --rvt-icon: var(--rvt-icon-chevron-up);
+}
+```
+
+## Use SVG icons
+
+Another method for using icons is with SVG sprites. Link to the symbol file and symbol id with the `<use>` element.
+
+```html
+<svg height="1rem" width="1rem">
+  <use href="./path/to/rvt-icons.svg#rvt-icon-heart"></use>
+</svg>
+```
+
+The height and width attributes can be replaced with a class.
 
 ```css
 .rvt-icon {
@@ -38,33 +115,25 @@ Inside the `/dist` folder there is a file called `rvt-icons.svg` that a SVG spri
 }
 ```
 
-Using **option A** listed above:
-
 ```html
 <svg class="rvt-icon">
-  <use xlink:href="#rvt-icon-alarm"></use>
+  <use href="./path/to/rvt-icons.svg#rvt-icon-heart"></use>
 </svg>
 ```
 
-Using **option B** listed above:
+**Note:** Use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer with external symbol files.
+
+To avoid this polyfill, the SVG symbol file contents can be copied directly to the HTML document. In this case, the file path is omitted.
 
 ```html
 <svg class="rvt-icon">
-  <use xlink:href="./path/to/svg/rvt-icons.svg#rvt-icon-alarm"></use>
+  <use href="#rvt-icon-heart"></use>
 </svg>
 ```
-
-#### Using individual inline SVG icons
-
-If you would rather inline the source `.svg` files in your HTML you can clone or download this repository and use the files in the `./src/` directory.
 
 ## Build a custom icon set
 
 The Rivet icon set includes dozens of icons. If you only need a few icons or want to include icons not in this set, then you can build a custom icon set.
-
-```
-npm install --save-dev rivet-icons
-```
 
 ```js
 const { buildIcons } = require('rivet-icons')
@@ -217,6 +286,8 @@ To run the docs site locally or make updates to the page you'll need to do the f
 1. Run `npm run start` to build a fresh copy of the site and start a local development server.
 1. Open `http://localhost:8080/` in your web browser.
 
-## Deploy the docs site (organization members only)
+## Deploy the docs site
+
+**Note:** This feature is for organization members only.
 
 The icons docs site is deployed using a [Github pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). To deploy a newly updated site (e.g. when a new icon has been added), run `npm run deploy`. This will build a fresh copy of the site and push it to the `gh-pages` branch updating the [docs site](https://indiana-university.github.io/rivet-icons/).
