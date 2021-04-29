@@ -113,7 +113,8 @@ Specify the Rivet icons to include. By default, it includes the entire set. To i
 
 ```js
 buildIcons({
-  icons: ['arrow*', 'plus']
+  icons: ['arrow*', 'plus'],
+  type: 'css'
 })
 
 // Generates icon set with:
@@ -126,7 +127,7 @@ buildIcons({
 
 ### options.include
 
-**Type:** `string[]`
+**Type:** `string[]` (optional)
 
 **Default:** `[]`
 
@@ -134,7 +135,8 @@ Specify an array of custom icons to include in the icon set, using [glob pattern
 
 ```js
 buildIcons({
-  include: ['assets/*']
+  include: ['assets/*'],
+  type: 'css'
 })
 
 // Generates icon set with all Rivet icons
@@ -143,7 +145,7 @@ buildIcons({
 
 ### options.out
 
-**Type:** `string | null`
+**Type:** `string | null` (optional)
 
 **Default:** `null`
 
@@ -151,7 +153,8 @@ Specify the file name of the generated stylesheet. If `null`, then the file is n
 
 ```js
 buildIcons({
-  out: './build/icons.css'
+  out: './build/icons.css',
+  type: 'css'
 })
 
 // Outputs icon set to file.
@@ -159,25 +162,30 @@ buildIcons({
 
 ### options.prefix
 
-**Type:** `string`
+**Type:** `string` (optional)
 
 **Default:** `'rvt-icon'`
 
-Specify the prefix that will be attached to CSS variable names and CSS selectors.
+Specify the prefix that will be attached to CSS variable names, CSS selectors, and SVG symbol ids.
 
 ```js
 buildIcons({
-  prefix: 'app'
+  prefix: 'app',
+  type: 'css'
 })
 ```
 
 ### options.type
 
-**Type:** `'css' | 'svg'`
+**Type:** `'css' | 'svg'` (required)
 
-**Default:** `'css'`
+**Default:** None
 
 Specify the type of icon set to generate: either a stylesheet ("css") or SVG sprite ("svg").
+
+```js
+buildIcons({ type: 'css' })
+```
 
 ## Icon specifications
 
