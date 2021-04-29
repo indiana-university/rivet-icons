@@ -7,6 +7,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Quick start](#quick-start)
 1. [Install](#install)
 1. [Package structure](#package-structure)
+1. [Usage](#usage)
 1. [Use CSS icons](#use-css-icons)
 1. [Use SVG icons](#use-svg-icons)
 1. [Build a custom icon set](#build-a-custom-icon-set)
@@ -49,6 +50,19 @@ The following are some notable files and folders in this package.
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
 ## Usage
+
+There are two primary ways to use Rivet icons: the CSS icon set or the SVG sprite icon set. The following are some considerations when choosing your preferred method.
+
+| Consideration | CSS | SVG |
+| --- | --- | --- |
+| Works in latest browsers | Yes | Yes |
+| Works in IE | No<sup>1</sup> | Yes (polyfill optional) |
+| Change color | Yes | Yes |
+| Change icon with CSS | Yes | No |
+| Change icon with JavaScript | Yes | Yes |
+| Can build custom icon set | Yes | Yes |
+
+1. IE11 does not support [CSS variables](https://caniuse.com/css-variables) or [`clip-path`](https://caniuse.com/css-clip-path).
 
 ## Use CSS icons
 
@@ -96,6 +110,14 @@ Icons are declared as CSS variables. This means, CSS can dynamically change the 
 }
 ```
 
+Set the text color to change the icon color.
+
+```css
+.toggle__icon {
+  color: red;
+}
+```
+
 ## Use SVG icons
 
 Another method for using icons is with SVG sprites. Link to the symbol file and symbol id with the `<use>` element.
@@ -129,6 +151,20 @@ To avoid this polyfill, the SVG symbol file contents can be copied directly to t
 <svg class="rvt-icon">
   <use href="#rvt-icon-heart"></use>
 </svg>
+```
+
+Set the text color to change the icon color.
+
+```html
+<svg class="rvt-icon color-red">
+  <use href="#rvt-icon-heart"></use>
+</svg>
+```
+
+```css
+.color-red {
+  color: red;
+}
 ```
 
 ## Build a custom icon set
