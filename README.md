@@ -94,29 +94,22 @@ Second, you can use [BEM-like classes](http://getbem.com/). The modifier class (
 <span class="rvt-icon rvt-icon--heart"></span>
 ```
 
-Icons are declared as CSS variables. This means, CSS can dynamically change the icon. In this example, the button toggles the value of `aria-expanded` for screen reader users, while the icon updates between up and down chevrons for visual users.
+Icons are declared as CSS variables. This means, CSS can dynamically change the icon. In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users. Change the icon color with the `color` property.
 
 ```html
-<button aria-expanded="true" class="toggle">
-  Toggle
-  <span class="rvt-icon toggle__icon"></span>
+<button aria-pressed="true" class="favorite">
+  <span class="rvt-icon favorite__icon"></span>
+  Favorite
 </button>
 ```
 
 ```css
-.toggle[aria-expanded="false"] .toggle__icon {
-  --rvt-icon: var(--rvt-icon-chevron-down);
+.favorite[aria-pressed="false"] .favorite__icon {
+  --rvt-icon: var(--rvt-icon-heart);
 }
 
-.toggle[aria-expanded="true"] .toggle__icon {
-  --rvt-icon: var(--rvt-icon-chevron-up);
-}
-```
-
-Set the text color to change the icon color.
-
-```css
-.toggle__icon {
+.favorite[aria-pressed="true"] .favorite__icon {
+  --rvt-icon: var(--rvt-icon-heart-solid);
   color: red;
 }
 ```
