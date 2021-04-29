@@ -105,7 +105,7 @@ const svg = await buildIcons({ type: 'svg' })
 
 ### options.icons
 
-**Type:** `string[]`
+**Type:** `string[]` (optional)
 
 **Default:** `['*']`
 
