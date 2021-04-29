@@ -55,9 +55,9 @@ There are two primary ways to use Rivet icons: the CSS icon set or the SVG sprit
 
 | Consideration | CSS | SVG |
 | --- | --- | --- |
-| Works in latest browsers<sup>1</sup> | Yes | Yes |
-| Works in IE | No<sup>2</sup> | Yes<sup>3</sup> |
-| Change color<sup>4</sup> | Yes | Yes |
+| Works in latest browsers <sup>1</sup> | Yes | Yes |
+| Works in IE | No <sup>2</sup> | Yes <sup>3</sup> |
+| Change color <sup>4</sup> | Yes | Yes |
 | Change icon with CSS | Yes | No |
 | Change icon with JavaScript | Yes | Yes |
 | Can build custom icon set | Yes | Yes |
