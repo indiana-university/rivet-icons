@@ -175,6 +175,7 @@ Set the text color to change the icon color.
 The Rivet icon set includes dozens of icons. If you only need a few icons or want to include icons not in this set, then you can build a custom icon set.
 
 ```js
+// ./scripts/build-icons.js
 const { buildIcons } = require('rivet-icons')
 
 async function buildCustomIcons () {
@@ -193,6 +194,18 @@ async function buildCustomIcons () {
 }
 
 buildCustomIcons()
+```
+
+This could be integrated as a npm run script and run before (or after) another build step. The package [`npm-run-all`](https://github.com/mysticatea/npm-run-all) is a good way to sequence multiple scripts.
+
+```json
+{
+  "scripts": {
+    "build": "npm-run-all -s build-icons build-app",
+    "build-app": "webpack",
+    "build-icons": "node scripts/build-icons.js"
+  }
+}
 ```
 
 ## API
