@@ -13,10 +13,22 @@ async function build () {
   await fs.rmdir(DOCS_BUILD_DIR, { recursive: true })
   await fs.mkdir(ICON_BUILD_DIR)
   await fs.mkdir(DOCS_BUILD_DIR)
-  await buildIcons({ type: 'css' })
-  await buildIcons({ type: 'svg' })
-  await fs.copyFile(path.resolve(`${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}.css`), path.resolve(`${DOCS_BUILD_DIR}/${ICON_BUILD_FILE_NAME}.css`))
-  await fs.copyFile(path.resolve(`${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}.svg`), path.resolve(`${DOCS_BUILD_DIR}/${ICON_BUILD_FILE_NAME}.svg`))
+  const buildFile = `${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}`
+  const cssBuildFile = path.resolve(`${buildFile}.css`)
+  const svgBuildFile = path.resolve(`${buildFile}.svg`)
+  await buildIcons({
+    out: cssBuildFile,
+    type: 'css'
+  })
+  await buildIcons({
+    out: svgBuildFile,
+    type: 'svg'
+  })
+  const docsFile = `${DOCS_BUILD_DIR}/${ICON_BUILD_FILE_NAME}`
+  const cssDocsFile = path.resolve(`${docsFile}.css`)
+  const svgDocsFile = path.resolve(`${docsFile}.svg`)
+  await fs.copyFile(cssBuildFile, cssDocsFile)
+  await fs.copyFile(svgBuildFile, svgDocsFile)
 }
 
 build()
