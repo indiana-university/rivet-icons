@@ -30,8 +30,8 @@ layout: "layouts/base.njk"
       {% for icon in icons %}
         <li class="ri-list__item">
           <a class="ri-list__link" href="?icon={{ icon.shortName }}">
-            <span data-rvt-icon="{{ icon.shortName }}"></span>
-            <span class="rvt-p-left-xs">{{ icon.shortName }}</span>
+            <span class="rvt-p-all-xxs rvt-p-right-sm" data-rvt-icon="{{ icon.shortName }}"></span>
+            <span>{{ icon.shortName }}</span>
           </a>
         </li>
       {% endfor %}
