@@ -8,27 +8,30 @@ layout: "layouts/base.njk"
     <h1 class="rvt-ts-46 rvt-text-bold rvt-lh-title">{{ title }}</h1>
     <p class="rvt-ts-20">{{ description }}</p>
     <hr>
-    <ul class="rvt-icons-demo rvt-p-top-xxl">
-      {% for icon in icons %}
-        <li id="{{ icon.shortName }}">
-          <a href="#{{ icon.shortName }}">
-            <div>
-              <span data-rvt-icon="{{ icon.shortName }}"></span>
-            </div>
-            <div class="rvt-icons-demo__title">{{ icon.title }}</div>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+    <div class="rvt-m-bottom-lg">
+      <a href="/">Rivet icons</a>
+      {% set icon = icons[46] %}
+      <h1 class="rvt-ts-46 rvt-text-bold rvt-m-top-sm">{{ icon.shortName }}</h1>
+      <span data-rvt-icon="{{ icon.shortName }}"></span>
+      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Export as CSS</h2>
+      {% set export1 = '<span data-rvt-icon="heart"></span>' %}
+      <pre><code class="ri-code-block">{{ export1 }}</code></pre>
+      {% set export2 = '<span class="rvt-icon rvt-icon--heart"></span>' %}
+      <pre><code class="ri-code-block">{{ export2 }}</code></pre>
+      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Export as SVG</h2>
+      {% set export3 = '<svg class="rvt-icon">\n  <use href="#rvt-icon-heart"></use>\n</svg>' %}
+      <pre><code class="ri-code-block">{{ export3 }}</code></pre>
+      <pre><code class="ri-code-block">{{ icon.source }}</code></pre>
+      <a class="button button--secondary" download href="icons/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
+    </div>
     <hr>
-    <ul class="rvt-icons-demo rvt-p-top-xxl">
+    <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Icons</h2>
+    <ul class="ri-list rvt-m-top-sm">
       {% for icon in icons %}
-        <li id="{{ icon.shortName }}">
-          <a href="#{{ icon.shortName }}">
-            <svg class="rvt-icon">
-              <use xlink:href="./rivet-icons.svg#{{ icon.fullName }}"></use>
-            </svg>
-            <div class="rvt-icons-demo__title">{{ icon.title }}</div>
+        <li class="ri-list__item">
+          <a class="ri-list__link" href="?icon={{ icon.shortName }}">
+            <span data-rvt-icon="{{ icon.shortName }}"></span>
+            <span class="rvt-p-left-xs">{{ icon.shortName }}</span>
           </a>
         </li>
       {% endfor %}

@@ -28,6 +28,7 @@
   "devDependencies": {
     "@11ty/eleventy": "0.12.1",
     "fast-glob": "3.2.5",
+    "fs-extra": "^9.1.0",
     "gh-pages": "3.1.0",
     "npm-run-all": "4.1.5",
     "path-that-svg": "1.2.4",
