@@ -101,7 +101,6 @@
 .rvt-icon,
 [data-rvt-icon] {
   display: inline-flex;
-  padding: 0.25rem;
 }
 
 .rvt-icon::before,
@@ -110,8 +109,8 @@
   clip-path: path(var(--rvt-icon));
   content: '';
   display: inline-block;
-  height: 1rem;
-  width: 1rem;
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
 .rvt-icon--alarm,
