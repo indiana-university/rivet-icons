@@ -274,21 +274,6 @@ buildIcons({
 // Outputs icon set to file.
 ```
 
-### options.prefix
-
-**Type:** `string` (optional)
-
-**Default:** `'rvt-icon'`
-
-Specify the prefix that will be attached to CSS variable names, CSS selectors, and SVG symbol ids.
-
-```js
-buildIcons({
-  prefix: 'app',
-  type: 'css'
-})
-```
-
 ### options.type
 
 **Type:** `'css' | 'svg'` (required)
