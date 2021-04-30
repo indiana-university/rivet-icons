@@ -19,7 +19,7 @@ layout: "layouts/base.njk"
       {% set export2 = '<span class="rvt-icon rvt-icon--heart"></span>' %}
       <pre><code class="ri-code-block">{{ export2 }}</code></pre>
       <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Export as SVG</h2>
-      {% set export3 = '<svg class="rvt-icon">\n  <use href="#rvt-icon-heart"></use>\n</svg>' %}
+      {% set export3 = '<svg width="16" height="16">\n  <use href="#rvt-icon-heart"></use>\n</svg>' %}
       <pre><code class="ri-code-block">{{ export3 }}</code></pre>
       <pre><code class="ri-code-block">{{ icon.source }}</code></pre>
       <a class="button button--secondary" download href="icons/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
