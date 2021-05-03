@@ -16,6 +16,10 @@ async function build () {
   await fs.mkdir(DOCS_BUILD_DIR)
   const buildFile = `${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}`
   await buildIcons({
+    out: `${buildFile}.html`,
+    type: 'html'
+  })
+  await buildIcons({
     out: `${buildFile}.css`,
     type: 'css'
   })

@@ -34,6 +34,14 @@ layout: "layouts/base.njk"
             <span>{{ icon.shortName }}</span>
           </a>
         </li>
+        <li class="ri-list__item">
+          <a class="ri-list__link" href="?icon={{ icon.shortName }}">
+            <svg class="rvt-m-all-xxs rvt-m-right-sm" style="color: blue; width: 1rem; height: 1rem;">
+              <use xlink:href="rivet-icons.svg#{{ icon.fullName }}"></use>
+            </svg>
+            <span>{{ icon.shortName }}</span>
+          </a>
+        </li>
       {% endfor %}
     </ul>
   </div>
