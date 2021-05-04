@@ -1,49 +1,8 @@
 ---
 title: Rivet icons
-description: A minimal set of icons for the Rivet design system
+description: Icons for the Rivet design system
 layout: "layouts/base.njk"
 ---
-<div class="rvt-container rvt-m-top-xxl">
-  <div class="rvt-p-all-xl">
-    <h1 class="rvt-ts-46 rvt-text-bold rvt-lh-title">{{ title }}</h1>
-    <p class="rvt-ts-20">{{ description }}</p>
-    <hr>
-    <div class="rvt-m-bottom-lg">
-      <a href="/">Rivet icons</a>
-      {% set icon = icons[46] %}
-      <h1 class="rvt-ts-46 rvt-text-bold rvt-m-top-sm">{{ icon.shortName }}</h1>
-      <rvt-icon icon="{{ icon.shortName }}"></rvt-icon>
 
-      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 1</h2>
-      <p>Use the custom element. This is essentially a shorthand for Option 2.</p>
-      {% set code = '<rvt-icon icon="' + icon.shortName + '"></rvt-icon>' %}
-      <pre><code class="ri-code-block">{{ code }}</code></pre>
-
-      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 2</h2>
-      {% set code = '<span class="rvt-icon rvt-icon--' + icon.shortName + '">\n  <svg>\n    <use href="#rvt-icon"></use>\n  </svg>\n</span>' %}
-      <pre><code class="ri-code-block">{{ code }}</code></pre>
-
-      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 3</h2>
-      <p></p>
-      {% set code = '<span class="rvt-icon">\n  <svg>\n    <use href="#' + icon.fullName + '"></use>\n  </svg>\n</span>' %}
-      <pre><code class="ri-code-block">{{ code }}</code></pre>
-
-      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 4</h2>
-      <p>Copy or download the SVG.</p>
-      <pre><code class="ri-code-block">{{ icon.source }}</code></pre>
-      <a class="button button--secondary" download href="icons/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
-    </div>
-    <hr>
-    <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Icons</h2>
-    <ul class="ri-list rvt-m-top-sm">
-      {% for icon in icons %}
-        <li class="ri-list__item">
-          <a class="ri-list__link" href="?icon={{ icon.shortName }}">
-            <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-xxs rvt-p-right-sm"></rvt-icon>
-            <span>{{ icon.shortName }}</span>
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-</div>
+<h1 class="rvt-ts-46 rvt-text-bold">{{ title }}</h1>
+<p class="rvt-ts-20 rvt-m-top-none">Icons for the <a href="https://rivet.iu.edu/">Rivet Design System</a></p>

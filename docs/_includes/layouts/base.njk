@@ -10,7 +10,10 @@
 </head>
 <body>
   {% include "../../../dist/rivet-icons.html" %}
-  {{ layoutContent | safe }}
+  <div class="rvt-container rvt-container--junior rvt-container--center">
+    {{ layoutContent | safe }}
+    {% include "icons-list.njk" %}
+  </div>
   {% include "demo-switcher.njk" %}
   {% include "demo-scripts.njk" %}
 </body>
