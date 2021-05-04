@@ -12,15 +12,24 @@ layout: "layouts/base.njk"
       <a href="/">Rivet icons</a>
       {% set icon = icons[46] %}
       <h1 class="rvt-ts-46 rvt-text-bold rvt-m-top-sm">{{ icon.shortName }}</h1>
-      <span data-rvt-icon="{{ icon.shortName }}"></span>
-      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Export as CSS</h2>
-      {% set export1 = '<span data-rvt-icon="heart"></span>' %}
-      <pre><code class="ri-code-block">{{ export1 }}</code></pre>
-      {% set export2 = '<span class="rvt-icon rvt-icon--heart"></span>' %}
-      <pre><code class="ri-code-block">{{ export2 }}</code></pre>
-      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Export as SVG</h2>
-      {% set export3 = '<svg width="16" height="16">\n  <use href="#rvt-icon-heart"></use>\n</svg>' %}
-      <pre><code class="ri-code-block">{{ export3 }}</code></pre>
+      <rvt-icon icon="{{ icon.shortName }}"></rvt-icon>
+
+      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 1</h2>
+      <p>Use the custom element. This is essentially a shorthand for Option 2.</p>
+      {% set code = '<rvt-icon icon="' + icon.shortName + '"></rvt-icon>' %}
+      <pre><code class="ri-code-block">{{ code }}</code></pre>
+
+      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 2</h2>
+      {% set code = '<span class="rvt-icon rvt-icon--' + icon.shortName + '">\n  <svg>\n    <use href="#rvt-icon"></use>\n  </svg>\n</span>' %}
+      <pre><code class="ri-code-block">{{ code }}</code></pre>
+
+      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 3</h2>
+      <p></p>
+      {% set code = '<span class="rvt-icon">\n  <svg>\n    <use href="#' + icon.fullName + '"></use>\n  </svg>\n</span>' %}
+      <pre><code class="ri-code-block">{{ code }}</code></pre>
+
+      <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 4</h2>
+      <p>Copy or download the SVG.</p>
       <pre><code class="ri-code-block">{{ icon.source }}</code></pre>
       <a class="button button--secondary" download href="icons/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
     </div>
@@ -30,15 +39,7 @@ layout: "layouts/base.njk"
       {% for icon in icons %}
         <li class="ri-list__item">
           <a class="ri-list__link" href="?icon={{ icon.shortName }}">
-            <span class="rvt-p-all-xxs rvt-p-right-sm" data-rvt-icon="{{ icon.shortName }}"></span>
-            <span>{{ icon.shortName }}</span>
-          </a>
-        </li>
-        <li class="ri-list__item">
-          <a class="ri-list__link" href="?icon={{ icon.shortName }}">
-            <svg class="rvt-m-all-xxs rvt-m-right-sm" style="color: blue; width: 1rem; height: 1rem;">
-              <use xlink:href="rivet-icons.svg#{{ icon.fullName }}"></use>
-            </svg>
+            <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-xxs rvt-p-right-sm"></rvt-icon>
             <span>{{ icon.shortName }}</span>
           </a>
         </li>

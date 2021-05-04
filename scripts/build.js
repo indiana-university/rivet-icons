@@ -17,12 +17,18 @@ async function build () {
   const buildFile = `${ICON_BUILD_DIR}/${ICON_BUILD_FILE_NAME}`
   await buildIcons({
     out: `${buildFile}.html`,
+    type: 'js'
+  })
+  /*
+  await buildIcons({
+    out: `${buildFile}.html`,
     type: 'html'
   })
   await buildIcons({
     out: `${buildFile}.css`,
     type: 'css'
   })
+*/
   await buildIcons({
     out: `${buildFile}.svg`,
     type: 'svg'
