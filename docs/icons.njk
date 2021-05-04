@@ -7,10 +7,11 @@ eleventyComputed:
   title: "{{ icon.shortName}} | Rivet icons"
 permalink: "icons/{{ icon.shortName }}/index.html"
 layout: "layouts/base.njk"
+path: "../../"
 ---
 
 <div class="rvt-m-bottom-lg">
-  <a href="/">Rivet icons</a>
+  <a href="{{ path }}">Rivet icons</a>
 
   <h1 class="rvt-ts-46 rvt-text-bold rvt-m-top-xs">{{ icon.shortName }}</h1>
   <rvt-icon icon="{{ icon.shortName }}"></rvt-icon>

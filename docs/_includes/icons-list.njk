@@ -2,7 +2,7 @@
 <ul class="ri-list rvt-m-top-sm">
   {% for icon in icons %}
     <li class="ri-list__item">
-      <a class="ri-list__link" href="/icons/{{ icon.shortName }}/">
+      <a class="ri-list__link" href="{{ path }}icons/{{ icon.shortName }}/">
         <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-xxs rvt-p-right-sm"></rvt-icon>
         <span>{{ icon.shortName }}</span>
       </a>
