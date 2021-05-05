@@ -13,25 +13,19 @@ path: "../../"
 <div class="rvt-m-bottom-lg">
   <a href="{{ path }}">Rivet icons</a>
 
-  <h1 class="rvt-ts-46 rvt-text-bold rvt-m-top-xs">{{ icon.shortName }}</h1>
-  <rvt-icon icon="{{ icon.shortName }}"></rvt-icon>
+  <h1 class="rvt-ts-46 rvt-text-bold rvt-m-tb-sm">{{ icon.shortName }}</h1>
 
-  <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 1</h2>
-  <p>Use the custom element. This is essentially a shorthand for Option 2.</p>
+  <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box"></rvt-icon>
+
+  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 1:</span> Custom element</h2>
   {% set code = '<rvt-icon icon="' + icon.shortName + '"></rvt-icon>' %}
   <pre><code class="ri-code-block">{{ code }}</code></pre>
 
-  <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 2</h2>
-  {% set code = '<span class="rvt-icon rvt-icon--' + icon.shortName + '">\n  <svg>\n    <use href="#rvt-icon"></use>\n  </svg>\n</span>' %}
-  <pre><code class="ri-code-block">{{ code }}</code></pre>
-
-  <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 3</h2>
-  <p></p>
+  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 2:</span> SVG symbols</h2>
   {% set code = '<span class="rvt-icon">\n  <svg>\n    <use href="#' + icon.fullName + '"></use>\n  </svg>\n</span>' %}
   <pre><code class="ri-code-block">{{ code }}</code></pre>
 
-  <h2 class="rvt-ts-sm rvt-text-bold rvt-m-top-lg">Option 4</h2>
-  <p>Copy or download the SVG.</p>
+  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 3:</span> Copy or download</h2>
   <pre><code class="ri-code-block">{{ icon.source }}</code></pre>
   <a class="button button--secondary" download href="{{ path }}icons/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
 </div>
