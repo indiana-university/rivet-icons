@@ -603,7 +603,7 @@ rvt-icon[icon="users-solid"] {
 <script>
 const prefix = 'rvt-icon'
 
-window.customElements.define(prefix, class RivetIcon extends HTMLElement {
+window.customElements.define(prefix, class RivetIconElement extends HTMLElement {
   static get observedAttributes() {
     return ['icon', 'icons'];
   }
