@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.8.1/rivet.min.css">
-  {% include "demo-styles.njk" %}
+  {% include "styles.njk" %}
 </head>
 <body>
   {% include "../../../dist/rivet-icons.html" %}
@@ -14,7 +14,5 @@
     {{ layoutContent | safe }}
     {% include "icons-list.njk" %}
   </div>
-  {% include "demo-switcher.njk" %}
-  {% include "demo-scripts.njk" %}
 </body>
 </html>

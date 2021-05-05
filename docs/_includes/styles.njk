@@ -1,5 +1,10 @@
 <style>
   :root {
+    --rvt-color-black: #000000;
+    --rvt-color-black-5: #fafafa;
+    --rvt-color-black-90: #444444;
+    --rvt-color-blue-60: #006298;
+    --rvt-color-white: #ffffff;
   }
 
   body {
@@ -29,7 +34,7 @@
   }
 
   .ri-list__link:hover {
-    background-color: #f7f7f7;
+    background-color: var(--rvt-color-black-5);
   }
 
   .ri-code-block {
@@ -40,29 +45,13 @@
     padding: 1rem;
   }
 
-  .rvt-demo-switcher {
-    position: fixed;
-    right: 2rem;
-    top: 2rem;
-    background-color: #006298;
-    -webkit-appearance: none;
+  .ri-icon--interactive {
+    color: var(--rvt-color-blue-60);
   }
 
-  .inverted {
-    background-color: #222222;
-    color: #ffffff;
-  }
-
-  .inverted .rvt-icons-demo__title {
-    background-color: #333333;
-    color: #ffffff;
-  }
-
-  svg.rvt-icon {
-    display: block;
-    height: 1rem;
-    margin: 0 auto;
-    padding: 0;
-    width: 1rem;
+  .ri-icon--inverted {
+    border-color: var(--rvt-color-black);
+    background-color: var(--rvt-color-black-90);
+    color: var(--rvt-color-white);
   }
 </style>
