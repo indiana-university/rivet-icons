@@ -75,7 +75,7 @@ Once the icon set is loaded, you can render an icon in three ways:
 | Consideration | `<rvt-icon>` | `<use>` | `<svg>` |
 | --- | --- | --- | --- |
 | Works in latest browsers <sup>1</sup> | Yes | Yes | Yes |
-| Works in IE | No <sup>2</sup> | Yes <sup>3</sup> | Yes |
+| Works in Internet Explorer | No <sup>2</sup> | Maybe <sup>3</sup> | Yes |
 | Requires JavaScript | Yes | Maybe <sup>3</sup> | No |
 | Change color <sup>4</sup> | Yes | Yes | Yes |
 | Change icon with CSS | Yes | No | No |
@@ -83,8 +83,8 @@ Once the icon set is loaded, you can render an icon in three ways:
 | Can build custom icon set | Yes | Yes | Yes |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
-1. IE11 does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
-1. The [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) is needed if using an external SVG sprite file.
+1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
+1. Internet Explorer does not support [SVG external content](https://caniuse.com/mdn-svg_elements_use_external_uri). Use the [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) to provide support.
 1. Icons inherit their color from the CSS `color` property.
 
 ## Use CSS icons
