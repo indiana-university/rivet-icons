@@ -62,6 +62,7 @@ You can load the icon set in three ways:
 | --- | --- | --- | --- |
 | Includes `<rvt-icon>` element | Yes | Yes | No |
 | Includes `.rvt-icon` styles | Yes | Yes | No |
+| Requires network request | Yes | No | Yes |
 
 ## Render icons
 
