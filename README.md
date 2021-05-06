@@ -24,10 +24,10 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 <html lang="en">
   <head>
     <title>Rivet icon example</title>
-    <link rel="stylesheet" http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.css">
+    <link rel="stylesheet" http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.js">
   </head>
   <body>
-    <span data-rvt-icon="heart"></span>
+    <rvt-icon name="heart"></rvt-icon>
   </body>
 </html>
 ```
@@ -44,8 +44,9 @@ The following are some notable files and folders in this package.
 
 | Path | Description |
 | --- | --- |
-| `./dist/rivet-icons.css` | CSS classes and variables of all icons. |
-| `./dist/rivet-icons.svg` | SVG sprite of all icons. |
+| `./dist/rivet-icons.svg` | SVG sprite of all icons. Used to externally reference an icon. |
+| `./dist/rivet-icons.html` | SVG sprite, styles, and `<rvt-icon>` element, to be loaded at build time. |
+| `./dist/rivet-icons.js` | SVG sprite, styles, and `<rvt-icon>` element, to be loaded at runtime. |
 | `./src` | Folder of individual SVG icons. These get bundled in the CSS and SVG icon sets. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
@@ -181,12 +182,16 @@ async function buildCustomIcons () {
       './src/assets/*',
       './favicon.svg'
     ],
-    out: './build/icons.css',
-    type: 'css'
+    out: 'build'
   })
 }
 
 buildCustomIcons()
+
+// Generates:
+// ./build/rivet-icons.html
+// ./build/rivet-icons.js
+// ./build/rivet-icons.svg
 ```
 
 This could be integrated as a npm run script and run before (or after) another build step. The package [`npm-run-all`](https://github.com/mysticatea/npm-run-all) is a good way to sequence multiple scripts.
@@ -205,16 +210,12 @@ This could be integrated as a npm run script and run before (or after) another b
 
 ### `buildIcons()`
 
-`buildIcons(options: Object) => Promise<string>`
+`buildIcons(options: Object) => void`
 
-Returns a promise that resolves to the file contents of the icon set.
+Returns a promise that resolves when the icon files are written.
 
 ```js
-const css = await buildIcons({ type: 'css' })
-const svg = await buildIcons({ type: 'svg' })
-
-// Save the generated file contents (string) to a variable.
-// Useful if you want to manage the output in a custom way.
+await buildIcons()
 ```
 
 ### options.icons
@@ -227,8 +228,7 @@ Specify the Rivet icons to include. By default, it includes the entire set. To i
 
 ```js
 buildIcons({
-  icons: ['arrow*', 'plus'],
-  type: 'css'
+  icons: ['arrow*', 'plus']
 })
 
 // Generates icon set with:
@@ -249,8 +249,7 @@ Specify an array of custom icons to include in the icon set, using [glob pattern
 
 ```js
 buildIcons({
-  include: ['assets/*'],
-  type: 'css'
+  include: ['assets/*']
 })
 
 // Generates icon set with all Rivet icons
@@ -259,31 +258,18 @@ buildIcons({
 
 ### options.out
 
-**Type:** `string | null` (optional)
+**Type:** `string` (optional)
 
-**Default:** `null`
+**Default:** `'.'`
 
-Specify the file name of the generated stylesheet. If `null`, then the file is not generated.
+Specify the directory for generated icon files. It defaults to the current working directory.
 
 ```js
 buildIcons({
-  out: './build/icons.css',
-  type: 'css'
+  out: 'build'
 })
 
-// Outputs icon set to file.
-```
-
-### options.type
-
-**Type:** `'css' | 'svg'` (required)
-
-**Default:** None
-
-Specify the type of icon set to generate: either a stylesheet ("css") or SVG sprite ("svg").
-
-```js
-buildIcons({ type: 'css' })
+// Outputs the icon set to the `build` directory.
 ```
 
 ## Icon specifications
