@@ -66,7 +66,7 @@ You can load the icon set in three ways:
 
 ## Render icons
 
-You can render an icon in three ways:
+Once the icon set is loaded, you can render an icon in three ways:
 
 1. Use the `<rvt-icon>` element.
 1. Use `<use>`.
@@ -82,8 +82,8 @@ You can render an icon in three ways:
 | Change icon with JavaScript | Yes | Yes | Yes |
 | Can build custom icon set | Yes | Yes | Yes |
 
-1. Latest browser versions of Chrome, Firefox, and Safari.
-1. IE11 does not support [CSS variables](https://caniuse.com/css-variables) or [`clip-path`](https://caniuse.com/css-clip-path).
+1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
+1. IE11 does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
 1. The [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) is needed if using an external SVG sprite file.
 1. Icons inherit their color from the CSS `color` property.
 
