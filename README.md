@@ -74,7 +74,7 @@ Once the icon set is loaded, you can render an icon in three ways:
 1. Copy the `<svg>` icon source into the page.
 
 | Consideration | `<rvt-icon>` | `<use>` embedded | `<use>` external | `<svg>` copy |
-| --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Works in latest browsers <sup>1</sup> | Yes | Yes | Yes | Yes |
 | Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> | Yes |
 | Requires JavaScript | Yes | No | Maybe <sup>3</sup> | No |
