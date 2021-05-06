@@ -50,18 +50,36 @@ The following are some notable files and folders in this package.
 | `./src` | Folder of individual SVG icons. These get bundled in the CSS and SVG icon sets. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
-## Usage
+## Load icons
 
-There are two primary ways to use Rivet icons: the CSS icon set or the SVG sprite icon set. The following are some considerations when choosing your preferred method.
+You can load the icon set in three ways:
 
-| Consideration | CSS | SVG |
-| --- | --- | --- |
-| Works in latest browsers <sup>1</sup> | Yes | Yes |
-| Works in IE | No <sup>2</sup> | Yes <sup>3</sup> |
-| Change color <sup>4</sup> | Yes | Yes |
-| Change icon with CSS | Yes | No |
-| Change icon with JavaScript | Yes | Yes |
-| Can build custom icon set | Yes | Yes |
+1. Link to `rivet-icons.js`.
+1. Embed `rivet-icons.html` in the page.
+1. Link to `rivet-icons.svg` with `<use>`.
+
+| Consideration | `.js` | `.html` | `.svg` |
+| --- | --- | --- | --- |
+| Includes `<rvt-icon>` element | Yes | Yes | No |
+| Includes `.rvt-icon` styles | Yes | Yes | No |
+
+## Render icons
+
+You can render an icon in three ways:
+
+1. Use the `<rvt-icon>` element.
+1. Use `<use>`.
+1. Copy the `<svg>` icon source into the page.
+
+| Consideration | `<rvt-icon>` | `<use>` | `<svg>` |
+| --- | --- | --- | --- |
+| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes |
+| Works in IE | No <sup>2</sup> | Yes <sup>3</sup> | Yes |
+| Requires JavaScript | Yes | Maybe <sup>3</sup> | No |
+| Change color <sup>4</sup> | Yes | Yes | Yes |
+| Change icon with CSS | Yes | No | No |
+| Change icon with JavaScript | Yes | Yes | Yes |
+| Can build custom icon set | Yes | Yes | Yes |
 
 1. Latest browser versions of Chrome, Firefox, and Safari.
 1. IE11 does not support [CSS variables](https://caniuse.com/css-variables) or [`clip-path`](https://caniuse.com/css-clip-path).
