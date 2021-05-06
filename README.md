@@ -69,18 +69,19 @@ You can load the icon set in three ways:
 Once the icon set is loaded, you can render an icon in three ways:
 
 1. Use the `<rvt-icon>` element.
-1. Use `<use>`.
+1. Use `<use>` with embedded symbols.
+1. Use `<use>` with external symbols file.
 1. Copy the `<svg>` icon source into the page.
 
-| Consideration | `<rvt-icon>` | `<use>` | `<svg>` |
+| Consideration | `<rvt-icon>` | `<use>` embedded | `<use>` external | `<svg>` copy |
 | --- | --- | --- | --- |
-| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes |
-| Works in Internet Explorer | No <sup>2</sup> | Maybe <sup>3</sup> | Yes |
-| Requires JavaScript | Yes | Maybe <sup>3</sup> | No |
-| Change color <sup>4</sup> | Yes | Yes | Yes |
-| Change icon with CSS | Yes | No | No |
-| Change icon with JavaScript | Yes | Yes | Yes |
-| Can build custom icon set | Yes | Yes | Yes |
+| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes | Yes |
+| Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> | Yes |
+| Requires JavaScript | Yes | No | Maybe <sup>3</sup> | No |
+| Change color <sup>4</sup> | Yes | Yes | Yes | Yes |
+| Change icon with CSS variables | Yes | No | No | No |
+| Change icon with JavaScript | Yes | Yes | Yes | Yes |
+| Can build custom icon set | Yes | Yes | Yes | Yes |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
 1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
