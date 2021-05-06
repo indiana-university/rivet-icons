@@ -34,7 +34,7 @@ document.head.appendChild(style)
 
 class RivetIconElement extends HTMLElement {
   static get observedAttributes() {
-    return ['icon'];
+    return ['name'];
   }
   connectedCallback () {
     this.innerHTML = `
@@ -49,8 +49,8 @@ class RivetIconElement extends HTMLElement {
       visibility: hidden;
       z-index: var(${iconVar});
     `
-    this._sensor.addEventListener('transitionstart', this.handleUpdate.bind(this))
-    this.handleUpdate()
+    this._sensor.addEventListener('transitionstart', this.update.bind(this))
+    this.update()
   }
   disconnectedCallback () {
     this.innerHTML = ''
@@ -58,16 +58,16 @@ class RivetIconElement extends HTMLElement {
   attributeChangedCallback () {
     this.render()
   }
-  handleUpdate () {
+  update () {
     const value = getComputedStyle(this._sensor).getPropertyValue(iconVar)
     const index = parseInt(value.trim())
-    this._icon = icons[index]
+    this._name = icons[index]
     this.render()
   }
   render () {
-    const icon = this._icon || this.getAttribute('icon')
-    if (this._symbol && icon) {
-      this._symbol.setAttribute('href', `#${prefix}${icon}`)
+    const name = this._name || this.getAttribute('name')
+    if (this._symbol && name) {
+      this._symbol.setAttribute('href', `#${prefix}${name}`)
     }
   }
 }
