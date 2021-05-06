@@ -32,7 +32,7 @@ const style = document.createElement('style')
 style.innerHTML = \`\${namespace} {\n\${cssVars}\n}\`
 document.head.appendChild(style)
 
-window.customElements.define(namespace, class RivetIconElement extends HTMLElement {
+class RivetIconElement extends HTMLElement {
   static get observedAttributes() {
     return ['icon'];
   }
@@ -70,7 +70,9 @@ window.customElements.define(namespace, class RivetIconElement extends HTMLEleme
       this._symbol.setAttribute('href', \`#\${prefix}\${icon}\`)
     }
   }
-})
+}
+
+window.customElements.define(namespace, RivetIconElement)
 
 </script>
 `
