@@ -18,19 +18,19 @@ path: "../../"
   <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Icon style samples</h2>
   <div class="rvt-flex rvt-flex-wrap rvt-m-top-sm">
     <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm"></rvt-icon>
-    <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm ri-icon--interactive"></rvt-icon>
-    <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box ri-icon--inverted"></rvt-icon>
+    <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm docs-icon--interactive"></rvt-icon>
+    <rvt-icon icon="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box docs-icon--inverted"></rvt-icon>
   </div>
 
   <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 1:</span> Custom element</h2>
   {% set code = '<rvt-icon icon="' + icon.shortName + '"></rvt-icon>' %}
-  <pre><code class="ri-code-block">{{ code }}</code></pre>
+  <pre><code class="docs-code-block">{{ code }}</code></pre>
 
   <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 2:</span> SVG symbols</h2>
   {% set code = '<span class="rvt-icon">\n  <svg>\n    <use href="#' + icon.fullName + '"></use>\n  </svg>\n</span>' %}
-  <pre><code class="ri-code-block">{{ code }}</code></pre>
+  <pre><code class="docs-code-block">{{ code }}</code></pre>
 
   <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 3:</span> Copy or download</h2>
-  <pre><code class="ri-code-block">{{ icon.source }}</code></pre>
+  <pre><code class="docs-code-block">{{ icon.source }}</code></pre>
   <a class="button button--secondary" download href="{{ path }}icons/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
 </div>
