@@ -93,7 +93,7 @@ Once the icon set is loaded, render an icon in four ways:
 1. Internet Explorer does not support [SVG external content](https://caniuse.com/mdn-svg_elements_use_external_uri). Use the [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) to provide support.
 1. Icons inherit their color from the CSS `color` property.
 
-## Use icon element
+## Use the icon element
 
 Either embed `rivet-icons.html` in the page or link to `rivet-icons.js`.
 
@@ -101,7 +101,7 @@ Either embed `rivet-icons.html` in the page or link to `rivet-icons.js`.
 <script src="path/to/rivet-icons.js"></script>
 ```
 
-Render the icon in HTML.
+Render the icon in HTML, with the custom element.
 
 ```html
 <rvt-icon name="heart"></rvt-icon>
@@ -159,7 +159,7 @@ CSS variable declarations always override the `name` attribute. In this case, th
 }
 ```
 
-A "flash of unstyled content" happens when `<rvt-icon>` is used before the element definition is registered. This looks as like the icon is briefly invisible, as if `visibility: hidden` is applied and suddenly removed. To avoid this, either place the `rivet-icons.html` or `rivet-icons.js` references before any use of `<rvt-icon>`; or wait to render content until after it registers, with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
+A "flash of unstyled content" happens when `<rvt-icon>` is used before the element definition is registered. This looks like the icon is briefly invisible, as if `visibility: hidden` is applied and suddenly removed. To avoid this, either place the `rivet-icons.html` or `rivet-icons.js` references before any use of `<rvt-icon>`, or wait to render content until after it registers with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
 
 ```js
 window.customElements.whenDefined('rvt-icon').then(() => {
