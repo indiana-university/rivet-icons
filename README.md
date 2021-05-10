@@ -54,7 +54,7 @@ The following are some notable files and folders in this package.
 
 ## Usage
 
-Render an icon in three ways:
+Use an icon in three ways:
 
 1. [Use the icon element](#use-the-icon-element) (`<rvt-icon>`).
 1. [Use internal SVG symbols](#use-internal-svg-symbols).
