@@ -54,7 +54,7 @@ The following are some notable files and folders in this package.
 
 ## Load icons
 
-You can load the icon set in three ways:
+Load the icon set in three ways:
 
 1. Link to `rivet-icons.js`.
 1. Embed `rivet-icons.html` in the page.
@@ -68,7 +68,7 @@ You can load the icon set in three ways:
 
 ## Render icons
 
-Once the icon set is loaded, you can render an icon in four ways:
+Once the icon set is loaded, render an icon in four ways:
 
 1. Use the `<rvt-icon>` element.
 1. Use `<use>` with embedded SVG symbols.
@@ -202,7 +202,7 @@ Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-ico
 
 ## Build a custom icon set
 
-The Rivet icon set includes dozens of icons. If you only need a few icons or want to include icons not in this set, then you can build a custom icon set.
+The Rivet icon set includes dozens of icons. If only a few icons or custom icons are needed, then build a custom icon set.
 
 ```js
 // ./scripts/build-icons.js
@@ -323,20 +323,32 @@ To add a newly-created icon, follow these steps.
 
 1. Create a new feature branch off of `develop`.
 1. Create the new icon artwork in the `./rivet-icons-source.ai` file.
-1. Export the icon as an `.svg` with the strokes outlined and flattened into the `./src` folder. Using the _Export for Screens..._ option. From the main Illustrator menu go to `File` > `Export` > `Export for Screens...` Select the `./src` folder as the destination and select the artboard for the new icon that you want to export as an SVG.
-1. Once the new icon artwork has been expanded, flattened, and exported to the `./src` folder, type `npm run build` into your terminal to build the preview page. This will generate a preview for every file currently in the `./src` directory.
-1. Follow [the instructions below](#run-the-docs-site) to run the the docs site locally and preview your new icon.
+1. Expand all strokes and merge/flatten artwork in to one group.
+1. Export the icon as an `.svg` to the `./src` folder. Open `File` > `Export` > `Export for Screens…`. Select the `./src` folder as the destination and the relevant artboard.
+1. [Run the docs site](#run-the-docs-site) to build the new icon set and preview the new icon.
 1. Open a pull request against `develop`.
 
 ## Run the docs site
 
-To run the docs site locally or make updates to the page you'll need to do the following.
+To run the docs site locally, clone or download this repo.
 
-**Note:** These instructions assume [NodeJS](https://nodejs.org/en/) and NPM are installed.
+Install dependencies.
 
-1. Run `npm install` in your terminal to install the necessary dependencies.
-1. Run `npm run start` to build a fresh copy of the site and start a local development server.
-1. Open `http://localhost:8080/` in your web browser.
+```
+npm install
+```
+
+Build the site and start a local development server.
+
+```
+npm run start
+```
+
+[Open the browser to localhost](http://localhost:8080/).
+
+```
+http://localhost:8080/
+```
 
 ## Deploy the docs site
 
