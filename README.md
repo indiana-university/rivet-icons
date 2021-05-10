@@ -354,7 +354,7 @@ http://localhost:8080/
 
 **Note:** This feature is for organization members only.
 
-Build the docs and deploy it to the [docs site](https://indiana-university.github.io/rivet-icons/), via the [GitHub Pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages) (`gh-pages`).
+Build and deploy the docs to the [docs site](https://indiana-university.github.io/rivet-icons/), via the [GitHub Pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages) (`gh-pages`).
 
 ```
 npm run deploy
