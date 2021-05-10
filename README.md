@@ -179,7 +179,7 @@ If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.
 </span>
 ```
 
-Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, a few lines of CSS should be included somehow. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
+Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, a few lines of CSS should be included somewhere. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
 
 ```html
 <span class="rvt-icon">
@@ -194,7 +194,7 @@ Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-ico
   display: inline-flex;
 }
 
-.rvt-icon svg {
+.rvt-icon > svg {
   height: 1rem;
   width: 1rem;
 }
