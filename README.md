@@ -46,9 +46,9 @@ The following are some notable files and folders in this package.
 | Path | Description |
 | --- | --- |
 | `./dist` | Pre-built files, ready to be used in production. |
-| `./dist/rivet-icons.svg` | SVG sprite, to be used as a linked filed. |
-| `./dist/rivet-icons.html` | SVG sprite, styles, and `<rvt-icon>` element, to be loaded at build time. |
-| `./dist/rivet-icons.js` | SVG sprite, styles, and `<rvt-icon>` element, to be loaded at runtime. |
+| `./dist/rivet-icons.js` | Load icons at runtime. Used for rendering icons with the [icon element](#use-the-icon-element) or [internal SVG symbols](#use-internal-svg-symbols). |
+| `./dist/rivet-icons.html` | Load icons at build time. Used for rendering icons with the [icon element](#use-the-icon-element) or [internal SVG symbols](#use-internal-svg-symbols). |
+| `./dist/rivet-icons.svg` | Load icons at run time. Used for rendering icons with [external SVG symbols](#use-internal-svg-symbols). |
 | `./dist/icons` | Individual icon files. |
 | `./src` | Source files for `./dist` files. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
