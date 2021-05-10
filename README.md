@@ -24,10 +24,10 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 <html lang="en">
   <head>
     <title>Rivet icon example</title>
-    <link rel="stylesheet" http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.js">
   </head>
   <body>
     <rvt-icon name="heart"></rvt-icon>
+    <script http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.js"></script>
   </body>
 </html>
 ```
@@ -44,10 +44,12 @@ The following are some notable files and folders in this package.
 
 | Path | Description |
 | --- | --- |
-| `./dist/rivet-icons.svg` | SVG sprite of all icons. Used to externally reference an icon. |
+| `./dist` | Pre-built files, ready to be used in production. |
+| `./dist/rivet-icons.svg` | SVG sprite, to be used as a linked filed. |
 | `./dist/rivet-icons.html` | SVG sprite, styles, and `<rvt-icon>` element, to be loaded at build time. |
 | `./dist/rivet-icons.js` | SVG sprite, styles, and `<rvt-icon>` element, to be loaded at runtime. |
-| `./src` | Folder of individual SVG icons. These get bundled in the CSS and SVG icon sets. |
+| `./dist/icons` | Individual icon files. |
+| `./src` | Source files for `./dist` files. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
 ## Load icons
@@ -91,99 +93,102 @@ Once the icon set is loaded, you can render an icon in four ways:
 1. Internet Explorer does not support [SVG external content](https://caniuse.com/mdn-svg_elements_use_external_uri). Use the [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) to provide support.
 1. Icons inherit their color from the CSS `color` property.
 
-## Use CSS icons
+## Use icon element
 
-Add the Rivet CSS icon set to the HTML document.
-
-```html
-<link rel="stylesheet" http="/path/to/rivet-icons.css">
-```
-
-There are two ways to render a CSS icon. First, you can use the `data-rvt-icon="[icon]"` attribute.
+Either embed `rivet-icons.html` in the page or link to `rivet-icons.js`.
 
 ```html
-<span data-rvt-icon="heart"></span>
+<script src="path/to/rivet-icons.js"></script>
 ```
 
-This method makes it especially useful for dynamically changing the icon with JavaScript (like React).
+Render the icon in HTML.
+
+```html
+<rvt-icon name="heart"></rvt-icon>
+```
+
+Use JavaScript to dynamically change the icon via the `name` attribute. This example uses React with JSX.
 
 ```jsx
 const iconName = isFavorited ? 'heart-solid' : 'heart'
-const icon = (<span data-rvt-icon={iconName} />)
+const icon = (<rvt-icon name={iconName} />)
 ```
 
-Second, you can use [BEM-like classes](http://getbem.com/). The modifier class (`.rvt-icon--[icon]`) is based on the icon name.
+Use CSS to dynamically change the icon via the `--rvt-icon` variable. Set its value to the CSS variable of the desired icon ("heart" is `var(--heart)`). In order to not pollute `:root`, icon variables are declared only at the level of the `rvt-icon` element. That means, `--rvt-icon` should only be used on the `rvt-icon` element itself, not on an ancestor.
 
-```html
-<span class="rvt-icon rvt-icon--heart"></span>
-```
-
-Icons are declared as CSS variables. This means, CSS can dynamically change the icon. In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users. Change the icon color with the `color` property.
+In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users. Change the icon color with the `color` property.
 
 ```html
 <button aria-pressed="true" class="favorite">
-  <span class="rvt-icon favorite__icon"></span>
+  <rvt-icon class="favorite__icon"></span>
   Favorite
 </button>
 ```
 
 ```css
+/* Do this. */
 .favorite[aria-pressed="false"] .favorite__icon {
-  --rvt-icon: var(--rvt-icon-heart);
+  --rvt-icon: var(--heart);
 }
 
 .favorite[aria-pressed="true"] .favorite__icon {
-  --rvt-icon: var(--rvt-icon-heart-solid);
+  --rvt-icon: var(--heart-solid);
+  color: red;
+}
+
+/* This won't work. */
+.favorite[aria-pressed="false"] {
+  --rvt-icon: var(--heart);
+}
+
+.favorite[aria-pressed="true"] {
+  --rvt-icon: var(--heart-solid);
   color: red;
 }
 ```
 
-## Use SVG icons
-
-Another method for using icons is with SVG sprites. Link to the symbol file and symbol id with the `<use>` element.
+CSS variable declarations always override the `name` attribute. In this case, the icon will render as `heart-solid`, not `heart`.
 
 ```html
-<svg height="1rem" width="1rem">
-  <use href="./path/to/rvt-icons.svg#rvt-icon-heart"></use>
-</svg>
+<rvt-icon name="heart" class="heart-solid"></rvt-icon>
 ```
 
-The height and width attributes can be replaced with a class.
+```css
+.heart-solid {
+  --rvt-icon: var(--heart-solid);
+}
+```
+
+## Use SVG symbols
+
+If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.html`, then render an icon with the following snippet. All `href` values reference the SVG symbol ID, in the format of `#rvt-icon-[name]`. With this method, the icon's color still changes with the CSS `color` property, but the icon itself cannot change with the `--rvt-icon` CSS variable.
+
+```html
+<span class="rvt-icon">
+  <svg>
+    <use href="#rvt-icon-heart"></use>
+  </svg>
+</span>
+```
+
+Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, a few lines of CSS should be included somehow. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
+
+```html
+<span class="rvt-icon">
+  <svg>
+    <use href="path/to/rivet-icons.svg#rvt-icon-heart"></use>
+  </svg>
+</span>
+```
 
 ```css
 .rvt-icon {
-  width: 1rem;
-  height: 1rem;
+  display: inline-flex;
 }
-```
 
-```html
-<svg class="rvt-icon">
-  <use href="./path/to/rvt-icons.svg#rvt-icon-heart"></use>
-</svg>
-```
-
-**Note:** Use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer with external symbol files.
-
-To avoid this polyfill, the SVG symbol file contents can be copied directly to the HTML document. In this case, the file path is omitted.
-
-```html
-<svg class="rvt-icon">
-  <use href="#rvt-icon-heart"></use>
-</svg>
-```
-
-Set the text color to change the icon color.
-
-```html
-<svg class="rvt-icon color-red">
-  <use href="#rvt-icon-heart"></use>
-</svg>
-```
-
-```css
-.color-red {
-  color: red;
+.rvt-icon svg {
+  height: 1rem;
+  width: 1rem;
 }
 ```
 
