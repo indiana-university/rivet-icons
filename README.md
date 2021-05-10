@@ -52,23 +52,9 @@ The following are some notable files and folders in this package.
 | `./src` | Source files for `./dist` files. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
-## Load icons
-
-Load the icon set in three ways:
-
-1. Link to `rivet-icons.js`.
-1. Embed `rivet-icons.html` in the page.
-1. Link to `rivet-icons.svg` with `<use>`.
-
-| Consideration | `.js` | `.html` | `.svg` |
-| --- | --- | --- | --- |
-| Includes `<rvt-icon>` element | Yes | Yes | No |
-| Includes `.rvt-icon` styles | Yes | Yes | No |
-| Requires network request | Yes | No | Yes |
-
 ## Render icons
 
-Once the icon set is loaded, render an icon in four ways:
+Render an icon in four ways:
 
 1. Use the `<rvt-icon>` element.
 1. Use internal SVG symbols.
@@ -77,9 +63,6 @@ Once the icon set is loaded, render an icon in four ways:
 
 | Consideration | Element | Internal SVG | External SVG | Copy SVG |
 | --- | --- | --- | --- | --- |
-| Loads with `rivet-icons.js` | Yes | Yes | No | No |
-| Loads with `rivet-icons.html` | Yes | Yes | No | No |
-| Loads with `rivet-icons.svg` | No | No | Yes | No |
 | Works in latest browsers <sup>1</sup> | Yes | Yes | Yes | Yes |
 | Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> | Yes |
 | Requires JavaScript | Yes | No | Maybe <sup>3</sup> | No |
@@ -95,7 +78,7 @@ Once the icon set is loaded, render an icon in four ways:
 
 ## Use the icon element
 
-Either embed `rivet-icons.html` in the page or link to `rivet-icons.js`.
+Either embed `rivet-icons.html` in the page to avoid a network request or link to `rivet-icons.js` to load the icons at runtime.
 
 ```html
 <script src="path/to/rivet-icons.js"></script>
