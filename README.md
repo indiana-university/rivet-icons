@@ -354,4 +354,8 @@ http://localhost:8080/
 
 **Note:** This feature is for organization members only.
 
-The icons docs site is deployed using a [Github pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages). To deploy a newly updated site (e.g. when a new icon has been added), run `npm run deploy`. This will build a fresh copy of the site and push it to the `gh-pages` branch updating the [docs site](https://indiana-university.github.io/rivet-icons/).
+Build the docs and deploy it to the [docs site](https://indiana-university.github.io/rivet-icons/), via the [GitHub Pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages) (`gh-pages`).
+
+```
+npm run deploy
+```
