@@ -54,22 +54,21 @@ The following are some notable files and folders in this package.
 
 ## Render icons
 
-Render an icon in four ways:
+Render an icon in three ways:
 
-1. Use the `<rvt-icon>` element.
-1. Use internal SVG symbols.
-1. Use external SVG symbols.
-1. Copy the icon SVG into the page.
+1. [Use the icon element](#use-the-icon-element) (`<rvt-icon>`).
+1. [Use internal SVG symbols](#use-internal-svg-symbols).
+1. [Use external SVG symbols](#use-external-svg-symbols).
 
-| Consideration | Element | Internal SVG | External SVG | Copy SVG |
+| Consideration | Element | Internal SVG | External SVG |
 | --- | --- | --- | --- | --- |
-| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes | Yes |
-| Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> | Yes |
-| Requires JavaScript | Yes | No | Maybe <sup>3</sup> | No |
-| Change icon color <sup>4</sup> | Yes | Yes | Yes | Yes |
-| Change icon with CSS variables | Yes | No | No | No |
-| Change icon with JavaScript | Yes | Yes | Yes | Yes |
-| Can build custom icon set | Yes | Yes | Yes | Yes |
+| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes |
+| Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> |
+| Requires JavaScript | Yes | No | Maybe <sup>3</sup> |
+| Change icon color <sup>4</sup> | Yes | Yes | Yes |
+| Change icon with CSS variables | Yes | No | No |
+| Change icon with JavaScript | Yes | Yes | Yes |
+| Can build custom icon set | Yes | Yes | Yes |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
 1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
