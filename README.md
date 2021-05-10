@@ -52,7 +52,7 @@ The following are some notable files and folders in this package.
 | `./src` | Source files for `./dist` files. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
-## Render icons
+## Usage
 
 Render an icon in three ways:
 
