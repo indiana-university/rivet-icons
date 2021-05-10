@@ -61,7 +61,7 @@ Render an icon in three ways:
 1. [Use external SVG symbols](#use-external-svg-symbols).
 
 | Consideration | Element | Internal SVG | External SVG |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | Works in latest browsers <sup>1</sup> | Yes | Yes | Yes |
 | Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> |
 | Requires JavaScript | Yes | No | Maybe <sup>3</sup> |
