@@ -101,7 +101,7 @@ Either embed `rivet-icons.html` in the page or link to `rivet-icons.js`.
 <script src="path/to/rivet-icons.js"></script>
 ```
 
-Render the icon in HTML, with the custom element.
+Render the icon in HTML, with the [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
 
 ```html
 <rvt-icon name="heart"></rvt-icon>
