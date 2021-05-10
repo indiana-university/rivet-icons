@@ -71,9 +71,9 @@ Load the icon set in three ways:
 Once the icon set is loaded, render an icon in four ways:
 
 1. Use the `<rvt-icon>` element.
-1. Use `<use>` with internal SVG symbols.
-1. Use `<use>` with external SVG symbols.
-1. Copy the `<svg>` icon source into the page.
+1. Use internal SVG symbols.
+1. Use external SVG symbols.
+1. Copy the icon SVG into the page.
 
 | Consideration | Element | Internal SVG | External SVG | Copy SVG |
 | --- | --- | --- | --- | --- |
