@@ -162,7 +162,7 @@ CSS variable declarations always override the `name` attribute. In this case, th
 A "flash of unstyled content" happens when `<rvt-icon>` is used before the element definition is registered. This looks as like the icon is briefly invisible, as if `visibility: hidden` is applied and suddenly removed. To avoid this, either place the `rivet-icons.html` or `rivet-icons.js` references before any use of `<rvt-icon>`; or wait to render content until after it registers, with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
 
 ```js
-customElements.whenDefined('rvt-icon').then(() => {
+window.customElements.whenDefined('rvt-icon').then(() => {
   render()
 })
 ```
