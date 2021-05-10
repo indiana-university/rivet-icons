@@ -167,7 +167,7 @@ window.customElements.whenDefined('rvt-icon').then(() => {
 })
 ```
 
-## Use SVG symbols
+## Use internal SVG symbols
 
 If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.html`, then render an icon with the following snippet. All `href` values reference the SVG symbol ID, in the format of `#rvt-icon-[name]`. With this method, the icon's color still changes with the CSS `color` property, but the icon itself cannot change with the `--rvt-icon` CSS variable.
 
@@ -178,6 +178,8 @@ If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.
   </svg>
 </span>
 ```
+
+## Use external SVG symbols
 
 Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, a few lines of CSS should be included somewhere. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
 
