@@ -75,7 +75,7 @@ Once the icon set is loaded, render an icon in four ways:
 1. Use `<use>` with external SVG symbols.
 1. Copy the `<svg>` icon source into the page.
 
-| Consideration | Element | Embedded SVG | External SVG | Copy SVG |
+| Consideration | Element | Internal SVG | External SVG | Copy SVG |
 | --- | --- | --- | --- | --- |
 | Loads with `rivet-icons.js` | Yes | Yes | No | No |
 | Loads with `rivet-icons.html` | Yes | Yes | No | No |
