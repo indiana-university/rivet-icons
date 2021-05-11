@@ -42,16 +42,12 @@ npm install --save rivet-icons
 
 ## Package structure
 
-The following are some notable files and folders in this package.
+The following are some notable contents in this package.
 
 | Path | Description |
 | --- | --- |
-| `./dist` | Pre-built files, ready to be used in production. |
-| `./dist/rivet-icons.js` | Load icons at runtime. Used for rendering icons with the [icon element](#use-the-icon-element) or [internal SVG symbols](#use-internal-svg-symbols). |
-| `./dist/rivet-icons.html` | Load icons at build time. Used for rendering icons with the [icon element](#use-the-icon-element) or [internal SVG symbols](#use-internal-svg-symbols). |
-| `./dist/rivet-icons.svg` | Load icons at run time. Used for rendering icons with [external SVG symbols](#use-internal-svg-symbols). |
-| `./dist/icons` | Individual icon files. |
-| `./src` | Source files for `./dist` files. |
+| `./dist` | Production files (CSS, HTML, JS, SVG). |
+| `./src` | Source SVG files. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
 ## Usage
@@ -182,7 +178,7 @@ Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-ico
 
 ## Use inline SVG
 
-If not using SVG symbols, the icons can be placed inline in HTML. In this example, the heart icon is copied and placed as is. However, the `xmlns`, `width`, and `height` attributes can be removed. [`xmlns` is not needed](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) within HTML documents. `width` and `height` is set by using the `.rvt-icon` class. Be sure to link to `rivet-icons.css`.
+If not using SVG symbols, the icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page and link to `rivet-icons.css`.
 
 ```html
 <link href="path/to/rivet-icons.css" rel="stylesheet">
@@ -190,17 +186,15 @@ If not using SVG symbols, the icons can be placed inline in HTML. In this exampl
 
 ```html
 <span class="rvt-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-    <path fill="currentColor" d="M8,14.52a1,1,0,0,1-.71-.3L1.38,8.33a4.29,4.29,0,0,1,0-6.07,4.3,4.3,0,0,1,6.07,0L8,2.79l.52-.53a4.3,4.3,0,0,1,6.07,0h0a4.23,4.23,0,0,1,1.26,3,4.21,4.21,0,0,1-1.26,3L8.68,14.22A1,1,0,0,1,8,14.52ZM4.42,3a2.34,2.34,0,0,0-1.63.67A2.31,2.31,0,0,0,2.12,5.3a2.29,2.29,0,0,0,.67,1.62L8,12.1l5.18-5.18a2.29,2.29,0,0,0,.67-1.62A2.29,2.29,0,0,0,9.92,3.67L8.68,4.91a1,1,0,0,1-1.41,0L6,3.67A2.33,2.33,0,0,0,4.42,3Z"/>
-  </svg>
+  <!-- Paste `rvt-icon-heart.html` here. -->
 </span>
 ```
 
-However, if the development environment allows it, prefer to import individual icons, rather than copying and pasting them. This example is how it could be done with React.
+If the development environment allows it, prefer to import individual icons, rather than copying and pasting them. This example is how it could be done with React, with the right configurations.
 
 ```jsx
 import 'rivet-icons/dist/rivet-icons.css'
-import heart from 'rivet-icons/dist/icons/rvt-icon-heart.svg'
+import heart from 'rivet-icons/dist/rvt-icon-heart.html'
 
 const HeartIcon = (
   <span
