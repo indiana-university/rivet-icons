@@ -5,8 +5,9 @@ rvt-icon {
   display: inline-flex;
 }
 
-.rvt-icon svg,
-rvt-icon svg {
+.rvt-icon > svg,
+rvt-icon > svg,
+rvt-icon:not(:defined)::before {
   height: 1rem;
   width: 1rem;
 }
@@ -14,8 +15,6 @@ rvt-icon svg {
 rvt-icon:not(:defined)::before {
   content: '';
   display: block;
-  height: 1rem;
-  width: 1rem;
 }
 </style>
 <script type="module">

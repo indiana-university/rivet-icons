@@ -11,6 +11,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Use the icon element](#use-the-icon-element)
 1. [Use internal SVG symbols](#use-internal-svg-symbols)
 1. [Use external SVG symbols](#use-external-svg-symbols)
+1. [Use inline SVG](#use-inline-svg)
 1. [Build a custom icon set](#build-a-custom-icon-set)
 1. [API](#api)
 1. [Icon specifications](#icon-specifications)
@@ -60,16 +61,17 @@ Use an icon in three ways:
 1. [Use the icon element](#use-the-icon-element) (`<rvt-icon>`).
 1. [Use internal SVG symbols](#use-internal-svg-symbols).
 1. [Use external SVG symbols](#use-external-svg-symbols).
+1. [Use inline SVG](#use-inline-svg).
 
-| Consideration | Element | Internal SVG | External SVG |
-| --- | --- | --- | --- |
-| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes |
-| Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> |
-| Requires JavaScript | Yes | No | Maybe <sup>3</sup> |
-| Change icon color <sup>4</sup> | Yes | Yes | Yes |
-| Change icon with CSS variables | Yes | No | No |
-| Change icon with JavaScript | Yes | Yes | Yes |
-| Can build custom icon set | Yes | Yes | Yes |
+| Consideration | Element | Internal | External | Inline |
+| --- | --- | --- | --- | --- |
+| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes | Yes |
+| Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> | Yes |
+| Requires JavaScript | Yes | No | Maybe <sup>3</sup> | No |
+| Change icon color <sup>4</sup> | Yes | Yes | Yes | Yes |
+| Change icon with CSS variables | Yes | No | No | No |
+| Change icon with JavaScript | Yes | Yes | Yes | Yes |
+| Can build custom icon set | Yes | Yes | Yes | N/A |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
 1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
@@ -164,7 +166,11 @@ If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.
 
 ## Use external SVG symbols
 
-Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, a few lines of CSS should be included somewhere. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
+Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, link to `rivet-icons.css`. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
+
+```html
+<link href="path/to/rivet-icons.css" rel="stylesheet">
+```
 
 ```html
 <span class="rvt-icon">
@@ -174,15 +180,33 @@ Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-ico
 </span>
 ```
 
-```css
-.rvt-icon {
-  display: inline-flex;
-}
+## Use inline SVG
 
-.rvt-icon > svg {
-  height: 1rem;
-  width: 1rem;
-}
+If not using SVG symbols, the icons can be placed inline in HTML. In this example, the heart icon is copied and placed as is. However, the `xmlns`, `width`, and `height` attributes can be removed. [`xmlns` is not needed](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) within HTML documents. `width` and `height` is set by using the `.rvt-icon` class. Be sure to link to `rivet-icons.css`.
+
+```html
+<link href="path/to/rivet-icons.css" rel="stylesheet">
+```
+
+```html
+<span class="rvt-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <path fill="currentColor" d="M8,14.52a1,1,0,0,1-.71-.3L1.38,8.33a4.29,4.29,0,0,1,0-6.07,4.3,4.3,0,0,1,6.07,0L8,2.79l.52-.53a4.3,4.3,0,0,1,6.07,0h0a4.23,4.23,0,0,1,1.26,3,4.21,4.21,0,0,1-1.26,3L8.68,14.22A1,1,0,0,1,8,14.52ZM4.42,3a2.34,2.34,0,0,0-1.63.67A2.31,2.31,0,0,0,2.12,5.3a2.29,2.29,0,0,0,.67,1.62L8,12.1l5.18-5.18a2.29,2.29,0,0,0,.67-1.62A2.29,2.29,0,0,0,9.92,3.67L8.68,4.91a1,1,0,0,1-1.41,0L6,3.67A2.33,2.33,0,0,0,4.42,3Z"/>
+  </svg>
+</span>
+```
+
+However, if the development environment allows it, prefer to import individual icons, rather than copying and pasting them. This example is how it could be done with React.
+
+```jsx
+import 'rivet-icons/dist/rivet-icons.css'
+import heart from 'rivet-icons/dist/icons/rvt-icon-heart.svg'
+
+const HeartIcon = (
+  <span
+    className='rvt-icon'
+    dangerouslySetInnerHTML={{ __html: heart }} />
+)
 ```
 
 ## Build a custom icon set
