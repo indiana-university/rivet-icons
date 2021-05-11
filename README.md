@@ -12,6 +12,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Use internal SVG symbols](#use-internal-svg-symbols)
 1. [Use external SVG symbols](#use-external-svg-symbols)
 1. [Use inline SVG](#use-inline-svg)
+1. [Change icon size](#change-icon-size)
 1. [Build a custom icon set](#build-a-custom-icon-set)
 1. [API](#api)
 1. [Icon specifications](#icon-specifications)
@@ -201,6 +202,24 @@ const HeartIcon = (
     className='rvt-icon'
     dangerouslySetInnerHTML={{ __html: heart }} />
 )
+```
+
+## Change icon size
+
+Icons are sized at 16 square pixels, but the padding and margins can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` padding (`4px`) to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
+
+```html
+<!-- 16x16 -->
+<rvt-icon></rvt-icon>
+<span class="rvt-icon"></span>
+
+<!-- 24x24 -->
+<rvt-icon class="rvt-p-all-xxs"></rvt-icon>
+<span class="rvt-icon rvt-p-all-xxs"></span>
+
+<!-- 32x32 -->
+<rvt-icon class="rvt-p-all-xs"></rvt-icon>
+<span class="rvt-icon rvt-p-all-xs"></span>
 ```
 
 ## Build a custom icon set
