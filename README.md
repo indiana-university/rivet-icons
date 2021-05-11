@@ -76,13 +76,13 @@ Use an icon in three ways:
 
 ## Use the icon element
 
-Either embed `rivet-icons.html` in the page to avoid a network request or link to `rivet-icons.js` to load the icons at runtime.
+Either embed `rivet-icons.html` in the page to avoid a network request or link to `rivet-icons.js` to load the icons at runtime. Both of these files contain the same [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), styles, and SVG symbols needed to render the icons.
 
 ```html
 <script src="path/to/rivet-icons.js"></script>
 ```
 
-Render the icon in HTML, with the [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements).
+Render the icon in HTML.
 
 ```html
 <rvt-icon name="heart"></rvt-icon>
@@ -162,7 +162,7 @@ If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.
 
 ## Use external SVG symbols
 
-Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`). First, link to `rivet-icons.css`. Second, optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
+If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`), link to `rivet-icons.css` and optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
 
 ```html
 <link href="path/to/rivet-icons.css" rel="stylesheet">
@@ -190,7 +190,7 @@ Icons can be placed inline in HTML. Copy and paste the contents of any inline ic
 </span>
 ```
 
-If the development environment allows it, prefer to import individual icons, rather than copying and pasting them. This example is how it could be done with React, with the right configurations.
+If the development environment allows it, prefer to import individual icons, rather than copying and pasting them. This example is how it could be done with React, with the right build configurations.
 
 ```jsx
 import 'rivet-icons/dist/rivet-icons.css'
@@ -228,9 +228,12 @@ async function buildCustomIcons () {
 buildCustomIcons()
 
 // Generates:
+// ./build/rivet-icons.css
 // ./build/rivet-icons.html
 // ./build/rivet-icons.js
 // ./build/rivet-icons.svg
+// ./build/rvt-icon-[name].html
+// ./build/rvt-icon-[name].svg
 ```
 
 This could be integrated as a npm run script and run before (or after) another build step. The package [`npm-run-all`](https://github.com/mysticatea/npm-run-all) is a good way to sequence multiple scripts.
