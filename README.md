@@ -52,7 +52,7 @@ The following are some notable contents in this package.
 
 ## Usage
 
-Use an icon in three ways:
+Choose a way to use the icons.
 
 1. [Use the icon element](#use-the-icon-element) (`<rvt-icon>`).
 1. [Use internal SVG symbols](#use-internal-svg-symbols).
