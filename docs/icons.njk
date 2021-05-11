@@ -22,16 +22,10 @@ path: "../../"
     <rvt-icon name="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box docs-sample-dark"></rvt-icon>
   </div>
 
-  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 1:</span> Custom element</h2>
+  <h2 class="rvt-ts-sm rvt-m-top-lg rvt-text-bold">Usage</h2>
+  <p><a href="https://github.com/indiana-university/rivet-icons">Read the documentation</a> for further details about using the Rivet Icon Element or alternative ways to use this icon.</p>
   {% set code = '<rvt-icon name="' + icon.shortName + '"></rvt-icon>' %}
   <pre><code class="docs-code-block">{{ code }}</code></pre>
-
-  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 2:</span> SVG symbols</h2>
-  {% set code = '<span class="rvt-icon">\n  <svg>\n    <use href="#' + icon.fullName + '"></use>\n  </svg>\n</span>' %}
-  <pre><code class="docs-code-block">{{ code }}</code></pre>
-
-  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 3:</span> Copy or download</h2>
-  <pre><code class="docs-code-block">{{ icon.source }}</code></pre>
   <div class="rvt-flex rvt-wrap">
     <a class="rvt-button rvt-button--secondary rvt-m-top-sm rvt-m-right-sm" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
     <span class="docs-copy">
