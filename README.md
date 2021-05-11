@@ -67,7 +67,7 @@ Choose a way to use the icons.
 | Change icon color <sup>4</sup> | Yes | Yes | Yes | Yes |
 | Change icon with CSS variables | Yes | No | No | No |
 | Change icon with JavaScript | Yes | Yes | Yes | Yes |
-| Can build custom icon set | Yes | Yes | Yes | N/A |
+| Can build custom icon set | Yes | Yes | Yes | Yes |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
 1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
