@@ -211,7 +211,7 @@ const HeartIcon = (
 
 ## Build a custom icon set
 
-The Rivet icon set includes dozens of icons. If only a few icons or custom icons are needed, then build a custom icon set.
+The Rivet icon set includes dozens of icons. If only a few icons or custom icons are needed, then build a custom icon set. After [installing the `rivet-icons` package](#install), write a Node script to build the icons.
 
 ```js
 // ./scripts/build-icons.js
