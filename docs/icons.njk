@@ -32,5 +32,28 @@ path: "../../"
 
   <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Option 3:</span> Copy or download</h2>
   <pre><code class="docs-code-block">{{ icon.source }}</code></pre>
-  <a class="button button--secondary" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
+  <div class="rvt-flex rvt-wrap">
+    <a class="rvt-button rvt-button--secondary rvt-m-top-sm rvt-m-right-sm" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
+    <span class="docs-copy">
+      <button data-copy-button class="rvt-button rvt-button--secondary rvt-m-top-sm">Copy SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></button>
+      <span class="docs-copy__alert" data-copy-alert role="alert"></span>
+    </span>
+  </div>
 </div>
+
+<script>
+const copyButton = document.querySelector('[data-copy-button]')
+const copyAlert = document.querySelector('[data-copy-alert]')
+if ('clipboard' in navigator) {
+  copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(`{{ icon.source | safe }}`).then(() => {
+      copyAlert.innerText = 'Copied'
+      setTimeout(() => {
+        copyAlert.innerText = ''
+      }, 2000)
+    })
+  })
+} else {
+  copyButton.remove()
+}
+</script>
