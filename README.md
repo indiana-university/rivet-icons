@@ -178,7 +178,7 @@ Extra work is needed if wanting to use `rivet-icons.svg` (rather than `rivet-ico
 
 ## Use inline SVG
 
-If not using SVG symbols, the icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page and link to `rivet-icons.css`.
+Icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page and link to `rivet-icons.css`.
 
 ```html
 <link href="path/to/rivet-icons.css" rel="stylesheet">
