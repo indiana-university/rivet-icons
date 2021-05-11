@@ -12,6 +12,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Use internal SVG symbols](#use-internal-svg-symbols)
 1. [Use external SVG symbols](#use-external-svg-symbols)
 1. [Use inline SVG](#use-inline-svg)
+1. [Change icon color](#change-icon-color)
 1. [Change icon size](#change-icon-size)
 1. [Build a custom icon set](#build-a-custom-icon-set)
 1. [API](#api)
@@ -202,6 +203,20 @@ const HeartIcon = (
     className='rvt-icon'
     dangerouslySetInnerHTML={{ __html: heart }} />
 )
+```
+
+## Change icon color
+
+The icon color is inherited through the `color` property. It behaves just like text color.
+
+```html
+<rvt-icon name="heart" class="color-red"></rvt-icon>
+```
+
+```css
+.color-red {
+  color: red;
+}
 ```
 
 ## Change icon size
