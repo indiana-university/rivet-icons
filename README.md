@@ -206,7 +206,7 @@ const HeartIcon = (
 
 ## Change icon size
 
-Icons are sized at 16 square pixels, but the padding and margins can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` padding (`4px`) to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
+Icons are sized at 16 square pixels, but the padding and margins can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
 
 ```html
 <!-- 16x16 -->
