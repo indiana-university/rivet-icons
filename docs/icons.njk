@@ -10,25 +10,37 @@ layout: "layouts/base.njk"
 path: "../../"
 ---
 
+{% macro h2(heading) %}
+<h2 class="rvt-ts-sm rvt-m-top-md rvt-text-bold">{{ heading }}</h2>
+{% endmacro %}
+
+{% macro example(code) %}
+<div class="docs-example">
+  <div class="docs-example__preview">
+    {{ code | safe }}
+  </div>
+  <pre class="docs-example__code"><code>{{ code }}</code></pre>
+</div>
+{% endmacro %}
+
 <h1 class="rvt-ts-xl rvt-text-bold rvt-lh-title">{{ icon.shortName }}</h1>
 
-<h2 class="rvt-ts-sm rvt-m-top-md rvt-text-bold">Icon style samples</h2>
-<div class="rvt-flex rvt-flex-wrap rvt-m-top-sm">
-  <rvt-icon name="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm"></rvt-icon>
-  <rvt-icon name="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm docs-sample-colored"></rvt-icon>
-  <rvt-icon name="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box docs-sample-dark"></rvt-icon>
-</div>
-
-<h2 class="rvt-ts-sm rvt-m-top-md rvt-text-bold">Usage</h2>
-{% set code = '<rvt-icon name="' + icon.shortName + '"></rvt-icon>' %}
-<pre class="docs-code-block rvt-m-top-sm"><code>{{ code }}</code></pre>
-<div class="rvt-flex rvt-wrap">
-  <a class="rvt-button rvt-button--secondary rvt-m-top-sm rvt-m-right-sm" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
+<div class="rvt-button-group rvt-m-top-sm">
+  <a class="rvt-button rvt-button--secondary" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
   <span class="docs-copy">
-    <button data-copy-button class="rvt-button rvt-button--secondary rvt-m-top-sm">Copy SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></button>
+    <button data-copy-button class="rvt-button rvt-button--secondary">Copy SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></button>
     <span class="docs-copy__alert" data-copy-alert role="alert"></span>
   </span>
 </div>
+
+<h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example 1:</span> Icon</h2>
+{{ example('<rvt-icon name="' + icon.shortName + '"></rvt-icon>') }}
+
+<h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example 2:</span> Icon button</h2>
+{{ example('<button class="rvt-button rvt-button--plain">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-sr-only">' + icon.shortName + '</span>\n</button>') }}
+
+<h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example 3:</span> Icon button with label</h2>
+{{ example('<button class="rvt-button rvt-button--secondary">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-p-left-xs">' + icon.shortName + '</span>\n</button>') }}
 
 <script>
 const copyButton = document.querySelector('[data-copy-button]')
