@@ -244,7 +244,7 @@ Icons are sized at 16 square pixels, but the padding and margins can be adjusted
 
 Icons are considered decorative images. They are hidden from screen readers via `<svg aria-hidden="true">`. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
 
-In this example, the link text of "Favorites" is presented to all users. Adding an additional accessible label to the icon would provide no benefit.
+In this example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. Providing an accessible description of the icon itself provides little value and may be undesired.
 
 ```html
 <a href="/favorites">
