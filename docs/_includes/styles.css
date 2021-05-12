@@ -13,13 +13,12 @@
 }
 
 .docs-nav {
-  background-color: var(--rvt-color-black-5);
-  border-top: var(--rvt-border);
+  background-color: var(--rvt-color-black-10);
 }
 
 .docs-nav__list {
   display: grid;
-  gap: 0.25rem;
+  gap: 0.5rem;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   list-style: none;
   margin: 0;
@@ -32,11 +31,12 @@
 }
 
 .docs-nav__item[aria-current] .docs-nav__link {
-  background-color: var(--rvt-color-black-90);
+  background-color: var(--rvt-color-blue-60);
   color: var(--rvt-color-white);
 }
 
 .docs-nav__link {
+  background-color: var(--rvt-color-black-5);
   border-radius: 0.25rem;
   color: inherit;
   display: flex;
@@ -45,7 +45,7 @@
 }
 
 .docs-nav__link:hover {
-  background-color: var(--rvt-color-black-10);
+  background-color: var(--rvt-color-white);
   color: var(--rvt-color-blue-60);
 }
 
