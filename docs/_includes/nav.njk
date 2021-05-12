@@ -1,0 +1,17 @@
+<nav class="docs-nav rvt-border-top rvt-p-top-md" aria-label="Icons">
+  <h2 class="rvt-sr-only">Icons</h2>
+  <ul class="docs-nav__list">
+    {% for i in icons %}
+      {% if i.shortName == icon.shortName %}
+      <li aria-current="page" class="docs-nav__item">
+      {% else %}
+      <li class="docs-nav__item">
+      {% endif %}
+        <a class="docs-nav__link" href="{{ path }}icons/{{ i.shortName }}/">
+          <rvt-icon name="{{ i.shortName }}" class="rvt-p-all-xxs"></rvt-icon>
+          <span class="rvt-p-left-xs">{{ i.shortName }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

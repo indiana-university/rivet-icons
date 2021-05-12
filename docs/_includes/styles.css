@@ -1,40 +1,59 @@
 :root {
   --rvt-color-black: #333333;
   --rvt-color-black-5: #fafafa;
+  --rvt-color-black-10: #eeeeee;
   --rvt-color-black-90: #444444;
   --rvt-color-blue-60: #006298;
   --rvt-color-white: #ffffff;
 }
 
-.docs-list {
+.docs-content {
+  max-width: 40rem;
+}
+
+.docs-nav__list {
   display: grid;
+  gap: 0.25rem;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.docs-list__item {
+.docs-nav__item {
   margin: 0;
   padding: 0;
 }
 
-.docs-list__link {
-  border-radius: 0.5rem;
+.docs-nav__item[aria-current] .docs-nav__link {
+  background-color: var(--rvt-color-black-90);
+  color: var(--rvt-color-white);
+}
+
+.docs-nav__link {
+  border-radius: 0.25rem;
   color: inherit;
   display: flex;
-  padding: 1rem;
+  padding: 0.5rem;
   text-decoration: none;
 }
 
-.docs-list__link:hover {
+.docs-nav__link:hover {
   background-color: var(--rvt-color-black-5);
+  color: var(--rvt-color-blue-60);
 }
 
 .docs-code-block {
+  background-color: var(--rvt-color-black-5);
+  border: calc(1rem/16) solid var(--rvt-color-black-10);
+  border-radius: 0.25rem;
+  margin: 0;
+}
+
+.docs-code-block > code {
   color: inherit;
   display: block;
-  font-family: inherit;
+  font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
   font-size: 1rem;
   overflow-x: auto;
   padding: 1rem;

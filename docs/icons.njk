@@ -4,18 +4,16 @@ pagination:
   size: 1
   alias: icon
 eleventyComputed:
-  title: "{{ icon.shortName}} | Rivet icons"
+  title: "{{ icon.shortName}} | Rivet Icons"
 permalink: "icons/{{ icon.shortName }}/index.html"
 layout: "layouts/base.njk"
 path: "../../"
 ---
 
-<div class="rvt-m-bottom-lg">
-  <a href="{{ path }}">Rivet icons</a>
+<div class="docs-content rvt-p-top-xs rvt-p-bottom-lg">
+  <h1 class="rvt-ts-xl rvt-text-bold rvt-lh-title">{{ icon.shortName }}</h1>
 
-  <h1 class="rvt-ts-46 rvt-text-bold rvt-m-top-sm rvt-lh-title">{{ icon.shortName }}</h1>
-
-  <h2 class="rvt-ts-sm rvt-m-top-lg"><span class="rvt-text-bold">Icon style samples</h2>
+  <h2 class="rvt-ts-sm rvt-m-top-lg rvt-text-bold">Icon style samples</h2>
   <div class="rvt-flex rvt-flex-wrap rvt-m-top-sm">
     <rvt-icon name="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm"></rvt-icon>
     <rvt-icon name="{{ icon.shortName }}" class="rvt-p-all-sm rvt-box rvt-m-right-sm docs-sample-colored"></rvt-icon>
@@ -23,9 +21,8 @@ path: "../../"
   </div>
 
   <h2 class="rvt-ts-sm rvt-m-top-lg rvt-text-bold">Usage</h2>
-  <p><a href="https://github.com/indiana-university/rivet-icons">Read the documentation</a> for further details about using the Rivet Icon Element or alternative ways to use this icon.</p>
   {% set code = '<rvt-icon name="' + icon.shortName + '"></rvt-icon>' %}
-  <pre><code class="docs-code-block">{{ code }}</code></pre>
+  <pre class="docs-code-block rvt-m-top-sm"><code>{{ code }}</code></pre>
   <div class="rvt-flex rvt-wrap">
     <a class="rvt-button rvt-button--secondary rvt-m-top-sm rvt-m-right-sm" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
     <span class="docs-copy">

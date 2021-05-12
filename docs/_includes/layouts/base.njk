@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="https://assets.uits.iu.edu/css/rivet/1.8.1/rivet.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/rivet-core@2.0.0-alpha.4/css/rivet.min.css">
   <style>{% include "styles.css" %}</style>
 </head>
 <body>
   {% include "../../../dist/rivet-icons.html" %}
-  <div class="rvt-container rvt-container--junior rvt-container--center rvt-p-tb-md">
+  {% include "header.njk" %}
+  <main class="rvt-container-xl rvt-p-tb-md" id="main-content">
     {{ layoutContent | safe }}
-    {% include "icons-list.njk" %}
-  </div>
+    {% include "nav.njk" %}
+  </main>
 </body>
 </html>
