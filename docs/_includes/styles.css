@@ -9,12 +9,18 @@
   --rvt-color-white: #ffffff;
 }
 
-.docs-content {
-  max-width: 40rem;
+@media screen and (min-width: 46.25em) {
+
+  .docs-layout {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: minmax(20rem, 2fr) minmax(20rem, 3fr);
+  }
 }
 
 .docs-nav {
-  background-color: var(--rvt-color-black-10);
+  _background-color: var(--rvt-color-black-10);
+  padding: 1.5rem 0;
 }
 
 .docs-nav__list {
@@ -33,11 +39,13 @@
 
 .docs-nav__item[aria-current] .docs-nav__link {
   background-color: var(--rvt-color-blue-60);
+  border-color: transparent;
   color: var(--rvt-color-white);
 }
 
 .docs-nav__link {
-  background-color: var(--rvt-color-black-5);
+  _background-color: var(--rvt-color-black-5);
+  border: var(--rvt-border);
   border-radius: 0.25rem;
   color: inherit;
   display: flex;
@@ -46,7 +54,7 @@
 }
 
 .docs-nav__link:hover {
-  background-color: var(--rvt-color-white);
+  background-color: var(--rvt-color-black-5);
   color: var(--rvt-color-blue-60);
 }
 
