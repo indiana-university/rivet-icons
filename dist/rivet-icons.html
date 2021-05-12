@@ -37,7 +37,7 @@ class RivetIconElement extends HTMLElement {
   }
   connectedCallback () {
     this.innerHTML = `
-      <svg><use></use></svg>
+      <svg aria-hidden="true"><use></use></svg>
       <span></span>
     `
     this._symbol = this.querySelector('use')

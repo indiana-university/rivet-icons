@@ -14,6 +14,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Use inline SVG](#use-inline-svg)
 1. [Change icon color](#change-icon-color)
 1. [Change icon size](#change-icon-size)
+1. [Accessibility](#accessibility)
 1. [Build a custom icon set](#build-a-custom-icon-set)
 1. [API](#api)
 1. [Icon specifications](#icon-specifications)
@@ -156,7 +157,7 @@ If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.
 
 ```html
 <span class="rvt-icon">
-  <svg>
+  <svg aria-hidden="true">
     <use href="#rvt-icon-heart"></use>
   </svg>
 </span>
@@ -172,7 +173,7 @@ If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icon
 
 ```html
 <span class="rvt-icon">
-  <svg>
+  <svg aria-hidden="true">
     <use href="path/to/rivet-icons.svg#rvt-icon-heart"></use>
   </svg>
 </span>
@@ -205,7 +206,7 @@ const HeartIcon = (
 )
 ```
 
-Inline icons (`rvt-icon-[name].html`) are identical to the source icons (`rvt-icon-[name].svg`) except for the removal of some SVG attributes, given the context of use. [`xmlns` is not needed in HTML documents](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg). `width` and `height` are set with the `.rvt-icon` class.
+Inline icons (`rvt-icon-[name].html`) are identical to the source icons (`rvt-icon-[name].svg`) except for changing some SVG attributes, given the context of use. [`xmlns` is not needed in HTML documents](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg). `width` and `height` are set with the `.rvt-icon` class. `aria-hidden` is added, as icons are decorative images.
 
 ## Change icon color
 
@@ -237,6 +238,37 @@ Icons are sized at 16 square pixels, but the padding and margins can be adjusted
 <!-- 32x32 -->
 <rvt-icon class="rvt-p-all-xs"></rvt-icon>
 <span class="rvt-icon rvt-p-all-xs"></span>
+```
+
+## Accessibility
+
+Icons are considered decorative images and are hidden from screen readers, by applying `aria-hidden="true"` on the `<svg>` element. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
+
+In this example, the link text of "Favorites" is presented to all users. Adding an additional accessible label to the icon would provide no benefit.
+
+```html
+<a href="/favorites">
+  <rvt-icon name="heart"></rvt-icon>
+  Favorites
+</a>
+```
+
+Revisiting a previous example, this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via CSS in order to communicate equivalent information to visual users.
+
+```html
+<button aria-pressed="true" class="favorite">
+  <rvt-icon class="favorite__icon"></span>
+  Favorite
+</button>
+```
+
+If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.iu.edu/components/utilities/visibility/).
+
+```html
+<button aria-pressed="true" class="favorite">
+  <rvt-icon class="favorite__icon"></span>
+  <span class="rvt-sr-only">Favorite</span>
+</button>
 ```
 
 ## Build a custom icon set
