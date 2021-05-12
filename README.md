@@ -1,8 +1,10 @@
-# Rivet icons
+# Rivet Icons
 
 Icons for the [Rivet Design System](https://rivet.iu.edu/).
 
 [**View Demo**](https://indiana-university.github.io/rivet-icons/)
+
+## Contents
 
 1. [Quick start](#quick-start)
 1. [Install](#install)
