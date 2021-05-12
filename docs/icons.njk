@@ -10,19 +10,6 @@ layout: "layouts/base.njk"
 path: "../../"
 ---
 
-{% macro h2(heading) %}
-<h2 class="rvt-ts-sm rvt-m-top-md rvt-text-bold">{{ heading }}</h2>
-{% endmacro %}
-
-{% macro example(code) %}
-<div class="docs-example">
-  <div class="docs-example__preview">
-    {{ code | safe }}
-  </div>
-  <pre class="docs-example__code"><code>{{ code }}</code></pre>
-</div>
-{% endmacro %}
-
 <h1 class="rvt-ts-xl rvt-text-bold rvt-lh-title">{{ icon.shortName }}</h1>
 
 <div class="rvt-button-group rvt-m-top-sm">
@@ -33,15 +20,20 @@ path: "../../"
   </span>
 </div>
 
+{% macro example(n, heading, code) %}
+<h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example {{ n }}:</span> {{ heading }}</h2>
+<div class="docs-example">
+  <div class="docs-example__preview">
+    {{ code | safe }}
+  </div>
+  <pre class="docs-example__code"><code>{{ code }}</code></pre>
+</div>
+{% endmacro %}
+
 <div class="docs-examples">
-  <h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example 1:</span> Icon</h2>
-  {{ example('<rvt-icon name="' + icon.shortName + '"></rvt-icon>') }}
-
-  <h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example 2:</span> Icon button</h2>
-  {{ example('<button class="rvt-button rvt-button--plain">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-sr-only">' + icon.shortName + '</span>\n</button>') }}
-
-  <h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example 3:</span> Icon button with label</h2>
-  {{ example('<button class="rvt-button rvt-button--secondary">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-p-left-xs">' + icon.shortName + '</span>\n</button>') }}
+  {{ example(1, 'Icon', '<rvt-icon name="' + icon.shortName + '"></rvt-icon>') }}
+  {{ example(2, 'Icon button', '<button class="rvt-button rvt-button--plain">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-sr-only">' + icon.shortName + '</span>\n</button>') }}
+  {{ example(3, 'Icon button with label', '<button class="rvt-button rvt-button--secondary">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-p-left-xs">' + icon.shortName + '</span>\n</button>') }}
 </div>
 
 <script>
