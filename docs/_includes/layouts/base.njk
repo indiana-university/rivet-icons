@@ -11,9 +11,15 @@
 <body>
   {% include "../../../dist/rivet-icons.html" %}
   {% include "header.njk" %}
-  <main class="rvt-container-xl rvt-p-tb-md" id="main-content">
-    {{ layoutContent | safe }}
-    {% include "nav.njk" %}
+  <main id="main-content">
+    <div class="rvt-container-xl rvt-p-top-lg rvt-p-bottom-md">
+      <div class="docs-content">
+        {{ layoutContent | safe }}
+      </div>
+    </div>
+    <div class="docs-nav rvt-p-tb-md">
+      {% include "nav.njk" %}
+    </div>
   </main>
 </body>
 </html>

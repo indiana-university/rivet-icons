@@ -1,4 +1,5 @@
 :root {
+  --rvt-border: calc(1rem/16) solid var(--rvt-color-black-10);
   --rvt-color-black: #333333;
   --rvt-color-black-5: #fafafa;
   --rvt-color-black-10: #eeeeee;
@@ -9,6 +10,11 @@
 
 .docs-content {
   max-width: 40rem;
+}
+
+.docs-nav {
+  background-color: var(--rvt-color-black-5);
+  border-top: var(--rvt-border);
 }
 
 .docs-nav__list {
@@ -39,13 +45,13 @@
 }
 
 .docs-nav__link:hover {
-  background-color: var(--rvt-color-black-5);
+  background-color: var(--rvt-color-black-10);
   color: var(--rvt-color-blue-60);
 }
 
 .docs-code-block {
   background-color: var(--rvt-color-black-5);
-  border: calc(1rem/16) solid var(--rvt-color-black-10);
+  border: var(--rvt-border);
   border-radius: 0.25rem;
   margin: 0;
 }
