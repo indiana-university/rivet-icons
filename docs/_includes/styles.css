@@ -9,24 +9,15 @@
   --rvt-color-white: #ffffff;
 }
 
-@media screen and (min-width: 46.25em) {
-
-  .docs-layout {
-    display: grid;
-    gap: 3rem;
-    grid-template-columns: minmax(20rem, 2fr) minmax(20rem, 3fr);
-  }
-}
-
 .docs-nav {
-  _background-color: var(--rvt-color-black-10);
-  padding: 1.5rem 0;
+  background-color: var(--rvt-color-black-10);
+  border-top: var(--rvt-border);
 }
 
 .docs-nav__list {
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
@@ -39,13 +30,11 @@
 
 .docs-nav__item[aria-current] .docs-nav__link {
   background-color: var(--rvt-color-blue-60);
-  border-color: transparent;
   color: var(--rvt-color-white);
 }
 
 .docs-nav__link {
-  _background-color: var(--rvt-color-black-5);
-  border: var(--rvt-border);
+  background-color: var(--rvt-color-black-5);
   border-radius: 0.25rem;
   color: inherit;
   display: flex;
@@ -54,8 +43,12 @@
 }
 
 .docs-nav__link:hover {
-  background-color: var(--rvt-color-black-5);
+  background-color: var(--rvt-color-white);
   color: var(--rvt-color-blue-60);
+}
+
+.docs-examples {
+  max-width: calc(50rem - calc(2rem/16));
 }
 
 .docs-example {
