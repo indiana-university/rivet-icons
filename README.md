@@ -113,12 +113,6 @@ Once the icon files are loaded in the page, choose a way to use the icons.
 
 ## Use the icon element
 
-Either embed `rivet-icons.html` in the page to avoid a network request or link to `rivet-icons.js` to load the icons at runtime. Both of these files contain the same [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), styles, and SVG symbols needed to render the icons.
-
-```html
-<script src="path/to/rivet-icons.js"></script>
-```
-
 Render the icon in HTML.
 
 ```html
@@ -187,7 +181,7 @@ window.customElements.whenDefined('rvt-icon').then(() => {
 
 ## Use internal SVG symbols
 
-If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.html`, then render an icon with the following snippet. All `href` values reference the SVG symbol ID, in the format of `#rvt-icon-[name]`. With this method, the icon's color still changes with the CSS `color` property, but the icon itself cannot change with the `--rvt-icon` CSS variable.
+If not wanting to use `<rvt-icon>`, then render an icon with the following snippet. All `href` values reference the SVG symbol ID, in the format of `#rvt-icon-[name]`. With this method, the icon's color still changes with the CSS `color` property, but the icon itself cannot change with the `--rvt-icon` CSS variable.
 
 ```html
 <span class="rvt-icon">
@@ -199,11 +193,7 @@ If not wanting to use `<rvt-icon>` while using `rivet-icons.js` or `rivet-icons.
 
 ## Use external SVG symbols
 
-If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`), link to `rivet-icons.css` and optionally use the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
-
-```html
-<link href="path/to/rivet-icons.css" rel="stylesheet">
-```
+If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`), then add the path to the file, using a similar snippet as [internal SVG symbols](#use-internal-svg-symbols). Optionally include the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
 
 ```html
 <span class="rvt-icon">
@@ -215,11 +205,7 @@ If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icon
 
 ## Use inline SVG
 
-Icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page and link to `rivet-icons.css`.
-
-```html
-<link href="path/to/rivet-icons.css" rel="stylesheet">
-```
+Icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page.
 
 ```html
 <span class="rvt-icon">
