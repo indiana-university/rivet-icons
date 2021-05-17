@@ -9,6 +9,10 @@
   --rvt-color-white: #ffffff;
 }
 
+html {
+  -webkit-text-size-adjust: none;
+}
+
 .docs-nav {
   background-color: var(--rvt-color-black-10);
   border-top: var(--rvt-border);
