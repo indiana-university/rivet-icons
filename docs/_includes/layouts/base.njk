@@ -6,10 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="https://unpkg.com/rivet-core@2.0.0-alpha.4/css/rivet.min.css">
-  <style>{% include "styles.css" %}</style>
+  <link rel="stylesheet" href="{{ path }}styles.css"></script>
+  <link rel="stylesheet" href="{{ path }}dist/rivet-icons.css"></script>
+  <script defer src="{{ path }}dist/rivet-icons.js"></script>
+  <script type="module" src="{{ path }}dist/rivet-icon-element.js"></script>
 </head>
 <body>
-  {% include "../../../dist/rivet-icons.html" %}
   {% include "header.njk" %}
   <main id="main-content">
     <div class="rvt-container-xl rvt-p-tb-md">

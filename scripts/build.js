@@ -3,8 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-const fs = require('fs-extra')
-const path = require('path')
+const fs = require('fs/promises')
 const { DOCS_BUILD_DIR, ICON_BUILD_DIR } = require('../lib/constants.js')
 const { buildIcons } = require('../lib/buildIcons.js');
 
@@ -16,7 +15,6 @@ async function build () {
   await buildIcons({
     out: ICON_BUILD_DIR
   })
-  await fs.copy(ICON_BUILD_DIR, path.resolve(DOCS_BUILD_DIR, ICON_BUILD_DIR))
 }
 
 build()
