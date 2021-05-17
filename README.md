@@ -9,6 +9,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Quick start](#quick-start)
 1. [Repo structure](#repo-structure)
 1. [Install](#install)
+1. [Getting started](#getting-started)
 1. [Usage](#usage)
 1. [Use the icon element](#use-the-icon-element)
 1. [Use internal SVG symbols](#use-internal-svg-symbols)
