@@ -102,7 +102,9 @@ Once the icon files are loaded in the page, choose a way to use the icons.
 | Can build custom icon set | Yes | Yes | Yes | Yes |
 | Requires `rivet-icons.css` | Yes | Yes | Yes | Yes |
 | Requires `rivet-icons.js` or `rivet-icons.html` | Yes | Yes | No | No |
+| Requires `rivet-icons.svg` | No | No | Yes | No |
 | Requires `rivet-icon-element.js` | Yes | No | No | No |
+| Requires `rvt-icon-*.html` | No | No | No | Yes |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
 1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
