@@ -7,8 +7,8 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 ## Contents
 
 1. [Quick start](#quick-start)
+1. [Repo structure](#repo-structure)
 1. [Install](#install)
-1. [Package structure](#package-structure)
 1. [Usage](#usage)
 1. [Use the icon element](#use-the-icon-element)
 1. [Use internal SVG symbols](#use-internal-svg-symbols)
@@ -27,27 +27,25 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 ## Quick start
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rivet icon example</title>
+    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.css"></script>
+    <script defer src="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.js"></script>
+    <script type="module" src="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icon-element.js"></script>
   </head>
   <body>
     <rvt-icon name="heart"></rvt-icon>
-    <script http="https://unpkg.com/rivet-icons@1.0.0/dist/rivet-icons.js"></script>
   </body>
 </html>
 ```
 
-## Install
+## Repo structure
 
-```
-npm install --save rivet-icons
-```
-
-## Package structure
-
-The following are some notable contents in this package.
+The following are some notable contents in this repo.
 
 | Path | Description |
 | --- | --- |
@@ -55,9 +53,37 @@ The following are some notable contents in this package.
 | `./src` | Source SVG files. |
 | `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
+## Install
+
+Install the package to import production files or [build a custom icon set](#build-a-custom-icon-set).
+
+```
+npm install --save rivet-icons
+```
+
+This package can also be [browsed and linked to through UNPKG](https://unpkg.com/browse/rivet-icons/).
+
+## Getting started
+
+Rendering icons requires up to three pieces of content: CSS styles, SVG images, and optionally the Rivet Icon Element.
+
+The easiest way to incorporate these parts is to link to them in the `<head>` of the page.
+
+```html
+<link rel="stylesheet" href="path/to/rivet-icons.css">
+<script defer src="path/to/rivet-icons.js"></script>
+<script type="module" src="path/to/rivet-icon-element.js"></script>
+```
+
+`rivet-icons.css` loads the required styles. `rivet-icons.js` appends the SVG images as internal [SVG symbols](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) in the `<body>`. The [`defer` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer) means that the symbols file will be requested immediately, but it won't block rendering the rest of the page. `rivet-icon-element.js` loads the `<rvt-icon>` [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) as a convenience for using these icons, although it is optional. The [`type="module"` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-type) will cause the script to load just like using the `defer` attribute, but it also will be ignored by older browsers, such as Internet Explorer.
+
+If the build process allows, embed `rivet-icons.html` in the page in replacement of linking to `rivet-icons.js`. This avoids a use of JavaScript and saves a network request, at the expense of browser caching. This technique may be preferred if only a few icons are used on an independent page.
+
+If [external SVG symbols are used](#use-external-svg-symbols), then `rivet-icons.svg` will be used instead of `rivet-icons.js` or `rivet-icons.html`.
+
 ## Usage
 
-Choose a way to use the icons.
+Once the icon files are loaded in the page, choose a way to use the icons.
 
 1. [Use the icon element](#use-the-icon-element) (`<rvt-icon>`).
 1. [Use internal SVG symbols](#use-internal-svg-symbols).
@@ -73,6 +99,9 @@ Choose a way to use the icons.
 | Change icon with CSS variables | Yes | No | No | No |
 | Change icon with JavaScript | Yes | Yes | Yes | Yes |
 | Can build custom icon set | Yes | Yes | Yes | Yes |
+| Requires `rivet-icons.css` | Yes | Yes | Yes | Yes |
+| Requires `rivet-icons.js` or `rivet-icons.html` | Yes | Yes | No | No |
+| Requires `rivet-icon-element.js` | Yes | No | No | No |
 
 1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
 1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
@@ -226,7 +255,7 @@ The icon color is inherited through the `color` property. It behaves just like t
 
 ## Change icon size
 
-Icons are sized at 16 square pixels, but the padding and margins can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
+Icons are sized at 16 square pixels, but padding and margin can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
 
 ```html
 <!-- 16x16 -->
@@ -298,6 +327,7 @@ async function buildCustomIcons () {
 buildCustomIcons()
 
 // Generates:
+// ./build/rivet-icon-element.js
 // ./build/rivet-icons.css
 // ./build/rivet-icons.html
 // ./build/rivet-icons.js
