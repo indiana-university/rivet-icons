@@ -10,8 +10,6 @@ const { DOCS_BUILD_DIR, ICON_BUILD_DIR } = require('../lib/constants.js')
 async function build () {
   await fs.rmdir(ICON_BUILD_DIR, { recursive: true })
   await fs.rmdir(DOCS_BUILD_DIR, { recursive: true })
-  await fs.mkdir(ICON_BUILD_DIR)
-  await fs.mkdir(DOCS_BUILD_DIR)
   await buildIcons({
     out: ICON_BUILD_DIR
   })
