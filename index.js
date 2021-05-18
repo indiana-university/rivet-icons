@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-const { buildIcons } = require('./buildIcons.js')
+const { buildIcons } = require('./lib/buildIcons.js')
 
 module.exports = {
   buildIcons
