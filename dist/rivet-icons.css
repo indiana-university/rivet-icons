@@ -14,3 +14,10 @@ rvt-icon:not(:defined)::before {
   content: '';
   display: block;
 }
+
+rvt-icon [data-sensor] {
+  position: absolute;
+  transition: z-index 0.001ms step-start;
+  visibility: hidden;
+  z-index: var(--rvt-icon);
+}

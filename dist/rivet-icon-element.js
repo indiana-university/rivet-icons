@@ -16,18 +16,9 @@ class RivetIconElement extends HTMLElement {
     return ['name'];
   }
   connectedCallback () {
-    this.innerHTML = `
-      <svg aria-hidden="true"><use></use></svg>
-      <span></span>
-    `
+    this.innerHTML = `<svg aria-hidden="true"><use></use></svg><span data-sensor></span>`
     this._symbol = this.querySelector('use')
-    this._sensor = this.querySelector('span')
-    this._sensor.style.cssText = `
-      position: absolute;
-      transition: z-index 0.001ms step-start;
-      visibility: hidden;
-      z-index: var(${iconVar});
-    `
+    this._sensor = this.querySelector('[data-sensor]')
     this._sensor.addEventListener('transitionstart', this.update.bind(this))
     this.update()
   }
@@ -35,7 +26,7 @@ class RivetIconElement extends HTMLElement {
     this.innerHTML = ''
   }
   attributeChangedCallback () {
-    this.render()
+    this.update()
   }
   update () {
     const value = getComputedStyle(this._sensor).getPropertyValue(iconVar)
