@@ -29,9 +29,11 @@ class RivetIconElement extends HTMLElement {
     this.update()
   }
   update () {
-    const value = getComputedStyle(this._sensor).getPropertyValue(iconVar)
-    const index = parseInt(value.trim())
-    this._name = icons[index]
+    if (this._sensor) {
+      const value = getComputedStyle(this._sensor).getPropertyValue(iconVar)
+      const index = parseInt(value.trim())
+      this._name = icons[index]
+    }
     this.render()
   }
   render () {
