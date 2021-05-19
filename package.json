@@ -10,11 +10,12 @@
   "main": "index.js",
   "scripts": {
     "build": "run-s build-icons build-docs",
-    "build-docs": "npx eleventy",
+    "build-docs": "eleventy",
     "build-icons": "node scripts/build.js",
     "deploy": "run-s build gh-pages",
-    "gh-pages": "npx gh-pages -d docs-build",
-    "serve-docs": "npx eleventy --serve",
+    "gh-pages": "gh-pages -d docs-build",
+    "lint": "standard",
+    "serve-docs": "eleventy --serve",
     "start": "run-s build-icons serve-docs"
   },
   "repository": {
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@11ty/eleventy": "0.12.1",
     "gh-pages": "3.1.0",
-    "npm-run-all": "4.1.5"
+    "npm-run-all": "4.1.5",
+    "standard": "16.0.3"
   }
 }

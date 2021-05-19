@@ -11,31 +11,36 @@ const style = document.createElement('style')
 style.innerHTML = `${namespace} {\n${cssVars}\n}`
 document.head.appendChild(style)
 
-class RivetIconElement extends HTMLElement {
-  static get observedAttributes() {
-    return ['name'];
+class RivetIconElement extends window.HTMLElement {
+  static get observedAttributes () {
+    return ['name']
   }
+
   connectedCallback () {
-    this.innerHTML = `<svg aria-hidden="true"><use></use></svg><span data-sensor></span>`
+    this.innerHTML = '<svg aria-hidden="true"><use></use></svg><span data-sensor></span>'
     this._symbol = this.querySelector('use')
     this._sensor = this.querySelector('[data-sensor]')
     this._sensor.addEventListener('transitionstart', this.update.bind(this))
     this.update()
   }
+
   disconnectedCallback () {
     this.innerHTML = ''
   }
+
   attributeChangedCallback () {
     this.update()
   }
+
   update () {
     if (this._sensor) {
-      const value = getComputedStyle(this._sensor).getPropertyValue(iconVar)
+      const value = window.getComputedStyle(this._sensor).getPropertyValue(iconVar)
       const index = parseInt(value.trim())
       this._name = icons[index]
     }
     this.render()
   }
+
   render () {
     const name = this._name || this.getAttribute('name')
     if (this._symbol && name) {
