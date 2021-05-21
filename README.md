@@ -132,7 +132,7 @@ In this example, the button toggles the value of `aria-pressed` for screen reade
 
 ```html
 <button aria-pressed="true" class="favorite">
-  <rvt-icon class="favorite__icon"></span>
+  <rvt-icon class="favorite__icon"></rvt-icon>
   Favorite
 </button>
 ```
