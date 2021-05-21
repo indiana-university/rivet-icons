@@ -277,7 +277,7 @@ Revisiting a previous example, this icon is used to visually indicate the presse
 
 ```html
 <button aria-pressed="true" class="favorite">
-  <rvt-icon class="favorite__icon"></span>
+  <rvt-icon class="favorite__icon"></rvt-icon>
   Favorite
 </button>
 ```
@@ -286,7 +286,7 @@ If a visual label is not desired (because the icon itself may be sufficient for 
 
 ```html
 <button aria-pressed="true" class="favorite">
-  <rvt-icon class="favorite__icon"></span>
+  <rvt-icon class="favorite__icon"></rvt-icon>
   <span class="rvt-sr-only">Favorite</span>
 </button>
 ```
