@@ -17,7 +17,7 @@ class RivetIconElement extends window.HTMLElement {
   }
 
   connectedCallback () {
-    this.innerHTML = '<svg aria-hidden="true"><use></use></svg><span data-sensor></span>'
+    this.innerHTML = '<svg aria-hidden="true" focusable="false"> <use></use> </svg><span data-sensor></span>'
     this._symbol = this.querySelector('use')
     this._sensor = this.querySelector('[data-sensor]')
     this._sensor.addEventListener('transitionstart', this.update.bind(this))

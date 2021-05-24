@@ -185,7 +185,7 @@ If not wanting to use `<rvt-icon>`, then render an icon with the following snipp
 
 ```html
 <span class="rvt-icon">
-  <svg aria-hidden="true">
+  <svg aria-hidden="true" focusable="false">
     <use href="#rvt-icon-heart"></use>
   </svg>
 </span>
@@ -197,7 +197,7 @@ If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icon
 
 ```html
 <span class="rvt-icon">
-  <svg aria-hidden="true">
+  <svg aria-hidden="true" focusable="false">
     <use href="path/to/rivet-icons.svg#rvt-icon-heart"></use>
   </svg>
 </span>
@@ -290,6 +290,8 @@ If a visual label is not desired (because the icon itself may be sufficient for 
   <span class="rvt-sr-only">Favorite</span>
 </button>
 ```
+
+Some older browsers could cause keyboard focus issues with SVG, but they are easy to work around. First, [add `<svg focusable="false">`](https://allyjs.io/tutorials/focusing-in-svg.html#making-svg-elements-focusable) so the SVG does not gain focus in Internet Explorer and early versions of Edge. Second, [add whitespace around `<use>`](https://allyjs.io/tutorials/focusing-in-svg.html#the-use-element) so Safari 10 keeps all focusable elements tabbable. The `<rvt-icon>` element and the `rvt-icon-*.html` include these fixes.
 
 ## Build a custom icon set
 
