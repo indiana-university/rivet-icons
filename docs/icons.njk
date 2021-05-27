@@ -12,28 +12,35 @@ path: "../../"
 
 <h1 class="rvt-ts-xl rvt-text-bold rvt-lh-title">{{ icon.shortName }}</h1>
 
-<div class="rvt-button-group rvt-m-top-sm">
-  <a class="rvt-button rvt-button--secondary" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
-  <span class="docs-copy">
-    <button data-copy-button class="rvt-button rvt-button--secondary">Copy SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></button>
-    <span class="docs-copy__alert" data-copy-alert role="alert"></span>
-  </span>
-</div>
-
-{% macro example(n, heading, code) %}
-<h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example {{ n }}:</span> {{ heading }}</h2>
+{% macro code(source) %}
 <div class="docs-example">
   <div class="docs-example__preview">
-    {{ code | safe }}
+    {{ source | safe }}
   </div>
-  <pre class="docs-example__code"><code>{{ code }}</code></pre>
+  <pre class="docs-example__code"><code>{{ source }}</code></pre>
 </div>
 {% endmacro %}
 
+{% macro exampleHeading(n, heading) %}
+<h2 class="rvt-ts-sm rvt-m-top-md"><span class="rvt-text-bold">Example {{ n }}:</span> {{ heading }}</h2>
+{% endmacro %}
+
 <div class="docs-examples">
-  {{ example(1, 'Icon', '<rvt-icon name="' + icon.shortName + '"></rvt-icon>') }}
-  {{ example(2, 'Icon button', '<button class="rvt-button rvt-button--plain">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-sr-only">' + icon.shortName + '</span>\n</button>') }}
-  {{ example(3, 'Icon button with label', '<button class="rvt-button rvt-button--secondary">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-p-left-xs">' + icon.shortName + '</span>\n</button>') }}
+  <h2 class="rvt-ts-sm rvt-m-top-md rvt-text-bold">Icon source</h2>
+  <div class="rvt-button-group rvt-m-top-sm">
+    <a class="rvt-button rvt-button--secondary" download href="{{ path }}dist/{{ icon.fullFileName }}">Download SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></a>
+    <span class="docs-copy">
+      <button data-copy-button class="rvt-button rvt-button--secondary">Copy SVG<span class="rvt-sr-only">, {{ icon.title }} icon</span></button>
+      <span class="docs-copy__alert" data-copy-alert role="alert"></span>
+    </span>
+  </div>
+  {{ code(icon.source) }}
+  {{ exampleHeading(1, 'Icon') }}
+  {{ code('<rvt-icon name="' + icon.shortName + '"></rvt-icon>') }}
+  {{ exampleHeading(2, 'Icon button') }}
+  {{ code('<button class="rvt-button rvt-button--plain">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-sr-only">' + icon.shortName + '</span>\n</button>') }}
+  {{ exampleHeading(3, 'Icon button with label') }}
+  {{ code('<button class="rvt-button rvt-button--secondary">\n  <rvt-icon name="' + icon.shortName + '"></rvt-icon>\n  <span class="rvt-p-left-xs">' + icon.shortName + '</span>\n</button>') }}
 </div>
 
 <script>
