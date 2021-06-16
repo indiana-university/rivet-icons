@@ -340,6 +340,8 @@ This could be integrated as a npm run script and run before (or after) another b
 }
 ```
 
+See the [`rivet-icons-webpack-react` guide](https://github.com/basham/rivet-icons-webpack-react) to learn how to incorporate Rivet icons in a Webpack/React environment.
+
 ## API
 
 ### `buildIcons()`
