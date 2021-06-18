@@ -3,12 +3,20 @@
   "version": "0.6.0",
   "description": "Icon set for Indiana University's Rivet design system",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "lib/**/*",
+    "src/**/*"
   ],
+  "main": "index.js",
   "scripts": {
-    "start": "npx gulp build && npx eleventy --serve",
-    "build": "npx gulp build && npx eleventy",
-    "deploy": "npm run build && npx gh-pages -d docs"
+    "build": "run-s build-icons build-docs",
+    "build-docs": "eleventy",
+    "build-icons": "node scripts/build.js",
+    "deploy": "run-s build gh-pages",
+    "gh-pages": "gh-pages -d docs-build",
+    "lint": "standard",
+    "serve-docs": "eleventy --serve",
+    "start": "run-s build-icons serve-docs"
   },
   "repository": {
     "type": "git",
@@ -20,13 +28,14 @@
     "url": "https://github.com/indiana-university/rivet-icons/issues"
   },
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
+  "dependencies": {
+    "fast-glob": "3.2.5",
+    "svg-sprite": "1.5.0"
+  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.7.1",
-    "del": "^4.1.0",
-    "directory-tree": "^2.2.1",
-    "gh-pages": "^2.0.1",
-    "gulp": "^4.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-svg-sprite": "^1.5.0"
+    "@11ty/eleventy": "0.12.1",
+    "gh-pages": "3.2.1",
+    "npm-run-all": "4.1.5",
+    "standard": "16.0.3"
   }
 }

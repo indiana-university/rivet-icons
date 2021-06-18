@@ -1,5 +1,4 @@
 .DS_Store
 node_modules
-dist/svgs
-docs
+docs-build
 *.tgz

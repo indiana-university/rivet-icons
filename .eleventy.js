@@ -1,24 +1,12 @@
-const dirTree = require('directory-tree');
+const { DOCS_BUILD_DIR, DOCS_SRC_DIR, ICON_BUILD_DIR } = require('./lib/constants.js')
 
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addCollection('icons', collection => {
-    /**
-     * Get all the files in the "./src/svg/" directory.
-     */
-    const svgFiles =
-      dirTree('./src/svg', {extensions: /\.svg/}).children;
-    
-    /**
-     * Return a new Array of the icon file names.
-     * E.g. ['rvt-icon-alarm.svg', 'rvt-icon-arrow-down.svg', ...]
-     */
-    return svgFiles.map(file => file.name);
-  });
-  
+module.exports = (config) => {
+  config.addPassthroughCopy(ICON_BUILD_DIR)
+  config.addPassthroughCopy(`${DOCS_SRC_DIR}/*.css`)
   return {
     dir: {
-      input: 'src',
-      output: 'docs'
+      input: DOCS_SRC_DIR,
+      output: DOCS_BUILD_DIR
     }
   }
 }
