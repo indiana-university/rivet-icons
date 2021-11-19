@@ -1,23 +1,22 @@
 .ICON_NAMESPACE,
 ICON_NAMESPACE {
+/* ICON_VARS */
   display: inline-flex;
 }
 
-.ICON_NAMESPACE > svg,
-ICON_NAMESPACE > svg,
-ICON_NAMESPACE:not(:defined)::before {
+.ICON_NAMESPACE::before,
+ICON_NAMESPACE::before {
+  background-color: currentColor;
+  content: '';
+  display: inline-block;
   height: 1rem;
+  mask: var(--ICON_NAMESPACE) no-repeat;
+  -webkit-mask: var(--ICON_NAMESPACE) no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
   width: 1rem;
 }
 
-ICON_NAMESPACE:not(:defined)::before {
-  content: '';
-  display: block;
-}
-
-ICON_NAMESPACE [data-sensor] {
-  position: absolute;
-  transition: z-index 0.001ms step-start;
-  visibility: hidden;
-  z-index: var(--ICON_NAMESPACE);
+ICON_NAMESPACE:not(:defined) {
+  color: transparent;
 }
