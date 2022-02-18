@@ -35,7 +35,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rivet icon example</title>
-    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@1/dist/rivet-icons.css"></script>
+    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@1/dist/rivet-icons.css">
     <script defer src="https://unpkg.com/rivet-icons@1/dist/rivet-icons.js"></script>
     <script type="module" src="https://unpkg.com/rivet-icons@1/dist/rivet-icon-element.js"></script>
   </head>
