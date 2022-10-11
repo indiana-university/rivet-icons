@@ -30,7 +30,7 @@
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
   "dependencies": {
     "fast-glob": "3.2.11",
-    "svg-sprite": "1.5.4"
+    "svg-sprite": "2.0.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "1.0.0",
