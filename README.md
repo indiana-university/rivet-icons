@@ -2,7 +2,7 @@
 
 Icons for the [Rivet Design System](https://rivet.iu.edu/).
 
-[**View Demo**](https://indiana-university.github.io/rivet-icons/)
+[**View Demo**](https://rivet.iu.edu/icons/)
 
 ## Contents
 
@@ -21,10 +21,8 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Build a custom icon set](#build-a-custom-icon-set)
 1. [API](#api)
 1. [Request a new icon](#request-a-new-icon)
-1. [Add a new icon](#add-a-new-icon)
 1. [Icon specifications](#icon-specifications)
 1. [Run the docs site](#run-the-docs-site)
-1. [Deploy the docs site](#deploy-the-docs-site)
 
 ## Quick start
 
@@ -35,9 +33,9 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rivet icon example</title>
-    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@1/dist/rivet-icons.css">
-    <script defer src="https://unpkg.com/rivet-icons@1/dist/rivet-icons.js"></script>
-    <script type="module" src="https://unpkg.com/rivet-icons@1/dist/rivet-icon-element.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@2/dist/rivet-icons.css">
+    <script defer src="https://unpkg.com/rivet-icons@2/dist/rivet-icons.js"></script>
+    <script type="module" src="https://unpkg.com/rivet-icons@2/dist/rivet-icon-element.js"></script>
   </head>
   <body>
     <rvt-icon name="heart"></rvt-icon>
@@ -53,7 +51,6 @@ The following are some notable contents in this repo.
 | --- | --- |
 | `./dist` | Production files (CSS, HTML, JS, SVG). |
 | `./src` | Source SVG files. |
-| `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
 ## Install
 
@@ -412,20 +409,9 @@ buildIcons({
 
 [Submit a new issue](https://github.com/indiana-university/rivet-icons/issues/new) to request a new icon. Include anything that may help to visually describe this new icon, such as examples from other icon sets, examples of usage in various apps or websites, the SVG source code of the icon, or even a sketch.
 
-## Add a new icon
-
-Follow these steps to add a new icon.
-
-1. Create a new feature branch off of `develop`.
-1. Create the new icon artwork in the `./rivet-icons-source.ai` file, according to the [icon specifications](#icon-specifications).
-1. Expand all strokes and merge/flatten artwork in to one group.
-1. Export the icon as an `.svg` to the `./src` folder. Open `File` > `Export` > `Export for Screens…`. Select the `./src` folder as the destination and the relevant artboard.
-1. [Run the docs site](#run-the-docs-site) to build the new icon set and preview the new icon.
-1. Open a pull request against `develop`.
-
 ## Icon specifications
 
-Original icon artwork is located in the Illustrator file in `./rivet-icons-source.ai`. Each icon is drawn on its own artboard to the following specifications:
+Each icon is drawn to the following specifications:
 
 - 16&times;16px grid
 - 2px stroke for all icon outlines
@@ -452,14 +438,4 @@ npm run start
 
 ```
 http://localhost:8080/
-```
-
-## Deploy the docs site
-
-**Note:** This feature is for organization members only.
-
-Build and deploy the docs to the [docs site](https://indiana-university.github.io/rivet-icons/), via the [GitHub Pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages) (`gh-pages`).
-
-```
-npm run deploy
 ```

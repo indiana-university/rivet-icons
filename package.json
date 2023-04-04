@@ -1,6 +1,6 @@
 {
   "name": "rivet-icons",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Icon set for Indiana University's Rivet design system",
   "files": [
     "dist/**/*",
@@ -12,8 +12,6 @@
     "build": "run-s build-icons build-docs",
     "build-docs": "eleventy",
     "build-icons": "node scripts/build.js",
-    "deploy": "run-s build gh-pages",
-    "gh-pages": "gh-pages -d docs-build",
     "lint": "standard",
     "serve-docs": "eleventy --serve",
     "start": "run-s build-icons serve-docs"
@@ -30,11 +28,10 @@
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
   "dependencies": {
     "fast-glob": "3.2.12",
-    "svg-sprite": "2.0.0"
+    "svg-sprite": "2.0.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "1.0.2",
-    "gh-pages": "4.0.0",
+    "@11ty/eleventy": "2.0.1",
     "npm-run-all": "4.1.5",
     "standard": "17.0.0"
   }
