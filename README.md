@@ -2,7 +2,7 @@
 
 Icons for the [Rivet Design System](https://rivet.iu.edu/).
 
-[**View Demo**](https://indiana-university.github.io/rivet-icons/)
+[**View Demo**](https://rivet.iu.edu/icons/)
 
 ## Contents
 
@@ -34,9 +34,9 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rivet icon example</title>
-    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@1/dist/rivet-icons.css">
-    <script defer src="https://unpkg.com/rivet-icons@1/dist/rivet-icons.js"></script>
-    <script type="module" src="https://unpkg.com/rivet-icons@1/dist/rivet-icon-element.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@2/dist/rivet-icons.css">
+    <script defer src="https://unpkg.com/rivet-icons@2/dist/rivet-icons.js"></script>
+    <script type="module" src="https://unpkg.com/rivet-icons@2/dist/rivet-icon-element.js"></script>
   </head>
   <body>
     <rvt-icon name="heart"></rvt-icon>
@@ -52,7 +52,6 @@ The following are some notable contents in this repo.
 | --- | --- |
 | `./dist` | Production files (CSS, HTML, JS, SVG). |
 | `./src` | Source SVG files. |
-| `./rivet-icons-source.ai` | Adobe Illustrator file of original icon artwork. |
 
 ## Install
 
@@ -440,14 +439,4 @@ npm run start
 
 ```
 http://localhost:8080/
-```
-
-## Deploy the docs site
-
-**Note:** This feature is for organization members only.
-
-Build and deploy the docs to the [docs site](https://indiana-university.github.io/rivet-icons/), via the [GitHub Pages branch](https://help.github.com/en/articles/configuring-a-publishing-source-for-github-pages) (`gh-pages`).
-
-```
-npm run deploy
 ```
