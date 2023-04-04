@@ -23,7 +23,6 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Request a new icon](#request-a-new-icon)
 1. [Icon specifications](#icon-specifications)
 1. [Run the docs site](#run-the-docs-site)
-1. [Deploy the docs site](#deploy-the-docs-site)
 
 ## Quick start
 
