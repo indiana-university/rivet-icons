@@ -1,52 +1,112 @@
-const namespace = 'rvt-icon'
-const prefix = `${namespace}-`
-const iconVar = `--${namespace}`
-const icons = [...document.querySelectorAll(`symbol[id^="${prefix}"]`)]
-  .map(({ id }) => id.replace(prefix, ''))
-const cssVars = icons
-  .map((icon, i) => `  --${icon}: ${i};`)
-  .join('\n')
+const elementName = 'rvt-icon';
+const attributeName = 'name';
+const iconRegisteredEventName = `${elementName}-registered`;
+const icons = new Map();
+const iconsIndex = new Map();
+const iconsSheet = new CSSStyleSheet();
 
-const style = document.createElement('style')
-style.innerHTML = `${namespace} {\n${cssVars}\n}`
-document.head.appendChild(style)
-
-class RivetIconElement extends window.HTMLElement {
-  static get observedAttributes () {
-    return ['name']
-  }
-
-  connectedCallback () {
-    this.innerHTML = '<svg aria-hidden="true" focusable="false"> <use></use> </svg><span data-sensor></span>'
-    this._symbol = this.querySelector('use')
-    this._sensor = this.querySelector('[data-sensor]')
-    this._sensor.addEventListener('transitionstart', this.update.bind(this))
-    this.update()
-  }
-
-  disconnectedCallback () {
-    this.innerHTML = ''
-  }
-
-  attributeChangedCallback () {
-    this.update()
-  }
-
-  update () {
-    if (this._sensor) {
-      const value = window.getComputedStyle(this._sensor).getPropertyValue(iconVar)
-      const index = parseInt(value.trim())
-      this._name = icons[index]
-    }
-    this.render()
-  }
-
-  render () {
-    const name = this._name || this.getAttribute('name')
-    if (this._symbol && name) {
-      this._symbol.setAttribute('href', `#${prefix}${name}`)
-    }
-  }
+// register()
+// registerSVG()
+// throw error if not SVG
+export function registerIcon (name, icon) {
+	const template = document.createElement('template');
+	template.innerHTML = icon;
+	icons.set(name, template);
+	const index = icons.size;
+	iconsIndex.set(index, name);
+	iconsSheet.insertRule(`:host { --${name}: ${index}; }`);
+	const event = new CustomEvent(iconRegisteredEventName, {
+		detail: { name }
+	});
+	document.dispatchEvent(event);
 }
 
-window.customElements.define(namespace, RivetIconElement)
+const iconTemplate = document.createElement('template');
+iconTemplate.innerHTML = `
+	<style>
+		:host,
+		.container {
+			display: inline-flex;
+		}
+		.sensor {
+			position: absolute;
+			transition: z-index 0.001ms step-start;
+			visibility: hidden;
+			z-index: var(--name);
+		}
+		.alt {
+			display: block;
+			clip: rect(0 0 0 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			position: absolute;
+			width: 1px;
+		}
+	</style>
+	<span class="container"></span>
+	<span class="sensor"></span>
+	<slot class="alt"></slot>
+`; 
+
+class RivetIconElement extends window.HTMLElement {
+	#container
+	#name
+	#sensor
+	#teardown
+
+	static get observedAttributes () {
+		return [attributeName]
+	}
+
+	constructor () {
+		super();
+		const shadowRoot = this.attachShadow({ mode: 'open' });
+		shadowRoot.adoptedStyleSheets = [iconsSheet];
+		shadowRoot.appendChild(iconTemplate.content.cloneNode(true));
+		this.#container = shadowRoot.querySelector('.container');
+		this.#sensor = shadowRoot.querySelector('.sensor');
+	}
+
+	connectedCallback () {
+		const update = this.#update.bind(this);
+		this.#sensor.addEventListener('transitionstart', update);
+		document.addEventListener(iconRegisteredEventName, update);
+		this.#teardown = () => {
+			this.#sensor.removeEventListener('transitionstart', update);
+			document.removeEventListener(iconRegisteredEventName, update);
+		}
+		update();
+	}
+
+	disconnectedCallback () {
+		this.#teardown();
+	}
+
+	attributeChangedCallback () {
+		this.#update();
+	}
+
+	#getNameFromCSS () {
+		if (!this.#sensor) {
+			return;
+		}
+		const index = window.getComputedStyle(this.#sensor).getPropertyValue(`--${attributeName}`);
+		return iconsIndex.get(parseInt(index));
+	}
+
+	#update () {
+		const name = this.#getNameFromCSS() || this.getAttribute(attributeName);
+		if (!this.#container || !icons.has(name) || this.#name === name) {
+			return;
+		}
+		const node = icons.get(name).content.cloneNode(true);
+		this.#container.replaceChildren(node);
+		const svg = this.#container.querySelector('svg');
+		svg.setAttribute('aria-hidden', 'true');
+		svg.setAttribute('focusable', 'false');
+		this.#name = name;
+	}
+}
+
+window.customElements.define(elementName, RivetIconElement);

@@ -7,6 +7,7 @@
     "lib/**/*",
     "src/**/*"
   ],
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "run-s build-icons build-docs",
