@@ -1,0 +1,9 @@
+import { registerIcon } from '../rivet-icon-element.js';
+
+export const name = 'grid-solid';
+export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M0 0h7v7H0V0Zm9 0h7v7H9V0Zm7 9H9v7h7V9ZM0 9h7v7H0V9Z"/>
+</svg>
+`;
+
+registerIcon(name, svg);

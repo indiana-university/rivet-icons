@@ -1,0 +1,9 @@
+import { registerIcon } from '../rivet-icon-element.js';
+
+export const name = 'arrow-down-right';
+export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M3.707 2.293 12 10.586V4h2v10H4v-2h6.586L2.293 3.707l1.414-1.414Z"/>
+</svg>
+`;
+
+registerIcon(name, svg);

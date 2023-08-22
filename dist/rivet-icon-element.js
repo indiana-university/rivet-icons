@@ -52,8 +52,8 @@ iconTemplate.innerHTML = `
 class RivetIconElement extends window.HTMLElement {
 	#container
 	#name
+	#requestUpdate
 	#sensor
-	#teardown
 
 	static get observedAttributes () {
 		return [attributeName]
@@ -66,25 +66,22 @@ class RivetIconElement extends window.HTMLElement {
 		shadowRoot.appendChild(iconTemplate.content.cloneNode(true));
 		this.#container = shadowRoot.querySelector('.container');
 		this.#sensor = shadowRoot.querySelector('.sensor');
+		this.#requestUpdate = throttleRAF(this.#update.bind(this));
 	}
 
 	connectedCallback () {
-		const update = this.#update.bind(this);
-		this.#sensor.addEventListener('transitionstart', update);
-		document.addEventListener(iconRegisteredEventName, update);
-		this.#teardown = () => {
-			this.#sensor.removeEventListener('transitionstart', update);
-			document.removeEventListener(iconRegisteredEventName, update);
-		}
-		update();
+		this.#sensor.addEventListener('transitionstart', this.#requestUpdate);
+		document.addEventListener(iconRegisteredEventName, this.#requestUpdate);
+		this.#requestUpdate();
 	}
 
 	disconnectedCallback () {
-		this.#teardown();
+		this.#sensor.removeEventListener('transitionstart', this.#requestUpdate);
+		document.removeEventListener(iconRegisteredEventName, this.#requestUpdate);
 	}
 
 	attributeChangedCallback () {
-		this.#update();
+		this.#requestUpdate();
 	}
 
 	#getNameFromCSS () {
@@ -110,3 +107,18 @@ class RivetIconElement extends window.HTMLElement {
 }
 
 window.customElements.define(elementName, RivetIconElement);
+
+// Call the function at most once per animation frame.
+function throttleRAF (fn) {
+	let wait = false;
+	return function (...args) {
+		if (wait) {
+			return;
+		}
+		wait = true;
+		window.requestAnimationFrame(() => {
+			fn.call(this, ...args);
+			wait = false;
+		});
+	}
+}

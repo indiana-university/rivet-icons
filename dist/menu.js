@@ -1,9 +1,0 @@
-import { registerIcon } from './rivet-icon-element.js';
-
-export const name = 'menu';
-export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-  <path d="M15 4H1V2h14v2Zm0 5H1V7h14v2ZM1 14h14v-2H1v2Z"/>
-</svg>
-`;
-
-registerIcon(name, svg);

@@ -1,0 +1,10 @@
+import { registerIcon } from '../rivet-icon-element.js';
+
+export const name = 'printer';
+export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M12 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/>
+  <path d="M13 0H3v4H0v9h3v3h10v-3h3V4h-3V0Zm-2 4H5V2h6v2Zm0 10H5v-2h6v2Zm-9-3V6h12v5h-1v-1H3v1H2Z"/>
+</svg>
+`;
+
+registerIcon(name, svg);

@@ -1,0 +1,9 @@
+import { registerIcon } from '../rivet-icon-element.js';
+
+export const name = 'inbox-complete-solid';
+export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M13.414 1.5 12 .086l-4 4-2-2L4.586 3.5 8 6.914 13.414 1.5ZM0 8h6v2h4V8h6v8H0V8Z"/>
+</svg>
+`;
+
+registerIcon(name, svg);

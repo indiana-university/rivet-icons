@@ -10,12 +10,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "run-s build-icons build-docs",
-    "build-docs": "eleventy",
-    "build-icons": "node scripts/build.js",
+    "build": "node scripts/build.js",
+    "docs": "astro dev",
     "lint": "standard",
-    "serve-docs": "eleventy --serve",
-    "start": "run-s build-icons serve-docs"
+    "start": "run-s build docs"
   },
   "repository": {
     "type": "git",
@@ -28,12 +26,11 @@
   },
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
   "dependencies": {
-    "fast-glob": "3.2.12",
-    "svg-sprite": "2.0.2"
+    "fast-glob": "3.3.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "2.0.1",
+    "astro": "2.10.12",
     "npm-run-all": "4.1.5",
-    "standard": "17.0.0"
+    "standard": "17.1.0"
   }
 }
