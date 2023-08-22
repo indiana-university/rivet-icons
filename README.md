@@ -29,17 +29,15 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rivet icon example</title>
-    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@2/dist/rivet-icons.css">
-    <script defer src="https://unpkg.com/rivet-icons@2/dist/rivet-icons.js"></script>
-    <script type="module" src="https://unpkg.com/rivet-icons@2/dist/rivet-icon-element.js"></script>
-  </head>
-  <body>
-    <rvt-icon name="heart"></rvt-icon>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Rivet icon example</title>
+		<script type="module" src="https://unpkg.com/rivet-icons@3/dist/bundle.js"></script>
+	</head>
+	<body>
+		<rvt-icon name="heart"></rvt-icon>
+	</body>
 </html>
 ```
 
@@ -49,7 +47,7 @@ The following are some notable contents in this repo.
 
 | Path | Description |
 | --- | --- |
-| `./dist` | Production files (CSS, HTML, JS, SVG). |
+| `./dist` | Production files (HTML, JS, SVG). |
 | `./src` | Source SVG files. |
 
 ## Install
