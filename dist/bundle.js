@@ -1,4 +1,4 @@
-import { registerIcon } from './rivet-icon-element.js';
+import { registerIcon } from '../lib/rivet-icon-element.js';
 
 registerIcon('alarm', `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
   <path d="M4.855.642A8.029 8.029 0 0 0 .642 4.855 3 3 0 0 1 4.855.642Zm10.503 4.213A3 3 0 0 0 11.145.642a8.029 8.029 0 0 1 4.213 4.213ZM9 7.586V5H7v3.414l2 2L10.414 9 9 7.586Z"/>
