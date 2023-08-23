@@ -5,6 +5,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { build } from 'vite';
 
 const OUT_DIR = 'dist';
 const OUT_ICONS_DIR = 'icons';
@@ -20,7 +21,7 @@ await createSVG(icons);
 await createHTML(icons);
 await createJS(icons);
 await createIndex(icons);
-await createBundle(icons);
+await createBundle();
 await createJSON(icons);
 
 //
@@ -87,15 +88,17 @@ async function createIndex (icons) {
 	await writeFile('index.js', contents);
 }
 
-async function createBundle (icons) {
-	const allIcons = icons
-		.map(({ name, source }) => `registerIcon('${name}', \`${source}\`);\n`)
-		.join('');
-	const contents =
-`import { registerIcon } from '../lib/rivet-icon-element.js';
-
-${allIcons}`;
-	await writeFile('bundle.js', contents);
+async function createBundle () {
+	await build({
+		build: {
+			emptyOutDir: false,
+			lib: {
+				entry: path.resolve(OUT_DIR, 'index.js'),
+				fileName: 'bundle',
+				name: 'RivetIcon'
+			}
+		}
+	});
 }
 
 async function createJSON (icons) {
