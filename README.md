@@ -18,8 +18,8 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Change icon color](#change-icon-color)
 1. [Change icon size](#change-icon-size)
 1. [Accessibility](#accessibility)
-1. [Build a custom icon set](#build-a-custom-icon-set)
-1. [API](#api)
+1. [Make a custom icon set](#make-a-custom-icon-set)
+1. [Add a custom icon](#add-a-custom-icon)
 1. [Request a new icon](#request-a-new-icon)
 1. [Icon specifications](#icon-specifications)
 1. [Run the docs site](#run-the-docs-site)
@@ -52,7 +52,7 @@ The following are some notable contents in this repo.
 
 ## Install
 
-Install the package to import production files or [build a custom icon set](#build-a-custom-icon-set).
+Install the package to import production files.
 
 ```
 npm install --save rivet-icons
@@ -175,30 +175,6 @@ window.customElements.whenDefined('rvt-icon').then(() => {
 })
 ```
 
-## Use internal SVG symbols
-
-If not wanting to use `<rvt-icon>`, then render an icon with the following snippet. All `href` values reference the SVG symbol ID, in the format of `#rvt-icon-[name]`. With this method, the icon's color still changes with the CSS `color` property, but the icon itself cannot change with the `--rvt-icon` CSS variable.
-
-```html
-<span class="rvt-icon">
-  <svg aria-hidden="true" focusable="false">
-    <use href="#rvt-icon-heart"></use>
-  </svg>
-</span>
-```
-
-## Use external SVG symbols
-
-If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`), then add the path to the file, using a similar snippet as [internal SVG symbols](#use-internal-svg-symbols). Optionally include the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
-
-```html
-<span class="rvt-icon">
-  <svg aria-hidden="true" focusable="false">
-    <use href="path/to/rivet-icons.svg#rvt-icon-heart"></use>
-  </svg>
-</span>
-```
-
 ## Use inline SVG
 
 Icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page.
@@ -289,118 +265,24 @@ If a visual label is not desired (because the icon itself may be sufficient for 
 
 Some older browsers could cause keyboard focus issues with SVG, but they are easy to work around. First, [add `<svg focusable="false">`](https://allyjs.io/tutorials/focusing-in-svg.html#making-svg-elements-focusable) so the SVG does not gain focus in Internet Explorer and early versions of Edge. Second, [add whitespace around `<use>`](https://allyjs.io/tutorials/focusing-in-svg.html#the-use-element) so Safari 10 keeps all focusable elements tabbable. The `<rvt-icon>` element and the `rvt-icon-*.html` include these fixes.
 
-## Build a custom icon set
-
-The Rivet icon set includes dozens of icons. If only a few icons or custom icons are needed, then build a custom icon set. After [installing the `rivet-icons` package](#install), write a Node script to build the icons.
+## Make a custom icon set
 
 ```js
-// ./scripts/build-icons.js
-const { buildIcons } = require('rivet-icons')
-
-async function buildCustomIcons () {
-  await buildIcons({
-    icons: [
-      'arrow*',
-      'plus'
-    ],
-    include: [
-      './src/assets/*',
-      './favicon.svg'
-    ],
-    out: 'build'
-  })
-}
-
-buildCustomIcons()
-
-// Generates:
-// ./build/rivet-icon-element.js
-// ./build/rivet-icons.css
-// ./build/rivet-icons.html
-// ./build/rivet-icons.js
-// ./build/rivet-icons.svg
-// ./build/rvt-icon-[name].html
-// ./build/rvt-icon-[name].svg
+import 'rvt-icon/dist/arrow-down.js';
+import 'rvt-icon/dist/arrow-up.js';
+import 'rvt-icon/dist/building.js';
+import 'rvt-icon/dist/map-pin.js';
 ```
 
-This could be integrated as a npm run script and run before (or after) another build step. The package [`npm-run-all`](https://github.com/mysticatea/npm-run-all) is a good way to sequence multiple scripts.
-
-```json
-{
-  "scripts": {
-    "build": "npm-run-all -s build-icons build-app",
-    "build-app": "webpack",
-    "build-icons": "node scripts/build-icons.js"
-  }
-}
-```
-
-See the [`rivet-icons-webpack-react` guide](https://github.com/basham/rivet-icons-webpack-react) to learn how to incorporate Rivet icons in a Webpack/React environment.
-
-## API
-
-### `buildIcons()`
-
-`buildIcons(options: Object) => void`
-
-Returns a promise that resolves when the icon files are written.
+## Add a custom icon
 
 ```js
-await buildIcons()
-```
+import { registerIcon } from 'rvt-icon/lib/rivet-icon-element.js';
 
-### options.icons
+const name = 'dot';
+const svg = ``;
 
-**Type:** `string[]` (optional)
-
-**Default:** `['*']`
-
-Specify the Rivet icons to include. By default, it includes the entire set. To include specific icons, pass an array of icon names or [glob patterns](https://github.com/mrmlnc/fast-glob). Exclude the `.svg` file extention. If an empty array is used, no icons will be included.
-
-```js
-buildIcons({
-  icons: ['arrow*', 'plus']
-})
-
-// Generates icon set with:
-// arrow-down
-// arrow-left
-// arrow-right
-// arrow-up
-// plus
-```
-
-### options.include
-
-**Type:** `string[]` (optional)
-
-**Default:** `[]`
-
-Specify an array of custom icons to include in the icon set, using [glob patterns](https://github.com/mrmlnc/fast-glob). Any custom icons matching a Rivet icon name will override the Rivet icon. Any non-SVG files are ignored.
-
-```js
-buildIcons({
-  include: ['assets/*']
-})
-
-// Generates icon set with all Rivet icons
-// and all SVG files in the local assets directory.
-```
-
-### options.out
-
-**Type:** `string` (optional)
-
-**Default:** `'.'`
-
-Specify the directory for generated icon files. It defaults to the current working directory.
-
-```js
-buildIcons({
-  out: 'build'
-})
-
-// Outputs the icon set to the `build` directory.
+registerIcon(name, svg);
 ```
 
 ## Request a new icon
@@ -430,10 +312,4 @@ Build the site and start a local development server.
 
 ```
 npm run start
-```
-
-[Open the browser to localhost](http://localhost:8080/).
-
-```
-http://localhost:8080/
 ```
