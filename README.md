@@ -92,9 +92,23 @@ Use the `registerIcon()` function to register the name and SVG code for a custom
 import { registerIcon } from 'rvt-icon';
 
 const name = 'diamond';
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><polyline points="8,2 14,8 8,14 2,8" /></svg>`;
+const svg = `<svg><polyline points="8,2 14,8 8,14 2,8" /></svg>`;
 
 registerIcon(name, svg);
+```
+
+If left unspecified, the `<svg>` will default to the following attributes when rendered:
+
+```html
+<svg
+	aria-hidden="true"
+	fill="currentColor"
+	focusable="false"
+	height="16"
+	viewBox="0 0 16 16"
+	width="16"
+	xmlns="http://www.w3.org/2000/svg"
+>
 ```
 
 Include this custom icon in the module for the custom icon set.
