@@ -8,7 +8,7 @@
     "src/**/*"
   ],
   "type": "module",
-  "browser": "lib/rivet-icon-element.js",
+  "browser": "./lib/rivet-icon-element.js",
   "scripts": {
     "build": "node scripts/build.js",
     "docs": "astro dev --open",
