@@ -150,7 +150,7 @@ const icon = (<rvt-icon name={iconName} />)
 
 Use CSS to dynamically change the icon via the `--name` variable. Set its value to the CSS variable of the desired icon ("heart" is `var(--heart)`). In order to not pollute the global `:root` scope, icon variables are declared at the level of the `rvt-icon` element. That means, `--name` should only be used on the `rvt-icon` element itself, not on an ancestor.
 
-In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users. Change the icon color with the `color` property.
+In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users.
 
 ```html
 <button aria-pressed="true" class="favorite">
@@ -212,7 +212,7 @@ Icons are sized at 16 square pixels, but padding and margin can be adjusted to f
 
 ## Flash of unstyled content
 
-A "flash of unstyled content" happens when `<rvt-icon>` is declared before the element definition is registered. This looks like the icon is briefly invisible, as if `display: none` is applied and suddenly removed. To avoid this, wait to render content until after the element registers with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
+"Flash of unstyled content" happens when `<rvt-icon>` is declared before the element definition is registered. This looks like the icon is briefly invisible, as if `display: none` is applied and suddenly removed. To avoid this, wait to render content until after the element registers with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
 
 ```js
 window.customElements.whenDefined('rvt-icon').then(() => {
