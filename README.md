@@ -9,7 +9,6 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Quick start](#quick-start)
 1. [Repo structure](#repo-structure)
 1. [Install](#install)
-1. [Make a custom icon set](#make-a-custom-icon-set)
 1. [Add a custom icon](#add-a-custom-icon)
 1. [Usage](#usage)
 1. [Change icon name in JavaScript](#change-icon-name-in-javascript)
@@ -69,13 +68,7 @@ Link to the desired JavaScript modules inside of the HTML document's `<head>`. I
 <script type="module" src="/path/to/rivet-icons/dist/bundle.js"></script>
 ```
 
-## Make a custom icon set
-
 The `bundle.js` file is ideal for prototyping (Option 3), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to do so in a custom JavaScript module (Option 1).
-
-```html
-<script type="module" src="/src/icons.js"></script>
-```
 
 ```js
 // /src/icons.js
