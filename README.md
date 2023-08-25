@@ -101,8 +101,8 @@ Include this custom icon in the module for the custom icon set.
 
 ```diff
 // /src/icons.js
-import 'rvt-icon/dist/heart.js';
-import 'rvt-icon/dist/heart-solid.js';
+import 'rvt-icon/dist/icons/heart.js';
+import 'rvt-icon/dist/icons/heart-solid.js';
 + import './icon-diamond.js';
 ```
 
