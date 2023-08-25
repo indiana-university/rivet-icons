@@ -89,7 +89,7 @@ Use the `registerIcon()` function to register the name and SVG code for a custom
 
 ```js
 // /src/icon-diamond.js
-import { registerIcon } from 'rvt-icon/lib/rivet-icon-element.js';
+import { registerIcon } from 'rvt-icon';
 
 const name = 'diamond';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><polyline points="8,2 14,8 8,14 2,8" /></svg>`;
@@ -118,7 +118,7 @@ document.addEventListener('rvtIconRegistered', (event) => {
 Use the `getIcons()` function get an array of all registered icons.
 
 ```js
-import { getIcons } from 'rvt-icon/lib/rivet-icon-element.js';
+import { getIcons } from 'rvt-icon';
 
 console.log(getIcons());
 // ["heart", "heart-solid", "diamond"]
