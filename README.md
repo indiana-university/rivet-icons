@@ -57,18 +57,18 @@ npm install --save rivet-icons
 Link to the desired JavaScript modules inside of the HTML document's `<head>`. In the following example, replace "`/path/to/`" with the appropriate path to the modules.
 
 ```html
-<!-- Option 1 (recommended): Make a custom icon set in a custom module. -->
-<script type="module" src="/src/icons.js"></script>
+<!-- Option 1: Include all icons in a single bundled file. -->
+<script type="module" src="/path/to/rivet-icons/dist/bundle.js"></script>
 
 <!-- Option 2: Include particular icons, if only a few icons are needed. -->
 <script type="module" src="/path/to/rivet-icons/dist/icons/heart.js"></script>
 <script type="module" src="/path/to/rivet-icons/dist/icons/heart-solid.js"></script>
 
-<!-- Option 3: Include all icons in a single bundled file. -->
-<script type="module" src="/path/to/rivet-icons/dist/bundle.js"></script>
+<!-- Option 3 (recommended): Make a custom icon set. -->
+<script type="module" src="/src/icons.js"></script>
 ```
 
-The `bundle.js` file is ideal for prototyping (Option 3), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to do so in a custom JavaScript module (Option 1).
+The `bundle.js` file is ideal for prototyping (Option 1), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to make a custom icon set in a JavaScript module (Option 3).
 
 ```js
 // /src/icons.js
