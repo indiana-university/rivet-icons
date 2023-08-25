@@ -79,8 +79,8 @@ The `bundle.js` file is ideal for prototyping, but it likely includes more icons
 
 ```js
 // /src/icons.js
-import 'rvt-icon/dist/heart.js';
-import 'rvt-icon/dist/heart-solid.js';
+import 'rvt-icon/dist/icons/heart.js';
+import 'rvt-icon/dist/icons/heart-solid.js';
 ```
 
 ## Add a custom icon
