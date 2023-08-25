@@ -17,7 +17,6 @@ const SRC_DIR = 'src';
 
 await cleanup();
 const icons = await getIcons();
-await createSVG(icons);
 await createHTML(icons);
 await createJS(icons);
 await createIndex(icons);
@@ -47,13 +46,6 @@ async function getIcons () {
 			return { name, source };
 		})
 	return await Promise.all(promises);
-}
-
-async function createSVG (icons) {
-	const promises = icons.map(({ name, source }) =>
-		writeFile(path.join(OUT_ICONS_DIR, `${name}.svg`), source)
-	);
-	await Promise.all(promises);
 }
 
 async function createHTML (icons) {
