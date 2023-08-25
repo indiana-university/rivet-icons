@@ -1,18 +1,17 @@
-var p = (h, v, s) => {
+var Z = (h, v, s) => {
   if (!v.has(h))
     throw TypeError("Cannot " + s);
 };
-var o = (h, v, s) => (p(h, v, "read from private field"), s ? s.call(h) : v.get(h)), n = (h, v, s) => {
+var o = (h, v, s) => (Z(h, v, "read from private field"), s ? s.call(h) : v.get(h)), n = (h, v, s) => {
   if (v.has(h))
     throw TypeError("Cannot add the same private member more than once");
   v instanceof WeakSet ? v.add(h) : v.set(h, s);
-}, i = (h, v, s, g) => (p(h, v, "write to private field"), g ? g.call(h, s) : v.set(h, s), s);
-var x = (h, v, s) => (p(h, v, "access private method"), s);
-const Z = "rvt-icon", $ = "name", H = `${Z}-registered`, c = /* @__PURE__ */ new Map(), M = /* @__PURE__ */ new Map(), V = document.createElement("style");
-V.setAttribute(`data-${Z}`, "");
+}, i = (h, v, s, g) => (Z(h, v, "write to private field"), g ? g.call(h, s) : v.set(h, s), s);
+var p = (h, v, s) => (Z(h, v, "access private method"), s);
+const H = "rvt-icon", x = "name", $ = "rvtIconRegistered", c = /* @__PURE__ */ new Map(), M = /* @__PURE__ */ new Map(), V = document.createElement("style");
+V.setAttribute(`data-${H}`, "");
 document.head.appendChild(V);
-const u = V.sheet;
-console.log("S", u);
+const B = V.sheet;
 function t(h, v) {
   const s = "Rivet Icon";
   if (!h || typeof h != "string")
@@ -24,14 +23,14 @@ function t(h, v) {
     throw new Error(`${s} (${h}): Content must be a SVG element.`);
   c.set(h, g);
   const a = c.size;
-  M.set(a, h), u.insertRule(`${Z} { --${h}: ${a}; }`);
-  const B = new CustomEvent(H, {
+  M.set(a, h), B.insertRule(`${H} { --${h}: ${a}; }`);
+  const L = new CustomEvent($, {
     detail: { name: h }
   });
-  document.dispatchEvent(B);
+  document.dispatchEvent(L);
 }
-const C = document.createElement("template");
-C.innerHTML = `
+const u = document.createElement("template");
+u.innerHTML = `
 	<style>
 		:host,
 		.container {
@@ -57,7 +56,7 @@ C.innerHTML = `
 	<span class="sensor"></span>
 	<slot class="alt"></slot>
 `;
-var e, r, l, w, m, f, d, L;
+var e, r, l, w, m, C, d, f;
 class A extends window.HTMLElement {
   constructor() {
     super();
@@ -68,28 +67,28 @@ class A extends window.HTMLElement {
     n(this, l, void 0);
     n(this, w, void 0);
     const s = this.attachShadow({ mode: "open" });
-    s.appendChild(C.content.cloneNode(!0)), i(this, e, s.querySelector(".container")), i(this, w, s.querySelector(".sensor")), i(this, l, b(x(this, d, L).bind(this)));
+    s.appendChild(u.content.cloneNode(!0)), i(this, e, s.querySelector(".container")), i(this, w, s.querySelector(".sensor")), i(this, l, b(p(this, d, f).bind(this)));
   }
   static get observedAttributes() {
-    return [$];
+    return [x];
   }
   connectedCallback() {
-    o(this, w).addEventListener("transitionstart", o(this, l)), document.addEventListener(H, o(this, l)), o(this, l).call(this);
+    o(this, w).addEventListener("transitionstart", o(this, l)), document.addEventListener($, o(this, l)), o(this, l).call(this);
   }
   disconnectedCallback() {
-    o(this, w).removeEventListener("transitionstart", o(this, l)), document.removeEventListener(H, o(this, l));
+    o(this, w).removeEventListener("transitionstart", o(this, l)), document.removeEventListener($, o(this, l));
   }
   attributeChangedCallback() {
     o(this, l).call(this);
   }
 }
-e = new WeakMap(), r = new WeakMap(), l = new WeakMap(), w = new WeakMap(), m = new WeakSet(), f = function() {
+e = new WeakMap(), r = new WeakMap(), l = new WeakMap(), w = new WeakMap(), m = new WeakSet(), C = function() {
   if (!o(this, w))
     return;
-  const s = window.getComputedStyle(o(this, w)).getPropertyValue(`--${$}`);
+  const s = window.getComputedStyle(o(this, w)).getPropertyValue(`--${x}`);
   return M.get(parseInt(s));
-}, d = new WeakSet(), L = function() {
-  const s = x(this, m, f).call(this) || this.getAttribute($);
+}, d = new WeakSet(), f = function() {
+  const s = p(this, m, C).call(this) || this.getAttribute(x);
   if (!o(this, e) || !c.has(s) || o(this, r) === s)
     return;
   const g = c.get(s).content.cloneNode(!0);
@@ -97,7 +96,7 @@ e = new WeakMap(), r = new WeakMap(), l = new WeakMap(), w = new WeakMap(), m = 
   const a = o(this, e).querySelector("svg");
   a.setAttribute("aria-hidden", "true"), a.setAttribute("focusable", "false"), i(this, r, s);
 };
-window.customElements.define(Z, A);
+window.customElements.define(H, A);
 function b(h) {
   let v = !1;
   return function(...s) {
