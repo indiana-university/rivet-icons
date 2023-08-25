@@ -1,9 +1,6 @@
 import { registerIcon } from '../../lib/rivet-icon-element.js';
 
 export const name = 'user-group';
-export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-  <path d="M11 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-1 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0ZM5 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM4 6a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-4 7a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v3H0v-3Zm3-1a1 1 0 0 0-1 1v1h6v-1a1 1 0 0 0-1-1H3Zm6-5v2h4a1 1 0 0 1 1 1v1h-3v2h5v-3a3 3 0 0 0-3-3H9Z"/>
-</svg>
-`;
+export const svg = `<svg><path d="M11 0a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-1 3a1 1 0 1 1 2 0 1 1 0 0 1-2 0ZM5 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM4 6a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-4 7a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v3H0v-3Zm3-1a1 1 0 0 0-1 1v1h6v-1a1 1 0 0 0-1-1H3Zm6-5v2h4a1 1 0 0 1 1 1v1h-3v2h5v-3a3 3 0 0 0-3-3H9Z"/></svg>`;
 
 registerIcon(name, svg);

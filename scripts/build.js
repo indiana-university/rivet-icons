@@ -17,7 +17,6 @@ const SRC_DIR = 'src';
 
 await cleanup();
 const icons = await getIcons();
-await createHTML(icons);
 await createJS(icons);
 await createIndex(icons);
 await createBundle();
@@ -48,23 +47,16 @@ async function getIcons () {
 	return await Promise.all(promises);
 }
 
-async function createHTML (icons) {
-	const promises = icons.map(async ({ name, source }) => {
-		const contents = source
-			.replace(/svg /, 'svg aria-hidden="true" focusable="false" ')
-			.replace(/ (xmlns|width|height)="[^"]+"/g, '');
-		await writeFile(path.join(OUT_ICONS_DIR, `${name}.html`), contents);
-	});
-	await Promise.all(promises);
-}
-
 async function createJS (icons) {
 	const promises = icons.map(async ({ name, source }) => {
+		const svg = source
+			.replace(/ (fill|height|viewBox|width|xmlns)="[^"]+"/g, '')
+			.replace(/(\n|  )/g, '')
 		const contents =
 `import { registerIcon } from '../../lib/rivet-icon-element.js';
 
 export const name = '${name}';
-export const svg = \`${source}\`;
+export const svg = \`${svg}\`;
 
 registerIcon(name, svg);
 `;

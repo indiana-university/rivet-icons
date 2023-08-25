@@ -1,9 +1,6 @@
 import { registerIcon } from '../../lib/rivet-icon-element.js';
 
 export const name = 'credit-card-solid';
-export const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-  <path d="M0 2h16v12H0V8h12V6H0V2Z"/>
-</svg>
-`;
+export const svg = `<svg><path d="M0 2h16v12H0V8h12V6H0V2Z"/></svg>`;
 
 registerIcon(name, svg);
