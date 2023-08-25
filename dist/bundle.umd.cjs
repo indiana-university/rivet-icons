@@ -1,19 +1,19 @@
-var V=(s,v,h)=>{if(!v.has(s))throw TypeError("Cannot "+h)};var g=(s,v,h)=>(V(s,v,"read from private field"),h?h.call(s):v.get(s)),w=(s,v,h)=>{if(v.has(s))throw TypeError("Cannot add the same private member more than once");v instanceof WeakSet?v.add(s):v.set(s,h)},c=(s,v,h,i)=>(V(s,v,"write to private field"),i?i.call(s,h):v.set(s,h),h);var M=(s,v,h)=>(V(s,v,"access private method"),h);(function(s){typeof define=="function"&&define.amd?define(s):s()})(function(){var l,m,e,a,d,C,Z,L;"use strict";const s="Rivet Icons",v="rvt-icon",h="name",i="rvtIconRegistered",u=new Map,$=new Map,f=document.createElement("template");f.innerHTML=`
-	<style>
-		:host,
-		.container {
-			display: inline-flex;
-		}
-		.sensor {
-			position: absolute;
-			transition: z-index 0.001ms step-start;
-			visibility: hidden;
-			z-index: var(--${h});
-		}
-	</style>
-	<span class="container"></span>
-	<span class="sensor"></span>
-`;const H=document.createElement("style");H.setAttribute(`data-${v}`,""),document.head.appendChild(H);function t(n,r){if(!n||typeof n!="string")throw new Error(`${s}: Name must be a string.`);const o=document.createElement("template");if(o.innerHTML=r,o.content.children.length!==1)throw new Error(`${s} (${n}): Content must contain one SVG element.`);if(o.content.firstChild.nodeName.toLowerCase()!=="svg")throw new Error(`${s} (${n}): Content must be a SVG element.`);$.set(n,o);const p=$.size;u.set(p,n),H.sheet.insertRule(`${v} { --${n}: ${p}; }`);const x=new CustomEvent(i,{detail:{name:n}});document.dispatchEvent(x)}class B extends window.HTMLElement{constructor(){super();w(this,d);w(this,Z);w(this,l,void 0);w(this,m,void 0);w(this,e,void 0);w(this,a,void 0);const o=this.attachShadow({mode:"open"});o.appendChild(f.content.cloneNode(!0)),c(this,l,o.querySelector(".container")),c(this,a,o.querySelector(".sensor")),c(this,e,A(M(this,Z,L).bind(this)))}static get observedAttributes(){return[h]}connectedCallback(){g(this,a).addEventListener("transitionstart",g(this,e)),document.addEventListener(i,g(this,e)),g(this,e).call(this)}disconnectedCallback(){g(this,a).removeEventListener("transitionstart",g(this,e)),document.removeEventListener(i,g(this,e))}attributeChangedCallback(){g(this,e).call(this)}}l=new WeakMap,m=new WeakMap,e=new WeakMap,a=new WeakMap,d=new WeakSet,C=function(){if(!g(this,a))return;const o=window.getComputedStyle(g(this,a)).getPropertyValue(`--${h}`);return u.get(parseInt(o))},Z=new WeakSet,L=function(){const o=M(this,d,C).call(this)||this.getAttribute(h);if(!g(this,l)||!$.has(o)||g(this,m)===o)return;const p=$.get(o).content.cloneNode(!0);g(this,l).replaceChildren(p);const x=g(this,l).querySelector("svg");x.setAttribute("aria-hidden","true"),x.setAttribute("focusable","false"),c(this,m,o)},window.customElements.define(v,B);function A(n){let r=!1;return function(...o){r||(r=!0,window.requestAnimationFrame(()=>{n.call(this,...o),r=!1}))}}t("alarm",`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+var H=(s,h,o)=>{if(!h.has(s))throw TypeError("Cannot "+o)};var n=(s,h,o)=>(H(s,h,"read from private field"),o?o.call(s):h.get(s)),w=(s,h,o)=>{if(h.has(s))throw TypeError("Cannot add the same private member more than once");h instanceof WeakSet?h.add(s):h.set(s,o)},$=(s,h,o,i)=>(H(s,h,"write to private field"),i?i.call(s,o):h.set(s,o),o);var V=(s,h,o)=>(H(s,h,"access private method"),o);(function(s){typeof define=="function"&&define.amd?define(s):s()})(function(){var r,c,a,l,Z,C,p,L;"use strict";const s="Rivet Icons",h="rvt-icon",o="name",i="rvtIconRegistered",M=new Map,d=new Map,u=document.createElement("template");u.innerHTML=`
+<style>
+:host,
+.container {
+	display: inline-flex;
+}
+.sensor {
+	position: absolute;
+	transition: z-index 0.001ms step-start;
+	visibility: hidden;
+	z-index: var(--${o});
+}
+</style>
+<span class="container"></span>
+<span class="sensor"></span>
+`;const x=document.createElement("style");x.setAttribute(`data-${h}`,""),document.head.appendChild(x);function t(g,e){if(!g||typeof g!="string")throw new Error(`${s}: Name must be a string.`);const v=document.createElement("template");if(v.innerHTML=e,v.content.children.length!==1)throw new Error(`${s} (${g}): Content must contain one SVG element.`);const m=v.content.firstChild;if(m.nodeName.toLowerCase()!=="svg")throw new Error(`${s} (${g}): Content must be a SVG element.`);b(m,{"aria-hidden":"true",fill:"currentColor",focusable:"false",height:16,viewBox:"0 0 16 16",width:16,xmlns:"http://www.w3.org/2000/svg"}),d.set(g,v);const f=d.size;M.set(f,g),x.sheet.insertRule(`${h} { --${g}: ${f}; }`);const y=new CustomEvent(i,{detail:{name:g}});document.dispatchEvent(y)}class B extends window.HTMLElement{constructor(){super();w(this,Z);w(this,p);w(this,r,void 0);w(this,c,void 0);w(this,a,void 0);w(this,l,void 0);const v=this.attachShadow({mode:"open"});v.appendChild(u.content.cloneNode(!0)),$(this,r,v.querySelector(".container")),$(this,l,v.querySelector(".sensor")),$(this,a,k(V(this,p,L).bind(this)))}static get observedAttributes(){return[o]}connectedCallback(){n(this,l).addEventListener("transitionstart",n(this,a)),document.addEventListener(i,n(this,a)),n(this,a).call(this)}disconnectedCallback(){n(this,l).removeEventListener("transitionstart",n(this,a)),document.removeEventListener(i,n(this,a))}attributeChangedCallback(){n(this,a).call(this)}}r=new WeakMap,c=new WeakMap,a=new WeakMap,l=new WeakMap,Z=new WeakSet,C=function(){if(!n(this,l))return;const v=window.getComputedStyle(n(this,l)).getPropertyValue(`--${o}`);return M.get(parseInt(v))},p=new WeakSet,L=function(){const v=V(this,Z,C).call(this)||this.getAttribute(o);if(!n(this,r)||!d.has(v)||n(this,c)===v)return;const m=d.get(v).content.cloneNode(!0);n(this,r).replaceChildren(m),$(this,c,v)},window.customElements.define(h,B);function A(g,e,v){g.hasAttribute(e)||g.setAttribute(e,v)}function b(g,e){Object.entries(e).forEach(([v,m])=>{A(g,v,m)})}function k(g){let e=!1;return function(...v){e||(e=!0,window.requestAnimationFrame(()=>{g.call(this,...v),e=!1}))}}t("alarm",`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
   <path d="M4.855.642A8.029 8.029 0 0 0 .642 4.855 3 3 0 0 1 4.855.642Zm10.503 4.213A3 3 0 0 0 11.145.642a8.029 8.029 0 0 1 4.213 4.213ZM9 7.586V5H7v3.414l2 2L10.414 9 9 7.586Z"/>
   <path d="M1 8a7 7 0 1 1 12.606 4.192l2.308 2.308-1.414 1.414-2.308-2.308A6.97 6.97 0 0 1 8 15a6.969 6.969 0 0 1-4.192-1.394L1.5 15.914.086 14.5l2.308-2.308A6.97 6.97 0 0 1 1 8Zm7-5a5 5 0 1 0 0 10A5 5 0 0 0 8 3Z"/>
 </svg>
