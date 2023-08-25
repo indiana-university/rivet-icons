@@ -71,7 +71,7 @@ Link to the desired JavaScript modules inside of the HTML document's `<head>`. I
 
 ## Make a custom icon set
 
-The `bundle.js` file is ideal for prototyping, but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML, it may be simpler to do so in a custom JavaScript module.
+The `bundle.js` file is ideal for prototyping (Option 3), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to do so in a custom JavaScript module (Option 1).
 
 ```html
 <script type="module" src="/src/icons.js"></script>
