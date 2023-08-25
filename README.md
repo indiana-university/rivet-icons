@@ -237,21 +237,19 @@ Revisiting a previous example, this icon is used to visually indicate the presse
 
 ```html
 <button aria-pressed="true" class="favorite">
-	<rvt-icon class="favorite__icon"></rvt-icon>
+	<rvt-icon></rvt-icon>
 	Favorite
 </button>
 ```
 
-If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.iu.edu/components/utilities/visibility/).
+If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.uits.iu.edu/utilities/visibility/).
 
 ```html
 <button aria-pressed="true" class="favorite">
-	<rvt-icon class="favorite__icon"></rvt-icon>
+	<rvt-icon></rvt-icon>
 	<span class="rvt-sr-only">Favorite</span>
 </button>
 ```
-
-Some older browsers could cause keyboard focus issues with SVG, but they are easy to work around. First, [add `<svg focusable="false">`](https://allyjs.io/tutorials/focusing-in-svg.html#making-svg-elements-focusable) so the SVG does not gain focus in Internet Explorer and early versions of Edge. Second, [add whitespace around `<use>`](https://allyjs.io/tutorials/focusing-in-svg.html#the-use-element) so Safari 10 keeps all focusable elements tabbable. The `<rvt-icon>` element and the `rvt-icon-*.html` include these fixes.
 
 ## Request a new icon
 
