@@ -12,7 +12,6 @@
   "scripts": {
     "build": "node scripts/build.js",
     "docs": "astro dev --open",
-    "lint": "standard",
     "start": "run-s build docs"
   },
   "repository": {
