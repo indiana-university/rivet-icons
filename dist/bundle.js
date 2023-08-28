@@ -8,8 +8,8 @@ var h = (a, t, v) => (V(a, t, "read from private field"), v ? v.call(a) : t.get(
   t instanceof WeakSet ? t.add(a) : t.set(a, v);
 }, Z = (a, t, v, o) => (V(a, t, "write to private field"), o ? o.call(a, v) : t.set(a, v), v);
 var p = (a, t, v) => (V(a, t, "access private method"), v);
-const M = "Rivet Icons", r = "rvt-icon", m = "name", i = "rvtIconRegistered";
-const u = /* @__PURE__ */ new Map(), d = /* @__PURE__ */ new Map(), f = document.createElement("template");
+const M = "Rivet Icons", r = "rvt-icon", d = "name", i = "rvtIconRegistered";
+const u = /* @__PURE__ */ new Map(), l = /* @__PURE__ */ new Map(), f = document.createElement("template");
 f.innerHTML = `
 <style>
 :host,
@@ -20,7 +20,7 @@ f.innerHTML = `
 	position: absolute;
 	transition: z-index 0.001ms step-start;
 	visibility: hidden;
-	z-index: var(--${m});
+	z-index: var(--${d});
 }
 </style>
 <span class="container"></span>
@@ -29,6 +29,9 @@ f.innerHTML = `
 const L = document.createElement("style");
 L.setAttribute(`data-${r}`, "");
 document.head.appendChild(L);
+function L6() {
+  return [...l.keys()];
+}
 function s(a, t) {
   if (!a || typeof a != "string")
     throw new Error(`${M}: Name must be a string.`);
@@ -46,29 +49,29 @@ function s(a, t) {
     viewBox: "0 0 16 16",
     width: 16,
     xmlns: "http://www.w3.org/2000/svg"
-  }), d.set(a, v);
-  const A = d.size;
+  }), l.set(a, v);
+  const A = l.size;
   u.set(A, a), L.sheet.insertRule(`${r} { --${a}: ${A}; }`);
   const b = new CustomEvent(i, {
     detail: { name: a }
   });
   document.dispatchEvent(b);
 }
-var e, l, n, g, $, w, H, C;
+var e, m, n, g, $, w, H, C;
 class k extends window.HTMLElement {
   constructor() {
     super();
     c(this, $);
     c(this, H);
     c(this, e, void 0);
-    c(this, l, void 0);
+    c(this, m, void 0);
     c(this, n, void 0);
     c(this, g, void 0);
     const v = this.attachShadow({ mode: "open" });
     v.appendChild(f.content.cloneNode(!0)), Z(this, e, v.querySelector(".container")), Z(this, g, v.querySelector(".sensor")), Z(this, n, E(p(this, H, C).bind(this)));
   }
   static get observedAttributes() {
-    return [m];
+    return [d];
   }
   connectedCallback() {
     h(this, g).addEventListener("transitionstart", h(this, n)), document.addEventListener(i, h(this, n)), h(this, n).call(this);
@@ -80,17 +83,17 @@ class k extends window.HTMLElement {
     h(this, n).call(this);
   }
 }
-e = new WeakMap(), l = new WeakMap(), n = new WeakMap(), g = new WeakMap(), $ = new WeakSet(), w = function() {
+e = new WeakMap(), m = new WeakMap(), n = new WeakMap(), g = new WeakMap(), $ = new WeakSet(), w = function() {
   if (!h(this, g))
     return;
-  const v = window.getComputedStyle(h(this, g)).getPropertyValue(`--${m}`);
+  const v = window.getComputedStyle(h(this, g)).getPropertyValue(`--${d}`);
   return u.get(parseInt(v));
 }, H = new WeakSet(), C = function() {
-  const v = p(this, $, w).call(this) || this.getAttribute(m);
-  if (!h(this, e) || !d.has(v) || h(this, l) === v)
+  const v = p(this, $, w).call(this) || this.getAttribute(d);
+  if (!h(this, e) || !l.has(v) || h(this, m) === v)
     return;
-  const o = d.get(v).content.cloneNode(!0);
-  h(this, e).replaceChildren(o), Z(this, l, v);
+  const o = l.get(v).content.cloneNode(!0);
+  h(this, e).replaceChildren(o), Z(this, m, v);
 };
 window.customElements.define(r, k);
 function y(a, t, v) {
@@ -113,10 +116,10 @@ const N = "alarm", z = '<svg><path d="M4.855.642A8.029 8.029 0 0 0 .642 4.855 3 
 s(N, z);
 const S = "alarm-solid", T = '<svg><path d="M.642 4.855A8.029 8.029 0 0 1 4.855.642 3 3 0 0 0 .642 4.855Zm14.716 0A3 3 0 0 0 11.145.642a8.029 8.029 0 0 1 4.213 4.213Z"/><path d="M8 15a6.97 6.97 0 0 0 4.192-1.394l2.308 2.308 1.414-1.414-2.308-2.308a7 7 0 1 0-11.213 0L.087 14.5 1.5 15.914l2.308-2.308A6.969 6.969 0 0 0 8 15Zm2.414-6L9 10.414l-2-2V5h2v2.586L10.414 9Z"/></svg>';
 s(S, T);
-const q = "arrow-anchor-down-left", R = '<svg><path d="M13 10V2h2v10H4.414l1.793 1.793-1.414 1.414L.586 11l4.207-4.207 1.414 1.414L4.414 10H13Z"/></svg>';
-s(q, R);
-const I = "arrow-anchor-down-right", F = '<svg><path d="M1 2h2v8h8.586L9.793 8.207l1.414-1.414L15.414 11l-4.207 4.207-1.414-1.414L11.586 12H1V2Z"/></svg>';
-s(I, F);
+const q = "arrow-anchor-down-left", I = '<svg><path d="M13 10V2h2v10H4.414l1.793 1.793-1.414 1.414L.586 11l4.207-4.207 1.414 1.414L4.414 10H13Z"/></svg>';
+s(q, I);
+const R = "arrow-anchor-down-right", F = '<svg><path d="M1 2h2v8h8.586L9.793 8.207l1.414-1.414L15.414 11l-4.207 4.207-1.414-1.414L11.586 12H1V2Z"/></svg>';
+s(R, F);
 const D = "arrow-anchor-up-left", G = '<svg><path d="m4.414 6 1.793 1.793-1.414 1.414L.586 5 4.793.793l1.414 1.414L4.414 4H15v10h-2V6H4.414Z"/></svg>';
 s(D, G);
 const j = "arrow-anchor-up-right", B = '<svg><path d="M11.207.793 15.414 5l-4.207 4.207-1.414-1.414L11.586 6H3v8H1V4h10.586L9.793 2.207 11.207.793Z"/></svg>';
@@ -167,10 +170,10 @@ const N1 = "building-solid", z1 = '<svg><path d="M2 0h12v14h1v2H1v-2h1V0Zm5 4H5v
 s(N1, z1);
 const S1 = "bus", T1 = '<svg><path d="M15 0H1v14h2v1.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V14h2V0ZM3.5 2h9a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5ZM5 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm7 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>';
 s(S1, T1);
-const q1 = "calendar", R1 = '<svg><path d="M7 9.5v2H5v-2h2Zm4 2v-2H9v2h2Z"/><path d="M5 0a1 1 0 0 1 1 1v1h4V1a1 1 0 1 1 2 0v1h3v13H1V2h3V1a1 1 0 0 1 1-1ZM3 4v2h10V4H3Zm10 4H3v5h10V8Z"/></svg>';
-s(q1, R1);
-const I1 = "calendar-solid", F1 = '<svg><path d="M6 1a1 1 0 0 0-2 0v1H1v13h14V2h-3V1a1 1 0 1 0-2 0v1H6V1ZM3 6h10v2H3V6Zm2 6.5v-2h2v2H5Zm4 0v-2h2v2H9Z"/></svg>';
-s(I1, F1);
+const q1 = "calendar", I1 = '<svg><path d="M7 9.5v2H5v-2h2Zm4 2v-2H9v2h2Z"/><path d="M5 0a1 1 0 0 1 1 1v1h4V1a1 1 0 1 1 2 0v1h3v13H1V2h3V1a1 1 0 0 1 1-1ZM3 4v2h10V4H3Zm10 4H3v5h10V8Z"/></svg>';
+s(q1, I1);
+const R1 = "calendar-solid", F1 = '<svg><path d="M6 1a1 1 0 0 0-2 0v1H1v13h14V2h-3V1a1 1 0 1 0-2 0v1H6V1ZM3 6h10v2H3V6Zm2 6.5v-2h2v2H5Zm4 0v-2h2v2H9Z"/></svg>';
+s(R1, F1);
 const D1 = "caution", G1 = '<svg><path d="M7 10V6h2v4H7Zm1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path d="M6.382 0h3.236L16 12.764V16H0v-3.236L6.382 0Zm1.236 2L2 13.236V14h12v-.764L8.382 2h-.764Z"/></svg>';
 s(D1, G1);
 const j1 = "caution-solid", B1 = '<svg><path d="M6.382 0h3.236L16 12.764V16H0v-3.236L6.382 0ZM7 6v4h2V6H7Zm1 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>';
@@ -221,10 +224,10 @@ const N0 = "close-circle-solid", z0 = '<svg><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0
 s(N0, z0);
 const S0 = "code", T0 = '<svg><path d="M5.926 14.412.155 8l5.77-6.412 1.487 1.338L2.845 8l4.567 5.074-1.486 1.338Zm4.148-12.824L15.845 8l-5.77 6.412-1.487-1.338L13.155 8 8.588 2.926l1.486-1.338Z"/></svg>';
 s(S0, T0);
-const q0 = "collapse", R0 = '<svg><path d="m.586 14 3-3H1V9h6v6H5v-2.586l-3 3L.586 14ZM15.414 2l-3 3H15v2H9V1h2v2.586l3-3L15.414 2Z"/></svg>';
-s(q0, R0);
-const I0 = "copy", F0 = '<svg><path d="M11 0H0v11h3V9H2V2h7v1h2V0Z"/><path d="M16 5H5v11h11V5Zm-9 9V7h7v7H7Z"/></svg>';
-s(I0, F0);
+const q0 = "collapse", I0 = '<svg><path d="m.586 14 3-3H1V9h6v6H5v-2.586l-3 3L.586 14ZM15.414 2l-3 3H15v2H9V1h2v2.586l3-3L15.414 2Z"/></svg>';
+s(q0, I0);
+const R0 = "copy", F0 = '<svg><path d="M11 0H0v11h3V9H2V2h7v1h2V0Z"/><path d="M16 5H5v11h11V5Zm-9 9V7h7v7H7Z"/></svg>';
+s(R0, F0);
 const D0 = "copy-solid", G0 = '<svg><path d="M11 0H0v11h3V9H2V2h7v1h2V0Z"/><path d="M5 5h11v11H5V5Z"/></svg>';
 s(D0, G0);
 const j0 = "credit-card", B0 = '<svg><path d="M0 2h16v12H0V2Zm2 2v2h10v2H2v4h12V4H2Z"/></svg>';
@@ -275,10 +278,10 @@ const N2 = "filter", z2 = '<svg><path d="M6 1a3.001 3.001 0 0 0-2.83 2H0v2h3.17a
 s(N2, z2);
 const S2 = "filter-solid", T2 = '<svg><path d="M6 1a3.001 3.001 0 0 0-2.83 2H0v2h3.17a3.001 3.001 0 0 0 5.66 0H16V3H8.83A3.001 3.001 0 0 0 6 1Zm4 8a3.001 3.001 0 0 0-2.83 2H0v2h7.17a3.001 3.001 0 0 0 5.66 0H16v-2h-3.17A3.001 3.001 0 0 0 10 9Z"/></svg>';
 s(S2, T2);
-const q2 = "flag", R2 = '<svg><path d="M5 1v1h9.387l-1.333 4 1.333 4H5v5H3V1h2Zm0 3v4h6.613l-.667-2 .667-2H5Z"/></svg>';
-s(q2, R2);
-const I2 = "flag-solid", F2 = '<svg><path d="M5 2V1H3v14h2v-5h9.387l-1.333-4 1.333-4H5Z"/></svg>';
-s(I2, F2);
+const q2 = "flag", I2 = '<svg><path d="M5 1v1h9.387l-1.333 4 1.333 4H5v5H3V1h2Zm0 3v4h6.613l-.667-2 .667-2H5Z"/></svg>';
+s(q2, I2);
+const R2 = "flag-solid", F2 = '<svg><path d="M5 2V1H3v14h2v-5h9.387l-1.333-4 1.333-4H5Z"/></svg>';
+s(R2, F2);
 const D2 = "gear", G2 = '<svg><path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M5 1.5A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5v1.304l1.13-.652a1.5 1.5 0 0 1 2.048.549l1.5 2.598a1.5 1.5 0 0 1-.549 2.05L14 8l1.13.652a1.5 1.5 0 0 1 .548 2.049l-1.5 2.598a1.5 1.5 0 0 1-2.049.55L11 13.195V14.5A1.5 1.5 0 0 1 9.5 16h-3A1.5 1.5 0 0 1 5 14.5v-1.304l-1.13.652a1.5 1.5 0 0 1-2.048-.549l-1.5-2.598a1.5 1.5 0 0 1 .549-2.05L2 8 .87 7.348A1.5 1.5 0 0 1 .323 5.3l1.5-2.598a1.5 1.5 0 0 1 2.049-.55L5 2.805V1.5ZM7 2v1.67c0 .169-.027.329-.076.476a3.996 3.996 0 0 0-1.722.996 1.513 1.513 0 0 1-.452-.173l-1.446-.835-1 1.732 1.446.835c.146.084.271.188.375.304a4.007 4.007 0 0 0 0 1.99c-.104.116-.229.22-.375.304l-1.446.835 1 1.732 1.446-.835a1.52 1.52 0 0 1 .452-.173 3.995 3.995 0 0 0 1.722.996c.05.147.076.307.076.476V14h2v-1.67c0-.169.027-.329.076-.476a3.995 3.995 0 0 0 1.722-.996c.153.032.305.088.452.173l1.446.835 1-1.732-1.446-.835a1.514 1.514 0 0 1-.375-.304 4.007 4.007 0 0 0 0-1.99c.104-.116.229-.22.375-.304l1.446-.835-1-1.732-1.446.835a1.514 1.514 0 0 1-.452.173 3.996 3.996 0 0 0-1.722-.996A1.513 1.513 0 0 1 9 3.67V2H7Z"/></svg>';
 s(D2, G2);
 const j2 = "gear-solid", B2 = '<svg><path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1.304l-1.13-.652a1.5 1.5 0 0 0-2.048.549l-1.5 2.598a1.5 1.5 0 0 0 .549 2.05L2 8l-1.13.652A1.5 1.5 0 0 0 .323 10.7l1.5 2.598a1.5 1.5 0 0 0 2.049.55L5 13.195V14.5A1.5 1.5 0 0 0 6.5 16h3a1.5 1.5 0 0 0 1.5-1.5v-1.304l1.13.652a1.5 1.5 0 0 0 2.048-.549l1.5-2.598a1.5 1.5 0 0 0-.549-2.05L14 8l1.13-.652a1.5 1.5 0 0 0 .548-2.049l-1.5-2.598a1.5 1.5 0 0 0-2.049-.55L11 2.805V1.5A1.5 1.5 0 0 0 9.5 0h-3ZM8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg>';
@@ -329,10 +332,10 @@ const N4 = "info-circle", z4 = '<svg><path d="M9 7v5H7V7h2ZM8 4a1 1 0 1 0 0 2 1 
 s(N4, z4);
 const S4 = "info-circle-solid", T4 = '<svg><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm7-3a1 1 0 1 0 2 0 1 1 0 0 0-2 0Zm2 2H7v5h2V7Z"/></svg>';
 s(S4, T4);
-const q4 = "laptop", R4 = '<svg><path d="M1 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6h1v6H0V9h1V3Zm1 8v2h12v-2h-2v1H4v-1H2Zm4-1h4V9h3V3H3v6h3v1Z"/></svg>';
-s(q4, R4);
-const I4 = "laptop-solid", F4 = '<svg><path d="M3 1a2 2 0 0 0-2 2v6H0v6h16V9h-1V3a2 2 0 0 0-2-2H3ZM2 13v-2h2v1h8v-1h2v2H2Z"/></svg>';
-s(I4, F4);
+const q4 = "laptop", I4 = '<svg><path d="M1 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6h1v6H0V9h1V3Zm1 8v2h12v-2h-2v1H4v-1H2Zm4-1h4V9h3V3H3v6h3v1Z"/></svg>';
+s(q4, I4);
+const R4 = "laptop-solid", F4 = '<svg><path d="M3 1a2 2 0 0 0-2 2v6H0v6h16V9h-1V3a2 2 0 0 0-2-2H3ZM2 13v-2h2v1h8v-1h2v2H2Z"/></svg>';
+s(R4, F4);
 const D4 = "lightning", G4 = '<svg><path d="M9.5 6.5 10 0H9L2 9.5h4.5L6 16h1l7-9.5H9.5Z"/></svg>';
 s(D4, G4);
 const j4 = "lightning-box", B4 = '<svg><path d="M8.5 4 5 9h2v3h.5L11 7H9V4h-.5Z"/><path d="M15 1H1v14h14V1ZM3 13V3h10v10H3Z"/></svg>';
@@ -383,10 +386,10 @@ const N3 = "money", z3 = '<svg><path d="M7 2H5a3.5 3.5 0 1 0 0 7h2v3H2.5v2H7v2h2
 s(N3, z3);
 const S3 = "neutral", T3 = '<svg><path d="M5.5 9a1 1 0 1 0 0 2h5a1 1 0 1 0 0-2h-5ZM11 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8Z"/></svg>';
 s(S3, T3);
-const q3 = "neutral-solid", R3 = '<svg><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm11-2a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-6.5 4a1 1 0 0 0 1 1h5a1 1 0 1 0 0-2h-5a1 1 0 0 0-1 1ZM6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>';
-s(q3, R3);
-const I3 = "newspaper", F3 = '<svg><path d="M8 5h4v2H8V5Zm4 3H8v2h4V8Z"/><path d="M16 1H4v2H0v9a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V1ZM5.83 13c.11-.313.17-.65.17-1V3h8v9a1 1 0 0 1-1 1H5.83ZM2 12V5h2v7a1 1 0 1 1-2 0Z"/></svg>';
-s(I3, F3);
+const q3 = "neutral-solid", I3 = '<svg><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm11-2a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-6.5 4a1 1 0 0 0 1 1h5a1 1 0 1 0 0-2h-5a1 1 0 0 0-1 1ZM6 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>';
+s(q3, I3);
+const R3 = "newspaper", F3 = '<svg><path d="M8 5h4v2H8V5Zm4 3H8v2h4V8Z"/><path d="M16 1H4v2H0v9a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V1ZM5.83 13c.11-.313.17-.65.17-1V3h8v9a1 1 0 0 1-1 1H5.83ZM2 12V5h2v7a1 1 0 1 1-2 0Z"/></svg>';
+s(R3, F3);
 const D3 = "newspaper-solid", G3 = '<svg><path d="M16 1H4v2H0v9a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V1ZM4 12a1 1 0 1 1-2 0V5h2v7Zm8-8v2H8V4h4Zm0 3v2H8V7h4Z"/></svg>';
 s(D3, G3);
 const j3 = "note", B3 = '<svg><path d="M10 8H6V6h4v2Zm0 3H6V9h4v2Z"/><path d="M10.414 1H2v14h12V4.586L10.414 1ZM4 13V3h5.586L12 5.414V13H4Z"/></svg>';
@@ -437,10 +440,10 @@ const N5 = "printer", z5 = '<svg><path d="M12 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><
 s(N5, z5);
 const S5 = "printer-solid", T5 = '<svg><path d="M13 0H3v4H0v9h3v3h10v-3h3V4h-3V0Zm0 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm-2-4H5V2h6v2Zm0 10H5v-2h6v2Z"/></svg>';
 s(S5, T5);
-const q5 = "question-mark", R5 = '<svg><path d="M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM7.5 4A2.5 2.5 0 0 0 5 6.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4H7.5Z"/><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"/></svg>';
-s(q5, R5);
-const I5 = "question-mark-solid", F5 = '<svg><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm5-1.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4H7.5A2.5 2.5 0 0 0 5 6.5ZM8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>';
-s(I5, F5);
+const q5 = "question-mark", I5 = '<svg><path d="M9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM7.5 4A2.5 2.5 0 0 0 5 6.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4H7.5Z"/><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6a6 6 0 1 0 0 12A6 6 0 0 0 8 2Z"/></svg>';
+s(q5, I5);
+const R5 = "question-mark-solid", F5 = '<svg><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm5-1.5h2a.5.5 0 0 1 .5-.5h.646a.382.382 0 0 1 .17.724L7 7.382V9h2v-.382l.211-.106A2.382 2.382 0 0 0 8.146 4H7.5A2.5 2.5 0 0 0 5 6.5ZM8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>';
+s(R5, F5);
 const D5 = "redo", G5 = '<svg><path d="M0 10.5v-1A4.5 4.5 0 0 1 4.5 5h7.586l-2-2L11.5 1.586 15.914 6 11.5 10.414 10.086 9l2-2H4.5a2.5 2.5 0 0 0 0 5H12v2H4.5a4.502 4.502 0 0 1-4.388-3.5H0Z"/></svg>';
 s(D5, G5);
 const j5 = "rss", B5 = '<svg><path d="M2 3c6.075 0 11 4.925 11 11h2C15 6.82 9.18 1 2 1v2Z"/><path d="M2 5a9 9 0 0 1 9 9H9a7 7 0 0 0-7-7V5Zm4 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/></svg>';
@@ -491,10 +494,10 @@ const N8 = "thumbs-up-solid", z8 = '<svg><path d="M7.323 1H8a3 3 0 0 1 3 3v1h2.3
 s(N8, z8);
 const S8 = "transfer", T8 = '<svg><path d="M11.586 3H1v2h10.586l-1.5 1.5L11.5 7.914 15.414 4 11.5.086 10.086 1.5l1.5 1.5ZM4.414 13H15v-2H4.414l1.5-1.5L4.5 8.086.586 12 4.5 15.914 5.914 14.5l-1.5-1.5Z"/></svg>';
 s(S8, T8);
-const q8 = "transfer-alt", R8 = '<svg><path d="M3 4.414V15h2V4.414l1.5 1.5L7.914 4.5 4 .586.086 4.5 1.5 5.914l1.5-1.5Zm10 7.172V1h-2v10.586l-1.5-1.5L8.086 11.5 12 15.414l3.914-3.914-1.414-1.414-1.5 1.5Z"/></svg>';
-s(q8, R8);
-const I8 = "trash", F8 = '<svg><path d="M7 7v5h2V7H7Z"/><path d="M11 0H5v3H0v2h1.165l1.553 8.537A3 3 0 0 0 5.669 16h4.662a3 3 0 0 0 2.952-2.463L14.835 5H16V3h-5V0ZM9 3H7V2h2v1ZM4.685 13.179 3.198 5h9.604l-1.487 8.179a1 1 0 0 1-.984.821H5.669a1 1 0 0 1-.984-.821Z"/></svg>';
-s(I8, F8);
+const q8 = "transfer-alt", I8 = '<svg><path d="M3 4.414V15h2V4.414l1.5 1.5L7.914 4.5 4 .586.086 4.5 1.5 5.914l1.5-1.5Zm10 7.172V1h-2v10.586l-1.5-1.5L8.086 11.5 12 15.414l3.914-3.914-1.414-1.414-1.5 1.5Z"/></svg>';
+s(q8, I8);
+const R8 = "trash", F8 = '<svg><path d="M7 7v5h2V7H7Z"/><path d="M11 0H5v3H0v2h1.165l1.553 8.537A3 3 0 0 0 5.669 16h4.662a3 3 0 0 0 2.952-2.463L14.835 5H16V3h-5V0ZM9 3H7V2h2v1ZM4.685 13.179 3.198 5h9.604l-1.487 8.179a1 1 0 0 1-.984.821H5.669a1 1 0 0 1-.984-.821Z"/></svg>';
+s(R8, F8);
 const D8 = "trash-solid", G8 = '<svg><path d="M5 0h6v3h5v2h-1.165l-1.553 8.537A3 3 0 0 1 10.332 16H5.669a3 3 0 0 1-2.951-2.463L1.165 5H0V3h5V0Zm2 3h2V2H7v1Zm0 4v5h2V7H7Z"/></svg>';
 s(D8, G8);
 const j8 = "undo", B8 = '<svg><path d="M16 10.5v-1A4.5 4.5 0 0 0 11.5 5H3.914l2-2L4.5 1.586.086 6 4.5 10.414 5.914 9l-2-2H11.5a2.5 2.5 0 0 1 0 5H4v2h7.5a4.502 4.502 0 0 0 4.389-3.5H16Z"/></svg>';
@@ -529,3 +532,8 @@ const V6 = "video-off-solid", p6 = '<svg><path d="m14.293.293 1.414 1.414-2.51 2
 s(V6, p6);
 const M6 = "video-solid", i6 = '<svg><path d="M12 2H0v12h12v-2.367l4 .5V3.867l-4 .5V2Z"/></svg>';
 s(M6, i6);
+export {
+  k as RivetIconElement,
+  L6 as getIcons,
+  s as registerIcon
+};

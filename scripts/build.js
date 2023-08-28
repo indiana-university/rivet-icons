@@ -66,9 +66,11 @@ registerIcon(name, svg);
 }
 
 async function createIndex (icons) {
-	const contents = icons
+	const imports = icons
 		.map(({ name }) => `import './${OUT_ICONS_DIR}/${name}.js';\n`)
 		.join('');
+	const exports = `export * from '../lib/rivet-icon-element.js';\n`;
+	const contents = `${imports}${exports}`;
 	await writeFile('index.js', contents);
 }
 
@@ -79,7 +81,7 @@ async function createBundle () {
 			lib: {
 				entry: path.resolve(OUT_DIR, 'index.js'),
 				fileName: 'bundle',
-				name: 'RivetIcon'
+				name: 'RivetIcons'
 			}
 		}
 	});

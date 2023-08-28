@@ -208,3 +208,4 @@ import './icons/video.js';
 import './icons/video-off.js';
 import './icons/video-off-solid.js';
 import './icons/video-solid.js';
+export * from '../lib/rivet-icon-element.js';
