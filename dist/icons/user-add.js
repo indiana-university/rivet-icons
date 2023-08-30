@@ -1,6 +1,0 @@
-import { registerIcon } from '../../lib/rivet-icon-element.js';
-
-export const name = 'user-add';
-export const svg = `<svg><path d="M1 4a4 4 0 1 1 8 0 4 4 0 0 1-8 0Zm4-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM0 12a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v4H0v-4Zm3-1a1 1 0 0 0-1 1v2h6v-2a1 1 0 0 0-1-1H3Zm13-3h-2v2h-2V8h-2V6h2V4h2v2h2v2Z"/></svg>`;
-
-registerIcon(name, svg);
