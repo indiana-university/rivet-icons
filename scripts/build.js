@@ -18,8 +18,7 @@ const SRC_DIR = 'src';
 await cleanup();
 const icons = await getIcons();
 await createJS(icons);
-await createIndex(icons);
-await createBundle();
+await createBundle(icons);
 await createJSON(icons);
 
 //
@@ -66,26 +65,26 @@ registerIcon(name, svg);
 	await Promise.all(promises);
 }
 
-async function createIndex (icons) {
+async function createBundle (icons) {
+	const tmpFile = 'tmp.js';
+	const tmpPath = path.resolve(OUT_DIR, tmpFile);
 	const imports = icons
 		.map(({ name }) => `import './${ICONS_DIR}/${name}.js';\n`)
 		.join('');
 	const exports = `export * from '../${SRC_DIR}/rivet-icon-element.js';\n`;
 	const contents = `${imports}${exports}`;
-	await writeFile('index.js', contents);
-}
-
-async function createBundle () {
+	await writeFile(tmpFile, contents);
 	await build({
 		build: {
 			emptyOutDir: false,
 			lib: {
-				entry: path.resolve(OUT_DIR, 'index.js'),
-				fileName: 'bundle',
+				entry: tmpPath,
+				fileName: 'rivet-icons',
 				name: 'RivetIcons'
 			}
 		}
 	});
+	await fs.rm(tmpPath);
 }
 
 async function createJSON (icons) {
