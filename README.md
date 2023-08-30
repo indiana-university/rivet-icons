@@ -84,7 +84,7 @@ The following are some notable contents in the `rivet-icons` npm package.
 ### `rivet-icons.js`
 
 ```js
-// Import all icons from a single file, and access the API.
+// Import all icons from a single module, and access the API.
 import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet-icons.js';
 ```
 
