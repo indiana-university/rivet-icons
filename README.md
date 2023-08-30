@@ -74,12 +74,23 @@ The following are some notable contents in the `rivet-icons` npm package.
 | Path | Description |
 | --- | --- |
 | `./dist` | Production JavaScript modules. |
+| `./dist/icons/*.js` | Icon modules. |
 | `./dist/rivet-icons.js` | Bundle containing all the icons (as ES module). |
 | `./dist/rivet-icons.umd.cjs` | Bundle containing all the icons (as UMD file). |
-| `./dist/icons/*.js` | Icon modules. |
 | `./src` | Source files. |
 | `./src/rivet-icon-element.js` | Rivet Icon Element (custom element `<rvt-icon>`). |
 | `./src/icons/*.svg` | SVG icon files. |
+
+### `icons/*.js`
+
+```js
+// Import individual icon modules.
+import 'rivet-icons/dist/icons/heart.js';
+import 'rivet-icons/dist/icons/heart-solid.js';
+
+// Access the API.
+import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
+```
 
 ### `rivet-icons.js`
 
@@ -97,17 +108,6 @@ import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet
 // Access the API.
 const { getIcons, registerIcon, RivetIconElement } = window.RivetIcons;
 </script>
-```
-
-### `icons/*.js`
-
-```js
-// Import individual icon modules.
-import 'rivet-icons/dist/icons/heart.js';
-import 'rivet-icons/dist/icons/heart-solid.js';
-
-// Access the API.
-import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
 ```
 
 ## Add a custom icon
