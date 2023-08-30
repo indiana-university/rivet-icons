@@ -1,6 +1,6 @@
 # Rivet Icons
 
-[Icons](https://rivet.iu.edu/icons/) for the Rivet Design System.
+[Icons](https://rivet.iu.edu/icons/) for Indiana University's Rivet Design System.
 
 ## Contents
 
