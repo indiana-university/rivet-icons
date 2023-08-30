@@ -8,7 +8,7 @@ import path from 'node:path';
 import { build } from 'vite';
 
 const OUT_DIR = 'dist';
-const OUT_ICONS_DIR = 'icons';
+const ICONS_DIR = 'icons';
 const SRC_DIR = 'src';
 
 //
@@ -28,13 +28,14 @@ await createJSON(icons);
 
 async function cleanup () {
 	await fs.rm(OUT_DIR, { force: true, recursive: true });
-	await fs.mkdir(path.join(OUT_DIR, OUT_ICONS_DIR), { recursive: true });
+	await fs.mkdir(path.join(OUT_DIR, ICONS_DIR), { recursive: true });
 }
 
 async function getIcons () {
-	const promises = (await fs.readdir(SRC_DIR))
+	const dir = path.join(SRC_DIR, ICONS_DIR);
+	const promises = (await fs.readdir(dir))
 		.map((file) => {
-			const filePath = path.resolve(SRC_DIR, file);
+			const filePath = path.resolve(dir, file);
 			const { ext, name } = path.parse(file);
 			return { ext, filePath, name };
 		})
@@ -53,23 +54,23 @@ async function createJS (icons) {
 			.replace(/ (fill|height|viewBox|width|xmlns)="[^"]+"/g, '')
 			.replace(/(\n|  )/g, '')
 		const contents =
-`import { registerIcon } from '../../lib/rivet-icon-element.js';
+`import { registerIcon } from '../../${SRC_DIR}/rivet-icon-element.js';
 
 export const name = '${name}';
 export const svg = \`${svg}\`;
 
 registerIcon(name, svg);
 `;
-		await writeFile(path.join(OUT_ICONS_DIR, `${name}.js`), contents);
+		await writeFile(path.join(ICONS_DIR, `${name}.js`), contents);
 	});
 	await Promise.all(promises);
 }
 
 async function createIndex (icons) {
 	const imports = icons
-		.map(({ name }) => `import './${OUT_ICONS_DIR}/${name}.js';\n`)
+		.map(({ name }) => `import './${ICONS_DIR}/${name}.js';\n`)
 		.join('');
-	const exports = `export * from '../lib/rivet-icon-element.js';\n`;
+	const exports = `export * from '../${SRC_DIR}/rivet-icon-element.js';\n`;
 	const contents = `${imports}${exports}`;
 	await writeFile('index.js', contents);
 }
