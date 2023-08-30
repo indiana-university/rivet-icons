@@ -25,7 +25,6 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8">
 		<title>Rivet icon example</title>
 		<script type="module" src="https://unpkg.com/rivet-icons@3/dist/rivet-icons.js"></script>
 	</head>
