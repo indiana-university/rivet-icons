@@ -74,6 +74,7 @@ The following are some notable contents in the `rivet-icons` npm package.
 | `./dist/icons/*.js` | Icon modules. |
 | `./dist/rivet-icons.js` | Bundle containing all the icons (as ES module). |
 | `./dist/rivet-icons.umd.cjs` | Bundle containing all the icons (as UMD file). |
+| `./dist/rivet-icons.json` | JSON array of all icon names. |
 | `./src` | Source files. |
 | `./src/rivet-icon-element.js` | Rivet Icon Element (custom element `<rvt-icon>`). |
 | `./src/icons/*.svg` | SVG icon files. |
