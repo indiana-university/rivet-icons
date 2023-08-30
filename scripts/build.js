@@ -8,8 +8,10 @@ import path from 'node:path';
 import { build } from 'vite';
 
 const OUT_DIR = 'dist';
+const OUT_FILE = 'rivet-icons';
 const ICONS_DIR = 'icons';
 const SRC_DIR = 'src';
+const ELEMENT_PATH = `${SRC_DIR}/rivet-icon-element.js`;
 
 //
 // Start build process
@@ -17,9 +19,9 @@ const SRC_DIR = 'src';
 
 await cleanup();
 const icons = await getIcons();
+await createJSON(icons);
 await createJS(icons);
 await createBundle(icons);
-await createJSON(icons);
 
 //
 // Build steps
@@ -47,13 +49,19 @@ async function getIcons () {
 	return await Promise.all(promises);
 }
 
+async function createJSON (icons) {
+	const data = icons.map(({ name }) => name)
+	const contents = JSON.stringify(data);
+	await writeFile(`${OUT_FILE}.json`, contents);
+}
+
 async function createJS (icons) {
 	const promises = icons.map(async ({ name, source }) => {
 		const svg = source
 			.replace(/ (fill|height|viewBox|width|xmlns)="[^"]+"/g, '')
 			.replace(/(\n|  )/g, '')
 		const contents =
-`import { registerIcon } from '../../${SRC_DIR}/rivet-icon-element.js';
+`import { registerIcon } from '../../${ELEMENT_PATH}';
 
 export const name = '${name}';
 export const svg = \`${svg}\`;
@@ -71,7 +79,7 @@ async function createBundle (icons) {
 	const imports = icons
 		.map(({ name }) => `import './${ICONS_DIR}/${name}.js';\n`)
 		.join('');
-	const exports = `export * from '../${SRC_DIR}/rivet-icon-element.js';\n`;
+	const exports = `export * from '../${ELEMENT_PATH}';\n`;
 	const contents = `${imports}${exports}`;
 	await writeFile(tmpFile, contents);
 	await build({
@@ -79,18 +87,12 @@ async function createBundle (icons) {
 			emptyOutDir: false,
 			lib: {
 				entry: tmpPath,
-				fileName: 'rivet-icons',
+				fileName: OUT_FILE,
 				name: 'RivetIcons'
 			}
 		}
 	});
 	await fs.rm(tmpPath);
-}
-
-async function createJSON (icons) {
-	const data = icons.map(({ name }) => name)
-	const contents = JSON.stringify(data);
-	await writeFile('icons.json', contents);
 }
 
 //
