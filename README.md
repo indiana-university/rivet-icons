@@ -69,7 +69,7 @@ import 'rivet-icons/dist/icons/heart-solid.js';
 
 ## API
 
-The following are some notable contents in this repo.
+The following are some notable contents in the `rivet-icons` npm package.
 
 | Path | Description |
 | --- | --- |
@@ -83,25 +83,8 @@ The following are some notable contents in this repo.
 
 ### `rivet-icons.js`
 
-```html
-<!-- Option 1: Import all icons from a single file. -->
-<script type="module" src="/path/to/rivet-icons/dist/rivet-icons.js"></script>
-```
-
-```html
-<script type="module">
-// Option 2: Import all icons from a single file, and access the API.
-import { getIcons, registerIcon, RivetIconElement } from '/path/to/rivet-icons/dist/rivet-icons.js';
-</script>
-```
-
 ```js
-// Option 3: Import all icons from a single file.
-import 'rivet-icons/dist/rivet-icons.js';
-```
-
-```js
-// Option 4: Import all icons from a single file, and access the API.
+// Import all icons from a single file, and access the API.
 import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet-icons.js';
 ```
 
