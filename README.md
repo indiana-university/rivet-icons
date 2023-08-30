@@ -14,7 +14,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 1. [Change icon name in JavaScript](#change-icon-name-in-javascript)
 1. [Change icon name in CSS](#change-icon-name-in-css)
 1. [Change icon color](#change-icon-color)
-1. [Change icon size](#change-icon-size)
+1. [Change icon spacing](#change-icon-spacing)
 1. [Flash of unstyled content](#flash-of-unstyled-content)
 1. [Accessibility](#accessibility)
 1. [Request a new icon](#request-a-new-icon)
@@ -202,9 +202,9 @@ Change the icon color with the CSS `color` property. It is recommended to use th
 <rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
 ```
 
-## Change icon size
+## Change icon spacing
 
-Icons are sized at 16 square pixels, but padding and margin can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
+Icons are sized at 16 square pixels, but padding and margin can be adjusted to fit into other contexts. For example, to increase the outer dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
 
 ```html
 <!-- 16x16 -->
