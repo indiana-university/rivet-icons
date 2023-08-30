@@ -1,8 +1,6 @@
 # Rivet Icons
 
-Icons for the [Rivet Design System](https://rivet.iu.edu/).
-
-[**View Demo**](https://rivet.iu.edu/icons/)
+[Icons](https://rivet.iu.edu/icons/) for the Rivet Design System.
 
 ## Contents
 
