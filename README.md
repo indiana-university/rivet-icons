@@ -8,7 +8,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 
 1. [Quick start](#quick-start)
 1. [Install](#install)
-1. [Usage](#usage)
+1. [API](#api)
 1. [Add a custom icon](#add-a-custom-icon)
 1. [Usage](#usage)
 1. [Change icon name in JavaScript](#change-icon-name-in-javascript)
@@ -67,12 +67,12 @@ import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
 ```
 
-## Usage
+## API
 
 The following are some notable contents in this repo.
 
 | Path | Description |
-| --- | --- | --- |
+| --- | --- |
 | `./dist` | Production JavaScript modules. |
 | `./dist/rivet-icons.js` | Bundle containing all the icons (as ES module). |
 | `./dist/rivet-icons.umd.cjs` | Bundle containing all the icons (as UMD file). |
@@ -83,11 +83,25 @@ The following are some notable contents in this repo.
 
 ### `rivet-icons.js`
 
-```js
-// Import all icons from a single file.
-import 'rivet-icons/dist/rivet-icons.js';
+```html
+<!-- Option 1: Import all icons from a single file. -->
+<script type="module" src="/path/to/rivet-icons/dist/rivet-icons.js"></script>
+```
 
-// Import all icons from a single file and access the API.
+```html
+<script type="module">
+// Option 2: Import all icons from a single file, and access the API.
+import { getIcons, registerIcon, RivetIconElement } from '/path/to/rivet-icons/dist/rivet-icons.js';
+</script>
+```
+
+```js
+// Option 3: Import all icons from a single file.
+import 'rivet-icons/dist/rivet-icons.js';
+```
+
+```js
+// Option 4: Import all icons from a single file, and access the API.
 import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet-icons.js';
 ```
 
@@ -105,10 +119,11 @@ const { getIcons, registerIcon, RivetIconElement } = window.RivetIcons;
 ### `icons/*.js`
 
 ```js
-// Import icon modules.
+// Import individual icon modules.
 import 'rivet-icons/dist/icons/heart.js';
+import 'rivet-icons/dist/icons/heart-solid.js';
 
-// Optionally access the API.
+// Access the API.
 import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
 ```
 
