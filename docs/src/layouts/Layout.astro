@@ -7,7 +7,12 @@
 	<link rel="stylesheet" href="https://unpkg.com/rivet-core@2.5.1/css/rivet.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/rivet-core@2.5.1/tokens/css/variables.css">
 	<link rel="stylesheet" href="/styles.css"></script>
-	<script type="module" src="../dist/bundle.js"></script>
+	<script type="module" src="../dist/rivet-icons.js"></script>
+	<script type="module">
+		window.customElements.whenDefined('rvt-icon').then(() => {
+			document.documentElement.classList.add('rvt-icon-defined');
+		});
+	</script>
 </head>
 <body>
 	<main class="rvt-p-all-lg">

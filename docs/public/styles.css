@@ -3,6 +3,10 @@ html {
 	background-color: var(--color-black-100);
 }
 
+html:not(.rvt-icon-defined) {
+	display: none;
+}
+
 .docs-icon-list {
 	display: grid;
 	gap: 0.5rem;
