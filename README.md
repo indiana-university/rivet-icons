@@ -7,8 +7,8 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 ## Contents
 
 1. [Quick start](#quick-start)
-1. [Repo structure](#repo-structure)
 1. [Install](#install)
+1. [Usage](#usage)
 1. [Add a custom icon](#add-a-custom-icon)
 1. [Usage](#usage)
 1. [Change icon name in JavaScript](#change-icon-name-in-javascript)
@@ -37,15 +37,6 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 </html>
 ```
 
-## Repo structure
-
-The following are some notable contents in this repo.
-
-| Path | Description |
-| --- | --- |
-| `./dist` | Production JavaScript modules. |
-| `./src` | Source SVG files. |
-
 ## Install
 
 Install this package by referencing it from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/) or from a local installation with npm.
@@ -68,12 +59,57 @@ Link to the desired JavaScript modules inside of the HTML document's `<head>`. I
 <script type="module" src="/src/icons.js"></script>
 ```
 
-The `bundle.js` file is ideal for prototyping (Option 1), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to make a custom icon set in a JavaScript module (Option 3).
+The `rivet-icons.js` file is ideal for prototyping (Option 1), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to make a custom icon set in a JavaScript module (Option 3).
 
 ```js
 // /src/icons.js
 import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
+```
+
+## Usage
+
+The following are some notable contents in this repo.
+
+| Path | Description |
+| --- | --- | --- |
+| `./dist` | Production JavaScript modules. |
+| `./dist/rivet-icons.js` | Bundle containing all the icons (as ES module). |
+| `./dist/rivet-icons.umd.cjs` | Bundle containing all the icons (as UMD file). |
+| `./dist/icons/*.js` | Icon modules. |
+| `./src` | Source files. |
+| `./src/rivet-icon-element.js` | Rivet Icon Element (custom element `<rvt-icon>`). |
+| `./src/icons/*.svg` | SVG icon files. |
+
+### `rivet-icons.js`
+
+```js
+// Import all icons from a single file.
+import 'rivet-icons/dist/rivet-icons.js';
+
+// Import all icons from a single file and access the API.
+import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet-icons.js';
+```
+
+### `rivet-icons.umd.cjs`
+
+```html
+<!-- Import all icons from a single file. -->
+<script src="/path/to/rivet-icons/dist/rivet-icons.umd.cjs"></script>
+<script>
+// Access the API.
+const { getIcons, registerIcon, RivetIconElement } = window.RivetIcons;
+</script>
+```
+
+### `icons/*.js`
+
+```js
+// Import icon modules.
+import 'rivet-icons/dist/icons/heart.js';
+
+// Optionally access the API.
+import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
 ```
 
 ## Add a custom icon
