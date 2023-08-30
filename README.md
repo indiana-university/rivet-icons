@@ -29,7 +29,7 @@ Icons for the [Rivet Design System](https://rivet.iu.edu/).
 	<head>
 		<meta charset="utf-8">
 		<title>Rivet icon example</title>
-		<script type="module" src="https://unpkg.com/rivet-icons@3/dist/bundle.js"></script>
+		<script type="module" src="https://unpkg.com/rivet-icons@3/dist/rivet-icons.js"></script>
 	</head>
 	<body>
 		<rvt-icon name="heart"></rvt-icon>
@@ -58,7 +58,7 @@ Link to the desired JavaScript modules inside of the HTML document's `<head>`. I
 
 ```html
 <!-- Option 1: Include all icons in a single bundled file. -->
-<script type="module" src="/path/to/rivet-icons/dist/bundle.js"></script>
+<script type="module" src="/path/to/rivet-icons/dist/rivet-icons.js"></script>
 
 <!-- Option 2: Include particular icons, if only a few icons are needed. -->
 <script type="module" src="/path/to/rivet-icons/dist/icons/heart.js"></script>
@@ -72,8 +72,8 @@ The `bundle.js` file is ideal for prototyping (Option 1), but it likely includes
 
 ```js
 // /src/icons.js
-import 'rvt-icon/dist/icons/heart.js';
-import 'rvt-icon/dist/icons/heart-solid.js';
+import 'rivet-icons/dist/icons/heart.js';
+import 'rivet-icons/dist/icons/heart-solid.js';
 ```
 
 ## Add a custom icon
@@ -82,7 +82,7 @@ Use the `registerIcon()` function to register the name and SVG code for a custom
 
 ```js
 // /src/icon-diamond.js
-import { registerIcon } from 'rvt-icon';
+import { registerIcon } from 'rivet-icons';
 
 const name = 'diamond';
 const svg = `<svg><polyline points="8,2 14,8 8,14 2,8" /></svg>`;
@@ -108,8 +108,8 @@ Include this custom icon in the module for the custom icon set.
 
 ```diff
 // /src/icons.js
-import 'rvt-icon/dist/icons/heart.js';
-import 'rvt-icon/dist/icons/heart-solid.js';
+import 'rivet-icons/dist/icons/heart.js';
+import 'rivet-icons/dist/icons/heart-solid.js';
 + import './icon-diamond.js';
 ```
 
@@ -125,7 +125,7 @@ document.addEventListener('rvtIconRegistered', (event) => {
 Use the `getIcons()` function get an array of all registered icons.
 
 ```js
-import { getIcons } from 'rvt-icon';
+import { getIcons } from 'rivet-icons';
 
 console.log(getIcons());
 // ["heart", "heart-solid", "diamond"]
