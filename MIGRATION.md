@@ -12,7 +12,7 @@ Instead of using the internal SVG symbols option, just use the Rivet Icon Elemen
 
 ## Now optional: `rivet-icon-element.js`
 
-It was required to directly reference the `rivet-icon-element.js` file when using the Rivet Icon Element (`<rvt-icon>`). Now, it is imported into the bundle (`rivet-icons.js`) and individual icon modules (`icons/*.js`).
+It was required to directly reference the `rivet-icon-element.js` file when using the Rivet Icon Element (`<rvt-icon>`). Now, it is imported into the bundle (`dist/rivet-icons.js`) and individual icon modules (`dist/icons/*.js`).
 
 Referring to this file is only needed to access its new API, and it happens implicitly when importing from the package root.
 
