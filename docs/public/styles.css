@@ -3,7 +3,7 @@ html {
 	background-color: var(--color-black-100);
 }
 
-html:not(.rvt-icon-defined) {
+[data-fouc] {
 	display: none;
 }
 

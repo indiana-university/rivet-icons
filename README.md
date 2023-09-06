@@ -242,19 +242,19 @@ Icons are sized at 16 square pixels, but padding and margin can be adjusted to f
 
 ## Flash of unstyled content
 
-"Flash of unstyled content" happens when `<rvt-icon>` is declared before the element definition is registered. This looks like the icon is briefly invisible. To avoid this, wait to render content until after the element registers with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
+"Flash of unstyled content" typically happens when the server (instead of client) renders `<rvt-icon>`. This looks like the icon is invisible. After it registers it becomes visible and shifts the layout. To avoid this, wait to render content until after the element registers with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
 
-In the following example, the HTML document renders nothing until the CSS class `rvt-icon-defined` is added to the `<html>` element.
+In the following example, the HTML document renders nothing until the `data-rvt-icon-defined` attribute is added to the `<html>` element.
 
 ```html
 <style>
-html:not(.rvt-icon-defined) {
+html:not([data-rvt-icon-defined]) {
 	display: none;
 }
 </style>
 <script type="module">
 window.customElements.whenDefined('rvt-icon').then(() => {
-	document.documentElement.classList.add('rvt-icon-defined');
+	document.documentElement.setAttribute('data-rvt-icon-defined', '');
 });
 </script>
 ```
