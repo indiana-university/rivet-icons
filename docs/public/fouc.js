@@ -2,15 +2,15 @@ const attr = 'data-fouc';
 const delimiter = ' ';
 
 for (const el of document.querySelectorAll(`[${attr}]`)) {
-	handleFlashOfUnstyledContent(el, attr);
+	handleFlashOfUnstyledContent(el);
 }
 
 function handleFlashOfUnstyledContent (element) {
-	getAttributeListItems(element).forEach((item) => {
+	for (const item of getAttributeListItems(element)) {
 		window.customElements.whenDefined(item).then(() => {
 			removeAttributeListItem(element, item);
 		});
-	});
+	}
 }
 
 function getAttributeListItems (element) {
