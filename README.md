@@ -187,7 +187,7 @@ const icon = (<rvt-icon name={iconName} />)
 
 ## Change icon name in CSS
 
-Use CSS to dynamically change the icon via the `--name` variable. Set its value to the CSS variable of the desired icon ("heart" is `var(--heart)`). In order to not pollute the global `:root` scope, icon variables are declared at the level of the `rvt-icon` element. That means, `--name` should only be used on the `rvt-icon` element itself, not on an ancestor.
+Use CSS to dynamically change the icon via the `--name` variable. Set its value to the CSS variable of the desired icon ("heart" is `var(--heart)`). Icon variables are declared at the level of the `rvt-icon` element. That means `--name` will only work when applied to the `rvt-icon` element itself, not on an ancestor.
 
 In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users.
 
@@ -197,19 +197,10 @@ In this example, the button toggles the value of `aria-pressed` for screen reade
 	Favorite
 </button>
 <style>
-/* Do this. */
 .favorite[aria-pressed="false"] > rvt-icon {
 	--name: var(--heart);
 }
 .favorite[aria-pressed="true"] > rvt-icon {
-	--name: var(--heart-solid);
-}
-
-/* This won't work. */
-.favorite[aria-pressed="false"] {
-	--name: var(--heart);
-}
-.favorite[aria-pressed="true"] {
 	--name: var(--heart-solid);
 }
 </style>
