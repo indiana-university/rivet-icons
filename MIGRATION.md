@@ -1,6 +1,6 @@
 # Migration (v2 to v3)
 
-Rivet Icons v2 provided many integration options, but this flexibility also meant it was complicated and confusing to get started. Rivet Icons v3 provides a better developer experiencing by enhancing the `<rvt-icon>` custom element and removing redundant integration options.
+Rivet Icons v2 provided many integration options, but this flexibility also meant it was complicated and confusing to get started. Rivet Icons v3 provides a better developer experience by enhancing the `<rvt-icon>` custom element and removing redundant integration options.
 
 ## Repurposed: `rivet-icons.js`
 
