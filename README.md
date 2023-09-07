@@ -77,7 +77,7 @@ The following are some notable contents in the `rivet-icons` npm package and how
 
 ### `icons/*.js`
 
-It is recommended to use the icon modules for production.
+Use the icon modules for production.
 
 ```js
 // Import individual icon modules.
