@@ -48,25 +48,21 @@ Link to the desired JavaScript modules inside of the HTML document's `<head>`. I
 <!-- Option 1: Include all icons in a single bundled file. -->
 <script type="module" src="/path/to/rivet-icons/dist/rivet-icons.js"></script>
 
-<!-- Option 2: Include particular icons, if only a few icons are needed. -->
-<script type="module" src="/path/to/rivet-icons/dist/icons/heart.js"></script>
-<script type="module" src="/path/to/rivet-icons/dist/icons/heart-solid.js"></script>
-
-<!-- Option 3 (recommended): Make a custom icon set. -->
+<!-- Option 2 (recommended): Make a custom icon set. -->
 <script type="module" src="/src/icons.js"></script>
 ```
 
-The `rivet-icons.js` file is ideal for prototyping (Option 1), but it likely includes more icons than are needed for production. Instead of referencing each needed icon in HTML (Option 2), it may be simpler to make a custom icon set in a JavaScript module (Option 3).
+The `rivet-icons.js` file is ideal for prototyping (Option 1), but it likely includes more icons than are needed for production. Instead, it is recommended to make a custom icon set in a JavaScript module (Option 2).
 
 ```js
-// /src/icons.js
+// Option 2: /src/icons.js
 import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
 ```
 
 ## API
 
-The following are some notable contents in the `rivet-icons` npm package.
+The following are some notable contents in the `rivet-icons` npm package and how to use them.
 
 | Path | Description |
 | --- | --- |
@@ -81,29 +77,38 @@ The following are some notable contents in the `rivet-icons` npm package.
 
 ### `icons/*.js`
 
+It is recommended to use the icon modules for production.
+
 ```js
 // Import individual icon modules.
 import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
 
-// Access the API.
+// Optional: Access the API.
 import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
 ```
 
 ### `rivet-icons.js`
 
+Use the module bundle for development or prototyping.
+
 ```js
-// Import all icons from a single module, and access the API.
+// Import all icons from a single module.
+import 'rivet-icons/dist/rivet-icons.js';
+
+// Optional: Access the API.
 import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet-icons.js';
 ```
 
 ### `rivet-icons.umd.cjs`
 
+Use the UMD bundle for development or prototyping.
+
 ```html
 <!-- Import all icons from a single file. -->
 <script src="/path/to/rivet-icons/dist/rivet-icons.umd.cjs"></script>
 <script>
-// Access the API.
+// Optional: Access the API.
 const { getIcons, registerIcon, RivetIconElement } = window.RivetIcons;
 </script>
 ```
@@ -145,7 +150,7 @@ import 'rivet-icons/dist/icons/heart-solid.js';
 + import './icon-diamond.js';
 ```
 
-Once the icon is registered, a custom event (`rvtIconRegistered`) is dispatched to the `document`. The `name` of the icon is included in the [event detail property](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail).
+Listen to the custom `rvtIconRegistered` event to know when each icon has been registered and is ready to be displayed. In the following example, the name of the icon ("diamond") is logged to the console after the custom `icon-diamond.js` module is processed.
 
 ```js
 document.addEventListener('rvtIconRegistered', (event) => {
