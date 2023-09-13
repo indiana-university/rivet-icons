@@ -39,16 +39,16 @@ export function getIcons () {
 
 export function registerIcon (name, content) {
 	if (!name || typeof name !== 'string') {
-		throw new Error(`${packageName}: Name must be a string.`)
+		throw new Error(`${packageName}: Name must be a string.`);
 	}
 	const template = document.createElement('template');
 	template.innerHTML = content;
 	if (template.content.children.length !== 1) {
-		throw new Error(`${packageName} (${name}): Content must contain one SVG element.`)
+		throw new Error(`${packageName} (${name}): Content must contain one SVG element.`);
 	}
 	const svg = template.content.firstChild;
 	if (svg.nodeName.toLowerCase() !== 'svg') {
-		throw new Error(`${packageName} (${name}): Content must be a SVG element.`)
+		throw new Error(`${packageName} (${name}): Content must be a SVG element.`);
 	}
 	setDefaultAttributes(svg, {
 		'aria-hidden': 'true',
@@ -70,13 +70,13 @@ export function registerIcon (name, content) {
 }
 
 export class RivetIconElement extends window.HTMLElement {
-	#container
-	#name
-	#requestUpdate
-	#sensor
+	#container;
+	#name;
+	#requestUpdate;
+	#sensor;
 
 	static get observedAttributes () {
-		return [nameAttributeName]
+		return [nameAttributeName];
 	}
 
 	constructor () {
@@ -137,7 +137,7 @@ function setDefaultAttribute (element, name, value) {
 function setDefaultAttributes (element, attributes) {
 	Object.entries(attributes).forEach(([name, value]) => {
 		setDefaultAttribute(element, name, value);
-	})
+	});
 }
 
 // Call the function at most once per animation frame.
@@ -152,5 +152,5 @@ function throttleRAF (fn) {
 			fn.call(this, ...args);
 			wait = false;
 		});
-	}
+	};
 }

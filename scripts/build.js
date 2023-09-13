@@ -45,12 +45,12 @@ async function getIcons () {
 		.map(async ({ filePath, name }) => {
 			const source = await fs.readFile(filePath, { encoding: 'utf8' });
 			return { name, source };
-		})
+		});
 	return await Promise.all(promises);
 }
 
 async function createJSON (icons) {
-	const data = icons.map(({ name }) => name)
+	const data = icons.map(({ name }) => name);
 	const contents = JSON.stringify(data);
 	await writeFile(`${OUT_FILE}.json`, contents);
 }
@@ -59,7 +59,7 @@ async function createJS (icons) {
 	const promises = icons.map(async ({ name, source }) => {
 		const svg = source
 			.replace(/ (fill|height|viewBox|width|xmlns)="[^"]+"/g, '')
-			.replace(/(\n|  )/g, '')
+			.replace(/(\n|  )/g, '');
 		const contents =
 `import { registerIcon } from '../../${ELEMENT_PATH}';
 
