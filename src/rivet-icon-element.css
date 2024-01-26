@@ -1,0 +1,12 @@
+rvt-icon {
+	display: inline-flex;
+}
+
+rvt-icon:not(:defined)::before,
+rvt-icon .container {
+	--size: 1rem;
+	content: "";
+	display: inline-flex;
+	height: var(--size);
+	width: var(--size);
+}

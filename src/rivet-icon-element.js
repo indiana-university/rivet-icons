@@ -1,3 +1,5 @@
+import './rivet-icon-element.css';
+
 const packageName = 'Rivet Icons';
 const elementName = 'rvt-icon';
 const nameAttributeName = 'name';
