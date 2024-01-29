@@ -10,6 +10,11 @@ const nameToTemplateMap = new Map();
 
 const elementTemplate = document.createElement('template');
 elementTemplate.innerHTML = `
+<span class="container"></span>
+<span class="sensor"></span>
+`;
+
+/*
 <style>
 :host,
 .container {
@@ -22,9 +27,7 @@ elementTemplate.innerHTML = `
 	z-index: var(--${nameAttributeName});
 }
 </style>
-<span class="container"></span>
-<span class="sensor"></span>
-`;
+*/
 
 // Until adoptedStyleSheets has wider Safari adoption,
 // append a global <style> element in <head>.
@@ -83,21 +86,25 @@ export class RivetIconElement extends window.HTMLElement {
 
 	constructor () {
 		super();
-		const shadowRoot = this.attachShadow({ mode: 'open' });
-		shadowRoot.appendChild(elementTemplate.content.cloneNode(true));
-		this.#container = shadowRoot.querySelector('.container');
-		this.#sensor = shadowRoot.querySelector('.sensor');
+		//const shadowRoot = this.attachShadow({ mode: 'open' });
+		//shadowRoot.appendChild(elementTemplate.content.cloneNode(true));
+		this.replaceChildren(elementTemplate.content.cloneNode(true));
+		this.#container = this.querySelector('.container');
+		this.#sensor = this.querySelector('.sensor');
+		console.log('##', this.#container, this.#sensor)
+		//this.#container = shadowRoot.querySelector('.container');
+		//this.#sensor = shadowRoot.querySelector('.sensor');
 		this.#requestUpdate = throttleRAF(this.#update.bind(this));
 	}
 
 	connectedCallback () {
-		this.#sensor.addEventListener('transitionstart', this.#requestUpdate);
+		this.#sensor.addEventListener('transitionrun', this.#requestUpdate);
 		document.addEventListener(registeredEventName, this.#requestUpdate);
 		this.#requestUpdate();
 	}
 
 	disconnectedCallback () {
-		this.#sensor.removeEventListener('transitionstart', this.#requestUpdate);
+		this.#sensor.removeEventListener('transitionrun', this.#requestUpdate);
 		document.removeEventListener(registeredEventName, this.#requestUpdate);
 	}
 

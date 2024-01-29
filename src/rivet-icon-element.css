@@ -3,10 +3,21 @@ rvt-icon {
 }
 
 rvt-icon:not(:defined)::before,
-rvt-icon .container {
+rvt-icon > .container {
 	--size: 1rem;
 	content: "";
 	display: inline-flex;
 	height: var(--size);
 	width: var(--size);
+}
+
+rvt-icon > .sensor {
+	position: absolute;
+	transition: z-index 0.001ms step-start;
+	visibility: hidden;
+	z-index: var(--name);
+}
+
+rvt-icon:hover {
+	--name: 50;
 }
