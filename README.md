@@ -148,7 +148,7 @@ The dimensions of the `rvt-icon` element can be changed by setting its `padding`
 
 ### `registerIcon()` function
 
-If there are no icons in the provided icon set that meets your needs, first [request a new icon](#request-a-new-icon) from the Rivet team.
+If the provided icon set does not have an icon you need, first [request a new icon](#request-a-new-icon) from the Rivet team.
 
 If you must proceed with designing your own SVG icon, follow these specifications so they best align with the provided icon set:
 
