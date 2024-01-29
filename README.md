@@ -6,16 +6,12 @@
 
 1. [Quick start](#quick-start)
 1. [Install](#install)
-1. [API](#api)
-1. [Add a custom icon](#add-a-custom-icon)
 1. [Usage](#usage)
-1. [Change icon name in JavaScript](#change-icon-name-in-javascript)
-1. [Change icon name in CSS](#change-icon-name-in-css)
-1. [Change icon color](#change-icon-color)
-1. [Change icon spacing](#change-icon-spacing)
+1. [HTML API](#html-api)
+1. [CSS API](#css-api)
+1. [JavaScript API](#javascript-api)
 1. [Accessibility](#accessibility)
 1. [Request a new icon](#request-a-new-icon)
-1. [Icon specifications](#icon-specifications)
 1. [Run the docs site](#run-the-docs-site)
 
 ## Quick start
@@ -32,14 +28,6 @@
 		<rvt-icon name="heart"></rvt-icon>
 	</body>
 </html>
-```
-
-## Install
-
-Install this package by referencing it from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/) or from a local installation with npm.
-
-```
-npm install --save rivet-icons
 ```
 
 ## Install
@@ -68,12 +56,8 @@ The following are some notable contents in the npm package and how to use them.
 Use the icon modules for production. This method is recommended, as only the declared icons will be included. These modules import the Rivet Icon Element.
 
 ```js
-// Import individual icon modules.
 import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
-
-// Optional: Access the API.
-import { registerIcon } from 'rivet-icons';
 ```
 
 ### `rivet-icons.js`
@@ -81,11 +65,7 @@ import { registerIcon } from 'rivet-icons';
 Use the module bundle for development or prototyping. The Rivet Icon Element and all icons are included.
 
 ```js
-// Import all icons from a single module.
 import 'rivet-icons/dist/rivet-icons.js';
-
-// Optional: Access the API.
-import { registerIcon } from 'rivet-icons/dist/rivet-icons.js';
 ```
 
 ### `rivet-icon-element.css`
@@ -96,9 +76,88 @@ Always include this CSS file.
 <link rel="stylesheet" href="./rivet-icons/dist/rivet-icon-element.css">
 ```
 
-## Add a custom icon
+## HTML API
 
-Use the `registerIcon()` function to register the name and SVG code for a custom icon. Then, it can be used like any of the provided icons. Refer to the [icon specifications](#icon-specifications) section to learn how to design an icon that aligns with the Rivet icon set.
+### `name` attribute
+
+Use the `name` attribute to declare the icon to be rendered. The name of a icon matches its corresponding SVG file name (`./src/icons/*.svg`).
+
+```html
+<rvt-icon name="heart"></rvt-icon>
+<rvt-icon name="heart-solid"></rvt-icon>
+```
+
+## CSS API
+
+### `--name` variable
+
+Change the icon in CSS by setting the `--name` variable on the `rvt-icon` element to the desired icon name, such as `var(--heart)` for the "heart" icon.
+
+In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users.
+
+```html
+<button aria-pressed="true" class="favorite">
+	<rvt-icon></rvt-icon>
+	Favorite
+</button>
+<style>
+.favorite[aria-pressed="false"] > rvt-icon {
+	--name: var(--heart);
+}
+.favorite[aria-pressed="true"] > rvt-icon {
+	--name: var(--heart-solid);
+}
+</style>
+```
+
+The `--name` CSS variable declaration overrides the `name` HTML attribute. In this case, the icon will render as `heart-solid`, not `heart`.
+
+```html
+<rvt-icon name="heart" class="heart-solid"></rvt-icon>
+<style>
+.heart-solid {
+	--name: var(--heart-solid);
+}
+</style>
+```
+
+## `color` property
+
+Change the icon color with the CSS `color` property. It is recommended to use the [`.rvt-color-*` utility classes](https://rivet.uits.iu.edu/utilities/color/).
+
+```html
+<rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
+```
+
+## `padding`, `height`, and `width` properties
+
+The dimensions of the `rvt-icon` element can be changed by setting its `padding`, `height`, and `width` properties. This will not affect the scale of the underlying SVG content, which is fixed at 16 square pixels. For example, to increase the dimensions to 24 square pixels, add `0.25rem` (`4px`) padding to the `rvt-icon`. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
+
+```html
+<!-- 16x16 -->
+<rvt-icon></rvt-icon>
+
+<!-- 24x24 -->
+<rvt-icon class="rvt-p-all-xxs"></rvt-icon>
+
+<!-- 32x32 -->
+<rvt-icon class="rvt-p-all-xs"></rvt-icon>
+```
+
+## JavaScript API
+
+### `registerIcon()` function
+
+If there are no icons in the provided icon set that meets your needs, first [request a new icon](#request-a-new-icon) from the Rivet team.
+
+If you must proceed with designing your own SVG icon, follow these specifications so they best align with the provided icon set:
+
+- 16&times;16px grid
+- 2px stroke for all icon outlines
+- Expand all strokes before exporting and merge/flatten artwork in to one group.
+- Set `fill` attribute to `currentColor` on exported SVGs.
+
+Use the `registerIcon()` function to register the name and SVG code for this custom icon. Then, it can be used like any of the provided icons.
 
 ```js
 // /src/icon-diamond.js
@@ -131,101 +190,6 @@ Include this custom icon in the module for the custom icon set.
 import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
 + import './icon-diamond.js';
-```
-
-Listen to the custom `rvtIconRegistered` event to know when each icon has been registered and is ready to be displayed. In the following example, the name of the icon ("diamond") is logged to the console after the custom `icon-diamond.js` module is processed.
-
-```js
-document.addEventListener('rvtIconRegistered', (event) => {
-	console.log(event.detail.name);
-	// "diamond"
-});
-```
-
-Use the `getIcons()` function get an array of all registered icons.
-
-```js
-import { getIcons } from 'rivet-icons';
-
-console.log(getIcons());
-// ["heart", "heart-solid", "diamond"]
-```
-
-## Usage
-
-Once icons are installed and registered, they can be rendered in HTML.
-
-```html
-<!-- Rivet icons -->
-<rvt-icon name="heart"></rvt-icon>
-<rvt-icon name="heart-solid"></rvt-icon>
-
-<!-- Custom icon -->
-<rvt-icon name="diamond"></rvt-icon>
-```
-
-## Change icon name in JavaScript
-
-Use JavaScript to dynamically change the icon via the `name` attribute. This example uses JSX (React).
-
-```jsx
-const iconName = isFavorited ? 'heart-solid' : 'heart'
-const icon = (<rvt-icon name={iconName} />)
-```
-
-## Change icon name in CSS
-
-Use CSS to dynamically change the icon via the `--name` variable. Set its value to the CSS variable of the desired icon ("heart" is `var(--heart)`). Icon variables are declared at the level of the `rvt-icon` element. That means `--name` will only work when applied to the `rvt-icon` element itself, not on an ancestor.
-
-In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users.
-
-```html
-<button aria-pressed="true" class="favorite">
-	<rvt-icon></rvt-icon>
-	Favorite
-</button>
-<style>
-.favorite[aria-pressed="false"] > rvt-icon {
-	--name: var(--heart);
-}
-.favorite[aria-pressed="true"] > rvt-icon {
-	--name: var(--heart-solid);
-}
-</style>
-```
-
-The `--name` CSS variable declaration overrides the `name` HTML attribute. In this case, the icon will render as `heart-solid`, not `heart`.
-
-```html
-<rvt-icon name="heart" class="heart-solid"></rvt-icon>
-<style>
-.heart-solid {
-	--name: var(--heart-solid);
-}
-</style>
-```
-
-## Change icon color
-
-Change the icon color with the CSS `color` property. It is recommended to use the [`.rvt-color-*` utility classes](https://rivet.uits.iu.edu/utilities/color/).
-
-```html
-<rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
-```
-
-## Change icon spacing
-
-Icons are sized at 16 square pixels, but padding and margin can be adjusted to fit into other contexts. For example, to increase the outer dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
-
-```html
-<!-- 16x16 -->
-<rvt-icon></rvt-icon>
-
-<!-- 24x24 -->
-<rvt-icon class="rvt-p-all-xxs"></rvt-icon>
-
-<!-- 32x32 -->
-<rvt-icon class="rvt-p-all-xs"></rvt-icon>
 ```
 
 ## Accessibility
@@ -262,15 +226,6 @@ If a visual label is not desired (because the icon itself may be sufficient for 
 ## Request a new icon
 
 [Submit a Rivet support request](https://rivet.uits.iu.edu/help/#support-request-form) to request a new icon.
-
-## Icon specifications
-
-Draw each icon to the following specifications:
-
-- 16&times;16px grid
-- 2px stroke for all icon outlines
-- Expand all strokes before exporting and merge/flatten artwork in to one group.
-- Set `fill` attribute to `currentColor` on exported SVGs.
 
 ## Run the docs site
 
