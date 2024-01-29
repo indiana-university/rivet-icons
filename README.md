@@ -121,7 +121,7 @@ The `--name` CSS variable declaration overrides the `name` HTML attribute. In th
 </style>
 ```
 
-## `color` property
+### `color` property
 
 Change the icon color with the CSS `color` property. It is recommended to use the [`.rvt-color-*` utility classes](https://rivet.uits.iu.edu/utilities/color/).
 
@@ -129,7 +129,7 @@ Change the icon color with the CSS `color` property. It is recommended to use th
 <rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
 ```
 
-## `padding`, `height`, and `width` properties
+### `padding`, `height`, and `width` properties
 
 The dimensions of the `rvt-icon` element can be changed by setting its `padding`, `height`, and `width` properties. This will not affect the scale of the underlying SVG content, which is fixed at 16 square pixels. For example, to increase the dimensions to 24 square pixels, add `0.25rem` (`4px`) padding to the `rvt-icon`. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
 
