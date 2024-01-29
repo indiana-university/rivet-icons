@@ -205,7 +205,7 @@ In this example, the link text of "Favorites" is presented to all users. The ico
 </a>
 ```
 
-Revisiting a previous example, this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via CSS in order to communicate equivalent information to visual users.
+Revisiting a [previous example](#--name-variable), this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via CSS in order to communicate equivalent information to visual users.
 
 ```html
 <button aria-pressed="true" class="favorite">
