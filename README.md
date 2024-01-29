@@ -13,7 +13,6 @@
 1. [Change icon name in CSS](#change-icon-name-in-css)
 1. [Change icon color](#change-icon-color)
 1. [Change icon spacing](#change-icon-spacing)
-1. [Flash of unstyled content](#flash-of-unstyled-content)
 1. [Accessibility](#accessibility)
 1. [Request a new icon](#request-a-new-icon)
 1. [Icon specifications](#icon-specifications)
@@ -26,6 +25,7 @@
 <html lang="en">
 	<head>
 		<title>Rivet icon example</title>
+		<link rel="stylesheet" href="https://unpkg.com/rivet-icons@3/dist/rivet-icon-element.css">
 		<script type="module" src="https://unpkg.com/rivet-icons@3/dist/rivet-icons.js"></script>
 	</head>
 	<body>
@@ -42,42 +42,30 @@ Install this package by referencing it from a service like [UNPKG](https://unpkg
 npm install --save rivet-icons
 ```
 
-Link to the desired JavaScript modules inside of the HTML document's `<head>`. In the following example, replace "`/path/to/`" with the appropriate path to the modules.
+## Install
 
-```html
-<!-- Option 1: Include all icons in a single bundled file. -->
-<script type="module" src="/path/to/rivet-icons/dist/rivet-icons.js"></script>
+Install this package by referencing it from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/) or from a local installation with npm.
 
-<!-- Option 2 (recommended): Make a custom icon set. -->
-<script type="module" src="/src/icons.js"></script>
+```
+npm install --save rivet-icons
 ```
 
-The `rivet-icons.js` file is ideal for prototyping (Option 1), but it likely includes more icons than are needed for production. Instead, it is recommended to make a custom icon set in a JavaScript module (Option 2).
+## Usage
 
-```js
-// Option 2: /src/icons.js
-import 'rivet-icons/dist/icons/heart.js';
-import 'rivet-icons/dist/icons/heart-solid.js';
-```
-
-## API
-
-The following are some notable contents in the `rivet-icons` npm package and how to use them.
+The following are some notable contents in the npm package and how to use them.
 
 | Path | Description |
 | --- | --- |
-| `./dist` | Production JavaScript modules. |
 | `./dist/icons/*.js` | Icon modules. |
 | `./dist/rivet-icons.js` | Bundle containing all the icons (as ES module). |
-| `./dist/rivet-icons.umd.cjs` | Bundle containing all the icons (as UMD file). |
 | `./dist/rivet-icons.json` | JSON array of all icon names. |
-| `./src` | Source files. |
-| `./src/rivet-icon-element.js` | Rivet Icon Element (custom element `<rvt-icon>`). |
-| `./src/icons/*.svg` | SVG icon files. |
+| `./dist/rivet-icon-element.js` | Rivet Icon Element (custom element `<rvt-icon>`). |
+| `./dist/rivet-icon-element.css` | Rivet Icon Element styles. |
+| `./src/icons/*.svg` | Icon source files. |
 
 ### `icons/*.js`
 
-Use the icon modules for production.
+Use the icon modules for production. This method is recommended, as only the declared icons will be included. These modules import the Rivet Icon Element.
 
 ```js
 // Import individual icon modules.
@@ -85,32 +73,27 @@ import 'rivet-icons/dist/icons/heart.js';
 import 'rivet-icons/dist/icons/heart-solid.js';
 
 // Optional: Access the API.
-import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
+import { registerIcon } from 'rivet-icons';
 ```
 
 ### `rivet-icons.js`
 
-Use the module bundle for development or prototyping.
+Use the module bundle for development or prototyping. The Rivet Icon Element and all icons are included.
 
 ```js
 // Import all icons from a single module.
 import 'rivet-icons/dist/rivet-icons.js';
 
 // Optional: Access the API.
-import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons/dist/rivet-icons.js';
+import { registerIcon } from 'rivet-icons/dist/rivet-icons.js';
 ```
 
-### `rivet-icons.umd.cjs`
+### `rivet-icon-element.css`
 
-Use the UMD bundle for development or prototyping.
+Always include this CSS file.
 
 ```html
-<!-- Import all icons from a single file. -->
-<script src="/path/to/rivet-icons/dist/rivet-icons.umd.cjs"></script>
-<script>
-// Optional: Access the API.
-const { getIcons, registerIcon, RivetIconElement } = window.RivetIcons;
-</script>
+<link rel="stylesheet" href="./rivet-icons/dist/rivet-icon-element.css">
 ```
 
 ## Add a custom icon
@@ -245,18 +228,6 @@ Icons are sized at 16 square pixels, but padding and margin can be adjusted to f
 <rvt-icon class="rvt-p-all-xs"></rvt-icon>
 ```
 
-## Flash of unstyled content
-
-"Flash of unstyled content" typically happens when the server (instead of client) renders a custom element (`<rvt-icon>`). After the element is defined, it becomes visible and shifts the layout. To avoid this, wait to render content until after the element is defined.
-
-In the following example, the HTML document renders nothing until `<rvt-icon>` is defined.
-
-```css
-html:has(rvt-icon:not(:defined)) {
-	display: none;
-}
-```
-
 ## Accessibility
 
 Icons are considered decorative images. They are hidden from screen readers via `<svg aria-hidden="true">`. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
@@ -290,7 +261,7 @@ If a visual label is not desired (because the icon itself may be sufficient for 
 
 ## Request a new icon
 
-[Submit a new issue](https://github.com/indiana-university/rivet-icons/issues/new) to request a new icon. Include anything that may help to visually describe this new icon, such as examples from other icon sets, examples of usage in various apps or websites, the SVG source code of the icon, or even a sketch.
+[Submit a Rivet support request](https://rivet.uits.iu.edu/help/#support-request-form) to request a new icon.
 
 ## Icon specifications
 
