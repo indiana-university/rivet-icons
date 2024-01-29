@@ -1,23 +1,21 @@
 rvt-icon {
+	--name: 0;
+	align-items: center;
 	display: inline-flex;
+	height: min-content;
+	justify-content: center;
+	width: min-content;
 }
 
-rvt-icon:not(:defined)::before,
-rvt-icon > .container {
-	--size: 1rem;
+rvt-icon:not(:defined)::before {
 	content: "";
-	display: inline-flex;
-	height: var(--size);
-	width: var(--size);
+	display: block;
+	height: 1rem;
+	width: 1rem;
 }
 
-rvt-icon > .sensor {
-	position: absolute;
+rvt-icon > svg {
+	flex-shrink: 0;
 	transition: z-index 0.001ms step-start;
-	visibility: hidden;
 	z-index: var(--name);
-}
-
-rvt-icon:hover {
-	--name: 50;
 }

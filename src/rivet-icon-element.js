@@ -4,30 +4,10 @@ const packageName = 'Rivet Icons';
 const elementName = 'rvt-icon';
 const nameAttributeName = 'name';
 const registeredEventName = 'rvtIconRegistered';
+const requestUpdateFromEventType = 'transitionrun';
 const size = 16;
 const indexToNameMap = new Map();
 const nameToTemplateMap = new Map();
-
-const elementTemplate = document.createElement('template');
-elementTemplate.innerHTML = `
-<span class="container"></span>
-<span class="sensor"></span>
-`;
-
-/*
-<style>
-:host,
-.container {
-	display: inline-flex;
-}
-.sensor {
-	position: absolute;
-	transition: z-index 0.001ms step-start;
-	visibility: hidden;
-	z-index: var(--${nameAttributeName});
-}
-</style>
-*/
 
 // Until adoptedStyleSheets has wider Safari adoption,
 // append a global <style> element in <head>.
@@ -37,10 +17,6 @@ elementTemplate.innerHTML = `
 const style = document.createElement('style');
 style.setAttribute(`data-${elementName}`, '');
 document.head.appendChild(style);
-
-export function getIcons () {
-	return [...nameToTemplateMap.keys()];
-}
 
 export function registerIcon (name, content) {
 	if (!name || typeof name !== 'string') {
@@ -74,59 +50,45 @@ export function registerIcon (name, content) {
 	document.dispatchEvent(event);
 }
 
-export class RivetIconElement extends window.HTMLElement {
-	#container;
+class RivetIconElement extends window.HTMLElement {
 	#name;
-	#requestUpdate;
-	#sensor;
+	#requestUpdate = throttleRAF(this.#update.bind(this));
 
 	static get observedAttributes () {
 		return [nameAttributeName];
-	}
-
-	constructor () {
-		super();
-		//const shadowRoot = this.attachShadow({ mode: 'open' });
-		//shadowRoot.appendChild(elementTemplate.content.cloneNode(true));
-		this.replaceChildren(elementTemplate.content.cloneNode(true));
-		this.#container = this.querySelector('.container');
-		this.#sensor = this.querySelector('.sensor');
-		console.log('##', this.#container, this.#sensor)
-		//this.#container = shadowRoot.querySelector('.container');
-		//this.#sensor = shadowRoot.querySelector('.sensor');
-		this.#requestUpdate = throttleRAF(this.#update.bind(this));
-	}
-
-	connectedCallback () {
-		this.#sensor.addEventListener('transitionrun', this.#requestUpdate);
-		document.addEventListener(registeredEventName, this.#requestUpdate);
-		this.#requestUpdate();
-	}
-
-	disconnectedCallback () {
-		this.#sensor.removeEventListener('transitionrun', this.#requestUpdate);
-		document.removeEventListener(registeredEventName, this.#requestUpdate);
 	}
 
 	attributeChangedCallback () {
 		this.#requestUpdate();
 	}
 
+	connectedCallback () {
+		document.addEventListener(registeredEventName, this.#requestUpdate);
+		this.addEventListener(requestUpdateFromEventType, this.#requestUpdate);
+		this.#requestUpdate();
+	}
+
+	disconnectedCallback () {
+		document.removeEventListener(registeredEventName, this.#requestUpdate);
+		this.removeEventListener(requestUpdateFromEventType, this.#requestUpdate);
+	}
+
 	#getNameFromCSS () {
-		if (!this.#sensor) {
+		const svg = this.querySelector('svg');
+		if (!svg) {
 			return;
 		}
-		const index = window.getComputedStyle(this.#sensor).getPropertyValue(`--${nameAttributeName}`);
+		const index = window.getComputedStyle(svg).getPropertyValue(`--${nameAttributeName}`);
 		return indexToNameMap.get(parseInt(index));
 	}
 
 	#update () {
 		const name = this.#getNameFromCSS() || this.getAttribute(nameAttributeName);
-		if (!this.#container || !nameToTemplateMap.has(name) || this.#name === name) {
+		if (!nameToTemplateMap.has(name) || this.#name === name) {
 			return;
 		}
-		const svg = nameToTemplateMap.get(name).content.cloneNode(true);
-		this.#container.replaceChildren(svg);
+		const content = nameToTemplateMap.get(name).content.cloneNode(true);
+		this.replaceChildren(content);
 		this.#name = name;
 	}
 }
