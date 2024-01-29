@@ -80,7 +80,7 @@ Always include this CSS file.
 
 ### `name` attribute
 
-Use the `name` attribute to declare the icon to be rendered. The name of a icon matches its corresponding SVG file name (`./src/icons/*.svg`).
+Use the `name` attribute to declare the icon to be rendered. The name of an icon matches its corresponding SVG file name (`./src/icons/*.svg`).
 
 ```html
 <rvt-icon name="heart"></rvt-icon>
