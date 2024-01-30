@@ -94,11 +94,9 @@ registerIcon(name, svg);
 async function createBundle (icons) {
 	const tmpFile = 'tmp.js';
 	const tmpPath = path.resolve(OUT_DIR, tmpFile);
-	const imports = icons
+	const contents = icons
 		.map(({ name }) => `import './${name}.js';\n`)
 		.join('');
-	const exports = `export * from './${ELEMENT_BASE_NAME}.js';\n`;
-	const contents = `${imports}${exports}`;
 	await writeFile(tmpFile, contents);
 	await build({
 		build: {

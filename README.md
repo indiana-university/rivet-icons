@@ -4,9 +4,7 @@
 
 ## Contents
 
-1. [Quick start](#quick-start)
-1. [Install](#install)
-1. [Package contents](#package-contents)
+1. [Usage](#usage)
 1. [HTML API](#html-api)
 1. [CSS API](#css-api)
 1. [JavaScript API](#javascript-api)
@@ -14,71 +12,56 @@
 1. [Request a new icon](#request-a-new-icon)
 1. [Run the docs site](#run-the-docs-site)
 
-## Quick start
+## Usage
+
+### Development
+
+For development or prototyping, link to the Rivet Icon Element styles and the bundle containing all the icons in the set in the page. These files can be referenced from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/).
 
 ```html
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Rivet icon example</title>
-		<link rel="stylesheet" href="https://unpkg.com/rivet-icons@3/dist/rivet-icon-element.css">
-		<script type="module" src="https://unpkg.com/rivet-icons@3/dist/rivet-icons.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/rivet-icons/dist/rivet-icon-element.css">
+		<script type="module" src="https://unpkg.com/rivet-icons/dist/rivet-icons.js"></script>
 	</head>
 	<body>
 		<rvt-icon name="heart"></rvt-icon>
+		<rvt-icon name="heart-solid"></rvt-icon>
 	</body>
 </html>
 ```
 
-## Install
+### Production
 
-Install this package by referencing it from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/) or from a local installation with npm.
+For production, first install the npm package.
 
 ```
 npm install --save rivet-icons
 ```
 
-## Package contents
-
-### `./dist/rivet-icon-element.css`
-
-The Rivet Icon Element styles should always be applied to the page.
-
-```html
-<link rel="stylesheet" href="./rivet-icons/dist/rivet-icon-element.css">
-```
-
-### `./dist/rivet-icon-element.js`
-
-There is no need to directly import the Rivet Icon Element, as it is imported by the icon modules. Also, when using the [JavaScript API](#javascript-api), the package name (`rivet-icons`) maps to the Rivet Icon Element module.
+Create a custom module which imports only the icons needed. The icon module name (such as `./dist/heart.js`) matches its corresponding SVG file name (`./src/icons/heart.svg`).
 
 ```js
-// Do this:
-import { registerIcon } from 'rivet-icons';
-
-// Don't do this:
-import { registerIcon } from 'rivet-icons/dist/rivet-icon-element.js';
-```
-
-### `./dist/rivet-icons.js`
-
-Use the icon bundle for development or prototyping. All icons are included.
-
-```js
-import 'rivet-icons/dist/rivet-icons.js';
-```
-
-### `./dist/rivet-icons.json`
-
-This JSON file contains an array of all icon names.
-
-### `./dist/*.js`
-
-The rest of the JavaScript files in the `dist` folder are the icon modules. Use these for production.
-
-```js
+// ./src/icons.js
 import 'rivet-icons/dist/heart.js';
 import 'rivet-icons/dist/heart-solid.js';
+```
+
+Link to the Rivet Icon Element styles and the custom module in the page. 
+
+```html
+<!doctype html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="./node_modules/rivet-icons/dist/rivet-icon-element.css">
+		<script type="module" src="./src/icons.js"></script>
+	</head>
+	<body>
+		<rvt-icon name="heart"></rvt-icon>
+		<rvt-icon name="heart-solid"></rvt-icon>
+	</body>
+</html>
 ```
 
 ## HTML API
@@ -89,7 +72,6 @@ Use the `name` attribute to declare the icon to be rendered. The name of an icon
 
 ```html
 <rvt-icon name="heart"></rvt-icon>
-<rvt-icon name="heart-solid"></rvt-icon>
 ```
 
 ## CSS API
@@ -165,7 +147,7 @@ If you must proceed with designing your own SVG icon, follow these specification
 Use the `registerIcon()` function to register the name and SVG code for this custom icon. Then, it can be used like any of the provided icons.
 
 ```js
-// /src/icon-diamond.js
+// ./src/icon-diamond.js
 import { registerIcon } from 'rivet-icons';
 
 const name = 'diamond';
@@ -195,6 +177,14 @@ Include this custom icon in the module for the custom icon set.
 import 'rivet-icons/dist/heart.js';
 import 'rivet-icons/dist/heart-solid.js';
 + import './icon-diamond.js';
+```
+
+### `name` and `svg` values
+
+Icon modules export their name and SVG contents as string values.
+
+```js
+import { name, svg } from 'rivet-icons/dist/heart.js';
 ```
 
 ## Accessibility
