@@ -2,7 +2,7 @@
 
 [Icons](https://rivet.iu.edu/icons/) for Indiana University's Rivet Design System.
 
-[Migrate from v2 to v3](MIGRATION).
+[Migrate from v2 to v3](MIGRATION.md).
 
 ## Contents
 
