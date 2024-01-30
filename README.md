@@ -8,7 +8,6 @@
 1. [HTML API](#html-api)
 1. [CSS API](#css-api)
 1. [JavaScript API](#javascript-api)
-1. [Accessibility](#accessibility)
 1. [Request a new icon](#request-a-new-icon)
 1. [Run the docs site](#run-the-docs-site)
 
@@ -62,6 +61,37 @@ Link to the Rivet Icon Element styles and the custom module in the page.
 		<rvt-icon name="heart-solid"></rvt-icon>
 	</body>
 </html>
+```
+
+### Accessibility
+
+Icons are considered decorative images. They are hidden from screen readers via `<svg aria-hidden="true">`. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
+
+In this first example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. Providing an accessible description of the icon itself (in addition to the link text) provides little value and may be undesired.
+
+```html
+<a href="/favorites">
+	<rvt-icon name="heart"></rvt-icon>
+	Favorites
+</a>
+```
+
+In this second example, this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via the [CSS API](#--name-variable) in order to communicate equivalent information to visual users.
+
+```html
+<button aria-pressed="true" class="favorite">
+	<rvt-icon></rvt-icon>
+	Favorite
+</button>
+```
+
+If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.uits.iu.edu/utilities/visibility/).
+
+```html
+<button aria-pressed="true" class="favorite">
+	<rvt-icon></rvt-icon>
+	<span class="rvt-sr-only">Favorite</span>
+</button>
 ```
 
 ## HTML API
@@ -185,37 +215,6 @@ Icon modules export their name and SVG contents as string values.
 
 ```js
 import { name, svg } from 'rivet-icons/dist/heart.js';
-```
-
-## Accessibility
-
-Icons are considered decorative images. They are hidden from screen readers via `<svg aria-hidden="true">`. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
-
-In this example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. Providing an accessible description of the icon itself (in addition to the link text) provides little value and may be undesired.
-
-```html
-<a href="/favorites">
-	<rvt-icon name="heart"></rvt-icon>
-	Favorites
-</a>
-```
-
-Revisiting a [previous example](#--name-variable), this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via CSS in order to communicate equivalent information to visual users.
-
-```html
-<button aria-pressed="true" class="favorite">
-	<rvt-icon></rvt-icon>
-	Favorite
-</button>
-```
-
-If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.uits.iu.edu/utilities/visibility/).
-
-```html
-<button aria-pressed="true" class="favorite">
-	<rvt-icon></rvt-icon>
-	<span class="rvt-sr-only">Favorite</span>
-</button>
 ```
 
 ## Request a new icon
