@@ -6,7 +6,7 @@
 
 1. [Quick start](#quick-start)
 1. [Install](#install)
-1. [Usage](#usage)
+1. [Package contents](#package-contents)
 1. [HTML API](#html-api)
 1. [CSS API](#css-api)
 1. [JavaScript API](#javascript-api)
@@ -38,42 +38,47 @@ Install this package by referencing it from a service like [UNPKG](https://unpkg
 npm install --save rivet-icons
 ```
 
-## Usage
+## Package contents
 
-The following are some notable contents in the npm package and how to use them.
+### `./dist/rivet-icon-element.css`
 
-| Path | Description |
-| --- | --- |
-| `./dist/icons/*.js` | Icon modules. |
-| `./dist/rivet-icons.js` | Bundle containing all the icons (as ES module). |
-| `./dist/rivet-icons.json` | JSON array of all icon names. |
-| `./dist/rivet-icon-element.js` | Rivet Icon Element (custom element `<rvt-icon>`). |
-| `./dist/rivet-icon-element.css` | Rivet Icon Element styles. |
-| `./src/icons/*.svg` | Icon source files. |
+The Rivet Icon Element styles should always be applied to the page.
 
-### `icons/*.js`
-
-Use the icon modules for production. This method is recommended, as only the declared icons will be included. These modules import the Rivet Icon Element.
-
-```js
-import 'rivet-icons/dist/icons/heart.js';
-import 'rivet-icons/dist/icons/heart-solid.js';
+```html
+<link rel="stylesheet" href="./rivet-icons/dist/rivet-icon-element.css">
 ```
 
-### `rivet-icons.js`
+### `./dist/rivet-icon-element.js`
 
-Use the module bundle for development or prototyping. The Rivet Icon Element and all icons are included.
+There is no need to directly import the Rivet Icon Element, as it is imported by the icon modules. Also, when using the [JavaScript API](#javascript-api), the root module name (`rivet-icons`) maps to the Rivet Icon Element module.
+
+```js
+// Do this:
+import { registerIcon } from 'rivet-icons';
+
+// Don't do this:
+import { registerIcon } from 'rivet-icons/dist/rivet-icon-element.js';
+```
+
+### `./dist/rivet-icons.js`
+
+Use the icon bundle for development or prototyping. All icons are included.
 
 ```js
 import 'rivet-icons/dist/rivet-icons.js';
 ```
 
-### `rivet-icon-element.css`
+### `./dist/rivet-icons.json`
 
-Always include this CSS file.
+This JSON file contains an array of all icon names.
 
-```html
-<link rel="stylesheet" href="./rivet-icons/dist/rivet-icon-element.css">
+### `./dist/*.js`
+
+The rest of the JavaScript files in the `dist` folder are the icon modules. Use these for production.
+
+```js
+import 'rivet-icons/dist/heart.js';
+import 'rivet-icons/dist/heart-solid.js';
 ```
 
 ## HTML API
@@ -187,8 +192,8 @@ Include this custom icon in the module for the custom icon set.
 
 ```diff
 // /src/icons.js
-import 'rivet-icons/dist/icons/heart.js';
-import 'rivet-icons/dist/icons/heart-solid.js';
+import 'rivet-icons/dist/heart.js';
+import 'rivet-icons/dist/heart-solid.js';
 + import './icon-diamond.js';
 ```
 
