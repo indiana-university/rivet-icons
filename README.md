@@ -40,7 +40,7 @@ For production, first install the npm package.
 npm install --save rivet-icons
 ```
 
-Create a custom module which imports only the icons needed. The icon module name (such as `./dist/heart.js`) matches its corresponding SVG file name (`./src/icons/heart.svg`).
+Create a custom module which imports only the icons needed. The icon module name (such as `./dist/heart.js`) matches its corresponding SVG file name (such as `./src/icons/heart.svg`).
 
 ```js
 // ./src/icons.js
