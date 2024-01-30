@@ -3,7 +3,7 @@ html {
 	background-color: var(--color-black-100);
 }
 
-.docs-icon-list {
+.test-icon-list {
 	display: grid;
 	gap: 0.5rem;
 	grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
