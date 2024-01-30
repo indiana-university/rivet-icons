@@ -10,7 +10,7 @@ This file still contains all icons, but it now also imports the Rivet Icon Eleme
 
 Instead of using the internal SVG symbols option, just use the Rivet Icon Element.
 
-## Now optional: `rivet-icon-element.js`
+## Indirectly imported: `rivet-icon-element.js`
 
 It was required to directly reference the `rivet-icon-element.js` file when using the Rivet Icon Element (`<rvt-icon>`). Now, it is indirectly imported through the icon modules.
 
