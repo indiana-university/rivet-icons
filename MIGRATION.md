@@ -6,39 +6,21 @@ Rivet Icons v2 provided many integration options, but this flexibility also mean
 
 This file would insert SVG icon symbols in the current document. It was a peer dependency when using the Rivet Icon Element (`<rvt-icon>`) or when using the [internal SVG symbols](https://github.com/indiana-university/rivet-icons/blob/v2.0.0/README.md#use-internal-svg-symbols) option.
 
-This file still contains all icons, but it now also includes the Rivet Icon Element.
+This file still contains all icons, but it now also imports the Rivet Icon Element.
 
 Instead of using the internal SVG symbols option, just use the Rivet Icon Element.
 
 ## Now optional: `rivet-icon-element.js`
 
-It was required to directly reference the `rivet-icon-element.js` file when using the Rivet Icon Element (`<rvt-icon>`). Now, it is imported into the bundle (`dist/rivet-icons.js`) and individual icon modules (`dist/icons/*.js`).
-
-Referring to this file is only needed to access its new API, and it happens implicitly when importing from the package root.
-
-```js
-import { getIcons, registerIcon, RivetIconElement } from 'rivet-icons';
-```
+It was required to directly reference the `rivet-icon-element.js` file when using the Rivet Icon Element (`<rvt-icon>`). Now, it is indirectly imported through the icon modules.
 
 ## Renamed: `--rvt-icon`
 
 The `--rvt-icon` CSS variable is used to dynamically change the icon with CSS. This has been renamed to `--name`, to match the `name` attribute of the Rivet Icon Element (`<rvt-icon name="heart">`).
 
-## Removed: `rivet-icons.css`
+## Renamed: `rivet-icons.css`
 
-The global `.rvt-icon` CSS class is no longer available. If needed, include the following styles in your project.
-
-```css
-.rvt-icon {
-	display: inline-flex;
-}
-.rvt-icon > svg {
-	height: 1rem;
-	width: 1rem;
-}
-```
-
-However, all required styles are now included in the Rivet Icon Element (`<rvt-icon>`).
+The `rivet-icons.css` file is renamed to `rivet-icon-element.css` so that it better corresponds to `rivet-icon-element.js`.
 
 ## Removed: `rivet-icons.svg`
 
@@ -50,7 +32,7 @@ Instead, use the Rivet Icon Element (`<rvt-icon>`).
 
 These SVG files were duplicates of the source files, with a different name.
 
-Instead, directly refer to the source SVG files in the `src/icons` folder.
+Instead, directly refer to the source SVG files in the `./src/icons` folder.
 
 ## Removed: `rvt-icon-*.html`
 
@@ -68,4 +50,4 @@ Instead, browse the [Rivet Icons npm package](https://www.unpkg.com/browse/rivet
 
 The `buildIcons()` function was used to generate a custom icon set during build time.
 
-Instead, custom icons sets are now generated during runtime. Include only the icons needed by importing their modules (`dist/icons/*.js`). Include custom icons by using the new `registerIcon()` function.
+Instead, custom icons sets are now generated during runtime. Include only the icons needed by importing their modules. Include custom icons by using the new `registerIcon()` function.
