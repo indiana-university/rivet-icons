@@ -10,8 +10,8 @@
   "browser": "./dist/rivet-icon-element.js",
   "scripts": {
     "build": "node scripts/build.js",
-    "docs": "astro dev --open",
-    "start": "run-s build docs"
+    "start": "run-s build test",
+    "test": "astro dev --open"
   },
   "repository": {
     "type": "git",
