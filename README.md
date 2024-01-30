@@ -242,7 +242,7 @@ Install dependencies.
 npm install
 ```
 
-Build the site and start a local development server.
+Build the site and start the local development server.
 
 ```
 npm run start
