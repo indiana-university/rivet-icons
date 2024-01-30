@@ -50,7 +50,7 @@ The Rivet Icon Element styles should always be applied to the page.
 
 ### `./dist/rivet-icon-element.js`
 
-There is no need to directly import the Rivet Icon Element, as it is imported by the icon modules. Also, when using the [JavaScript API](#javascript-api), the root module name (`rivet-icons`) maps to the Rivet Icon Element module.
+There is no need to directly import the Rivet Icon Element, as it is imported by the icon modules. Also, when using the [JavaScript API](#javascript-api), the package name (`rivet-icons`) maps to the Rivet Icon Element module.
 
 ```js
 // Do this:
