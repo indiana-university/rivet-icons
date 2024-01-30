@@ -173,7 +173,7 @@ If left unspecified, the `<svg>` will default to the following attributes when r
 Include this custom icon in the module for the custom icon set.
 
 ```diff
-// /src/icons.js
+// ./src/icons.js
 import 'rivet-icons/dist/heart.js';
 import 'rivet-icons/dist/heart-solid.js';
 + import './icon-diamond.js';
