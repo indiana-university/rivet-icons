@@ -9,7 +9,6 @@
 1. [CSS API](#css-api)
 1. [JavaScript API](#javascript-api)
 1. [Request a new icon](#request-a-new-icon)
-1. [Run the local dev environment](#run-the-local-dev-environment)
 
 ## Usage
 
@@ -92,6 +91,20 @@ If a visual label is not desired (because the icon itself may be sufficient for 
 	<rvt-icon></rvt-icon>
 	<span class="rvt-sr-only">Favorite</span>
 </button>
+```
+
+### Testing
+
+Download or clone this repo, then install dependencies.
+
+```
+npm install
+```
+
+Start the server to launch the local test environment.
+
+```
+npm run start
 ```
 
 ## HTML API
@@ -220,17 +233,3 @@ import { name, svg } from 'rivet-icons/dist/heart.js';
 ## Request a new icon
 
 [Submit a Rivet support request](https://rivet.uits.iu.edu/help/#support-request-form) to request a new icon.
-
-## Run the local dev environment
-
-Clone or download this repo, then install dependencies.
-
-```
-npm install
-```
-
-Start the server to launch the local development environment.
-
-```
-npm run start
-```
