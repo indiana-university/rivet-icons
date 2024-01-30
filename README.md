@@ -9,7 +9,7 @@
 1. [CSS API](#css-api)
 1. [JavaScript API](#javascript-api)
 1. [Request a new icon](#request-a-new-icon)
-1. [Run the docs site](#run-the-docs-site)
+1. [Run the local dev environment](#run-the-local-dev-environment)
 
 ## Usage
 
@@ -221,17 +221,15 @@ import { name, svg } from 'rivet-icons/dist/heart.js';
 
 [Submit a Rivet support request](https://rivet.uits.iu.edu/help/#support-request-form) to request a new icon.
 
-## Run the docs site
+## Run the local dev environment
 
-To run the docs site locally, clone or download this repo.
-
-Install dependencies.
+Clone or download this repo, then install dependencies.
 
 ```
 npm install
 ```
 
-Build the site and start the local development server.
+Start the server to launch the local development environment.
 
 ```
 npm run start
