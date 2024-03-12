@@ -1,6 +1,6 @@
 # Rivet Icons
 
-[Icons](https://rivet.iu.edu/icons-stickers/) for Indiana University's Rivet Design System.
+[Icons](https://rivet.iu.edu/icons-stickers/) (`16px` square) for Indiana University's Rivet Design System.
 
 [Migrate from v2 to v3](MIGRATION.md).
 
@@ -171,21 +171,6 @@ Change the icon color with the CSS `color` property. It is recommended to use th
 
 ```html
 <rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
-```
-
-### `padding`, `height`, and `width` properties
-
-The dimensions of the `rvt-icon` element can be changed by setting its `padding`, `height`, and `width` properties. This will not affect the scale of the underlying SVG content, which is fixed at 16 square pixels. For example, to increase the dimensions to 24 square pixels, add `0.25rem` (`4px`) padding to the `rvt-icon`. This can be done with [Rivet spacing utility classes](https://rivet.uits.iu.edu/utilities/spacing/).
-
-```html
-<!-- 16x16 -->
-<rvt-icon></rvt-icon>
-
-<!-- 24x24 -->
-<rvt-icon class="rvt-p-all-xxs"></rvt-icon>
-
-<!-- 32x32 -->
-<rvt-icon class="rvt-p-all-xs"></rvt-icon>
 ```
 
 ## JavaScript API
