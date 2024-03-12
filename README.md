@@ -181,8 +181,8 @@ If the provided icon set does not have an icon you need, first [request a new ic
 
 If you must proceed with designing your own SVG icon, follow these specifications so they best align with the provided icon set:
 
-- 16&times;16px grid
-- 2px stroke for all icon outlines
+- `16px` square grid
+- `2px` stroke for all icon outlines
 - Expand all strokes before exporting and merge/flatten artwork in to one group.
 - Set `fill` attribute to `currentColor` on exported SVGs.
 
