@@ -1,6 +1,6 @@
 # Rivet Icons
 
-[Icons](https://rivet.iu.edu/icons/) for Indiana University's Rivet Design System.
+[Icons](https://rivet.iu.edu/icons-stickers/) for Indiana University's Rivet Design System.
 
 [Migrate from v2 to v3](MIGRATION.md).
 
@@ -16,7 +16,14 @@
 
 ### Development
 
-For development or prototyping, link to the Rivet Icon Element styles and the bundle containing all the icons in the set in the page. These files can be referenced from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/).
+This approach is recommended for development, prototyping, or restrictive production environments.
+
+Link to:
+
+- The Rivet Icon Element styles (`./dist/rivet-icon-element.css`)
+- The bundle containing all the icons (`./dist/rivet-icons.js`)
+
+These files can be linked from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/).
 
 ```html
 <!doctype html>
@@ -34,7 +41,7 @@ For development or prototyping, link to the Rivet Icon Element styles and the bu
 
 ### Production
 
-For production, first install the npm package.
+For production, install the npm package.
 
 ```
 npm install --save rivet-icons
@@ -48,7 +55,10 @@ import 'rivet-icons/dist/heart.js';
 import 'rivet-icons/dist/heart-solid.js';
 ```
 
-Link to the Rivet Icon Element styles and the custom module in the page. 
+Link to:
+
+- The Rivet Icon Element styles (`./dist/rivet-icon-element.css`)
+- The custom module (for example, `./src/icons.js`)
 
 ```html
 <!doctype html>
@@ -66,9 +76,11 @@ Link to the Rivet Icon Element styles and the custom module in the page.
 
 ### Accessibility
 
-Icons are considered decorative images. They are hidden from screen readers via `<svg aria-hidden="true">`. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
+By default, stickers are considered decorative images and hidden from screen reader users.
 
-In this first example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. Providing an accessible description of the icon itself (in addition to the link text) provides little value and may be undesired.
+Ask this question to test if alternative text is needed: "Would this content still make sense to sighted users if the icon was removed?" If no, then add alternative text using the Rivet class `rvt-sr-only`.
+
+In this first example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. No additional accessible description is needed.
 
 ```html
 <a href="/favorites">
@@ -86,7 +98,7 @@ In this second example, this icon is used to visually indicate the pressed state
 </button>
 ```
 
-If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.uits.iu.edu/utilities/visibility/).
+In this case, even if a text label for sighted users is not wanted, it is required for screen reader users.
 
 ```html
 <button aria-pressed="true" class="favorite">
@@ -155,7 +167,7 @@ The `--name` CSS variable declaration overrides the `name` HTML attribute. In th
 
 ### `color` property
 
-Change the icon color with the CSS `color` property. It is recommended to use the [`.rvt-color-*` utility classes](https://rivet.uits.iu.edu/utilities/color/).
+Change the icon color with the CSS `color` property. It is recommended to use the [Rivet color utility classes](https://rivet.uits.iu.edu/utilities/color/).
 
 ```html
 <rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
@@ -222,14 +234,6 @@ Include this custom icon in the module for the custom icon set.
 import 'rivet-icons/dist/heart.js';
 import 'rivet-icons/dist/heart-solid.js';
 + import './icon-diamond.js';
-```
-
-### `name` and `svg` values
-
-Icon modules export their name and SVG contents as string values.
-
-```js
-import { name, svg } from 'rivet-icons/dist/heart.js';
 ```
 
 ## Request a new icon
