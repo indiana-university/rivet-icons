@@ -81,8 +81,8 @@ async function createJS (icons) {
 		const contents =
 `import { registerIcon } from './${ELEMENT_BASE_NAME}.js';
 
-export const name = '${name}';
-export const svg = \`${svg}\`;
+const name = '${name}';
+const svg = \`${svg}\`;
 
 registerIcon(name, svg);
 `;
