@@ -5,10 +5,10 @@ import icons from '../../../dist/rivet-icons.json';
 
 <Layout>
 	<h1 class="rvt-ts-md">Rivet Icons</h1>
-	<ul class="test-icon-list rvt-m-top-md">
+	<ul class="test-icon-list rvt-gap-xs rvt-m-top-md">
 	{
 		icons.map((item) => (
-			<li class="rvt-bg-white rvt-border-radius-md rvt-flex rvt-p-all-xs">
+			<li class="rvt-bg-white rvt-border-all rvt-border-radius-md rvt-flex rvt-p-all-xs">
 				<rvt-icon name={item} class="rvt-p-all-xxs"></rvt-icon>
 				<span class="rvt-p-left-xs">{item}</span>
 			</li>
