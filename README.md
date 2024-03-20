@@ -1,441 +1,226 @@
 # Rivet Icons
 
-Icons for the [Rivet Design System](https://rivet.iu.edu/).
+[Icons](https://rivet.iu.edu/icons-stickers/) (`16px` square) for Indiana University's Rivet Design System.
 
-[**View Demo**](https://rivet.iu.edu/icons/)
+[Migrate from v2 to v3](MIGRATION.md).
 
 ## Contents
 
-1. [Quick start](#quick-start)
-1. [Repo structure](#repo-structure)
-1. [Install](#install)
-1. [Getting started](#getting-started)
 1. [Usage](#usage)
-1. [Use the icon element](#use-the-icon-element)
-1. [Use internal SVG symbols](#use-internal-svg-symbols)
-1. [Use external SVG symbols](#use-external-svg-symbols)
-1. [Use inline SVG](#use-inline-svg)
-1. [Change icon color](#change-icon-color)
-1. [Change icon size](#change-icon-size)
-1. [Accessibility](#accessibility)
-1. [Build a custom icon set](#build-a-custom-icon-set)
-1. [API](#api)
+1. [HTML API](#html-api)
+1. [CSS API](#css-api)
+1. [JavaScript API](#javascript-api)
 1. [Request a new icon](#request-a-new-icon)
-1. [Icon specifications](#icon-specifications)
-1. [Run the docs site](#run-the-docs-site)
 
-## Quick start
+## Usage
+
+### Development
+
+This approach is recommended for development, prototyping, or restrictive production environments.
+
+Link to:
+
+- The Rivet Icon Element styles (`./dist/rivet-icon-element.css`)
+- The bundle containing all the icons (`./dist/rivet-icons.js`)
+
+These files can be linked from a service like [UNPKG](https://unpkg.com/browse/rivet-icons/).
 
 ```html
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rivet icon example</title>
-    <link rel="stylesheet" href="https://unpkg.com/rivet-icons@2/dist/rivet-icons.css">
-    <script defer src="https://unpkg.com/rivet-icons@2/dist/rivet-icons.js"></script>
-    <script type="module" src="https://unpkg.com/rivet-icons@2/dist/rivet-icon-element.js"></script>
-  </head>
-  <body>
-    <rvt-icon name="heart"></rvt-icon>
-  </body>
+	<head>
+		<link rel="stylesheet" href="https://unpkg.com/rivet-icons/dist/rivet-icon-element.css">
+		<script type="module" src="https://unpkg.com/rivet-icons/dist/rivet-icons.js"></script>
+	</head>
+	<body>
+		<rvt-icon name="heart"></rvt-icon>
+		<rvt-icon name="heart-solid"></rvt-icon>
+	</body>
 </html>
 ```
 
-## Repo structure
+### Production
 
-The following are some notable contents in this repo.
-
-| Path | Description |
-| --- | --- |
-| `./dist` | Production files (CSS, HTML, JS, SVG). |
-| `./src` | Source SVG files. |
-
-## Install
-
-Install the package to import production files or [build a custom icon set](#build-a-custom-icon-set).
+For production, install the npm package.
 
 ```
 npm install --save rivet-icons
 ```
 
-This package can also be [browsed and linked to through UNPKG](https://unpkg.com/browse/rivet-icons/).
-
-## Getting started
-
-Rendering icons requires up to three pieces of content: CSS styles, SVG images, and optionally the Rivet Icon Element.
-
-The easiest way to incorporate these parts is to link to them in the `<head>` of the page.
-
-```html
-<link rel="stylesheet" href="path/to/rivet-icons.css">
-<script defer src="path/to/rivet-icons.js"></script>
-<script type="module" src="path/to/rivet-icon-element.js"></script>
-```
-
-`rivet-icons.css` loads the required styles. `rivet-icons.js` appends the SVG images as internal [SVG symbols](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) in the `<body>`. The [`defer` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer) means that the symbols file will be requested immediately, but it won't block rendering the rest of the page. `rivet-icon-element.js` loads the `<rvt-icon>` [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) as a convenience for using these icons, although it is optional. The [`type="module"` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-type) will cause the script to load just like using the `defer` attribute, but it also will be ignored by older browsers, such as Internet Explorer. In such a case, `<rvt-icon>` would look and behave just like an empty `<span>` element.
-
-If the build process allows, embed `rivet-icons.html` in the page in replacement of linking to `rivet-icons.js`. This avoids a use of JavaScript and saves a network request, at the expense of browser caching. This technique may be preferred if only a few icons are used on an independent page.
-
-If [external SVG symbols are used](#use-external-svg-symbols), then `rivet-icons.svg` will be used instead of `rivet-icons.js` or `rivet-icons.html`.
-
-## Usage
-
-Once the icon files are loaded in the page, choose a way to use the icons.
-
-1. [Use the icon element](#use-the-icon-element) (`<rvt-icon>`).
-1. [Use internal SVG symbols](#use-internal-svg-symbols).
-1. [Use external SVG symbols](#use-external-svg-symbols).
-1. [Use inline SVG](#use-inline-svg).
-
-| Consideration | Element | Internal | External | Inline |
-| --- | --- | --- | --- | --- |
-| Works in latest browsers <sup>1</sup> | Yes | Yes | Yes | Yes |
-| Works in Internet Explorer | No <sup>2</sup> | Yes | Maybe <sup>3</sup> | Yes |
-| Requires JavaScript | Yes | No | Maybe <sup>3</sup> | No |
-| Change icon color <sup>4</sup> | Yes | Yes | Yes | Yes |
-| Change icon with CSS variables | Yes | No | No | No |
-| Change icon with JavaScript | Yes | Yes | Yes | Yes |
-| Can build custom icon set | Yes | Yes | Yes | Yes |
-| Requires `rivet-icons.css` | Yes | Yes | Yes | Yes |
-| Requires `rivet-icons.js` or `rivet-icons.html` | Yes | Yes | No | No |
-| Requires `rivet-icons.svg` | No | No | Yes | No |
-| Requires `rivet-icon-element.js` | Yes | No | No | No |
-| Requires `rvt-icon-*.svg` or `rvt-icon-*.html` | No | No | No | Yes |
-
-1. Latest browser versions of Chrome, Edge, Firefox, and Safari.
-1. Internet Explorer does not support [custom elements](https://caniuse.com/custom-elementsv1) or [CSS variables](https://caniuse.com/css-variables).
-1. Internet Explorer does not support [SVG external content](https://caniuse.com/mdn-svg_elements_use_external_uri). Use the [`svg4everybody` polyfill](https://github.com/jonathantneal/svg4everybody) to provide support.
-1. Icons inherit their color from the CSS `color` property.
-
-## Use the icon element
-
-Render the icon in HTML.
-
-```html
-<rvt-icon name="heart"></rvt-icon>
-```
-
-Use JavaScript to dynamically change the icon via the `name` attribute. This example uses JSX (React).
-
-```jsx
-const iconName = isFavorited ? 'heart-solid' : 'heart'
-const icon = (<rvt-icon name={iconName} />)
-```
-
-Use CSS to dynamically change the icon via the `--rvt-icon` variable. Set its value to the CSS variable of the desired icon ("heart" is `var(--heart)`). In order to not pollute the global `:root` scope, icon variables are declared at the level of the `rvt-icon` element. That means, `--rvt-icon` should only be used on the `rvt-icon` element itself, not on an ancestor.
-
-In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users. Change the icon color with the `color` property.
-
-```html
-<button aria-pressed="true" class="favorite">
-  <rvt-icon class="favorite__icon"></rvt-icon>
-  Favorite
-</button>
-```
-
-```css
-/* Do this. */
-.favorite[aria-pressed="false"] .favorite__icon {
-  --rvt-icon: var(--heart);
-}
-
-.favorite[aria-pressed="true"] .favorite__icon {
-  --rvt-icon: var(--heart-solid);
-  color: red;
-}
-
-/* This won't work. */
-.favorite[aria-pressed="false"] {
-  --rvt-icon: var(--heart);
-}
-
-.favorite[aria-pressed="true"] {
-  --rvt-icon: var(--heart-solid);
-  color: red;
-}
-```
-
-CSS variable declarations always override the `name` attribute. In this case, the icon will render as `heart-solid`, not `heart`.
-
-```html
-<rvt-icon name="heart" class="heart-solid"></rvt-icon>
-```
-
-```css
-.heart-solid {
-  --rvt-icon: var(--heart-solid);
-}
-```
-
-A "flash of unstyled content" happens when `<rvt-icon>` is used before the element definition is registered. This looks like the icon is briefly invisible, as if `visibility: hidden` is applied and suddenly removed. To avoid this, either place the `rivet-icons.html` or `rivet-icons.js` references before any use of `<rvt-icon>`, or wait to render content until after it registers with [`whenDefined()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined).
+Create a custom module which imports only the icons needed. The icon module name (such as `./dist/heart.js`) matches its corresponding SVG file name (such as `./src/icons/heart.svg`).
 
 ```js
-window.customElements.whenDefined('rvt-icon').then(() => {
-  render()
-})
+// ./src/icons.js
+import 'rivet-icons/dist/heart.js';
+import 'rivet-icons/dist/heart-solid.js';
 ```
 
-## Use internal SVG symbols
+Link to:
 
-If not wanting to use `<rvt-icon>`, then render an icon with the following snippet. All `href` values reference the SVG symbol ID, in the format of `#rvt-icon-[name]`. With this method, the icon's color still changes with the CSS `color` property, but the icon itself cannot change with the `--rvt-icon` CSS variable.
+- The Rivet Icon Element styles (`./dist/rivet-icon-element.css`)
+- The custom module (for example, `./src/icons.js`)
 
 ```html
-<span class="rvt-icon">
-  <svg aria-hidden="true" focusable="false">
-    <use href="#rvt-icon-heart"></use>
-  </svg>
-</span>
+<!doctype html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="./node_modules/rivet-icons/dist/rivet-icon-element.css">
+		<script type="module" src="./src/icons.js"></script>
+	</head>
+	<body>
+		<rvt-icon name="heart"></rvt-icon>
+		<rvt-icon name="heart-solid"></rvt-icon>
+	</body>
+</html>
 ```
 
-## Use external SVG symbols
+### Accessibility
 
-If wanting to use `rivet-icons.svg` (rather than `rivet-icons.js` or `rivet-icons.html`), then add the path to the file, using a similar snippet as [internal SVG symbols](#use-internal-svg-symbols). Optionally include the [`svg4everybody`](https://github.com/jonathantneal/svg4everybody) polyfill to support Internet Explorer.
+By default, stickers are considered decorative images and hidden from screen reader users.
 
-```html
-<span class="rvt-icon">
-  <svg aria-hidden="true" focusable="false">
-    <use href="path/to/rivet-icons.svg#rvt-icon-heart"></use>
-  </svg>
-</span>
-```
+Ask this question to test if alternative text is needed: "Would this content still make sense to sighted users if the icon was removed?" If no, then add alternative text using the Rivet class `rvt-sr-only`.
 
-## Use inline SVG
-
-Icons can be placed inline in HTML. Copy and paste the contents of any inline icon (`rvt-icon-[name].html`) in the page.
-
-```html
-<span class="rvt-icon">
-  <!-- Paste `rvt-icon-heart.html` here. -->
-</span>
-```
-
-If the development environment allows it, prefer to import individual icons, rather than copying and pasting them. This example is how it could be done with React, with the right build configurations.
-
-```jsx
-import 'rivet-icons/dist/rivet-icons.css'
-import heart from 'rivet-icons/dist/rvt-icon-heart.html'
-
-const HeartIcon = (
-  <span
-    className='rvt-icon'
-    dangerouslySetInnerHTML={{ __html: heart }} />
-)
-```
-
-Inline icons (`rvt-icon-[name].html`) are identical to the source icons (`rvt-icon-[name].svg`) except for changing some SVG attributes, given the context of use. [`xmlns` is not needed in HTML documents](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg). `width` and `height` are set with the `.rvt-icon` class. `aria-hidden` is added, as icons are decorative images.
-
-## Change icon color
-
-The icon color is inherited through the `color` property. It behaves just like text color.
-
-```html
-<rvt-icon name="heart" class="color-red"></rvt-icon>
-```
-
-```css
-.color-red {
-  color: red;
-}
-```
-
-## Change icon size
-
-Icons are sized at 16 square pixels, but padding and margin can be adjusted to fit into other contexts. For example, to increase the dimensions to 24 square pixels (while keeping the icon at its current scale), add `0.25rem` (`4px`) padding to the icon. This can be done with [Rivet spacing utility classes](https://rivet.iu.edu/components/layout/spacing/).
-
-```html
-<!-- 16x16 -->
-<rvt-icon></rvt-icon>
-<span class="rvt-icon"></span>
-
-<!-- 24x24 -->
-<rvt-icon class="rvt-p-all-xxs"></rvt-icon>
-<span class="rvt-icon rvt-p-all-xxs"></span>
-
-<!-- 32x32 -->
-<rvt-icon class="rvt-p-all-xs"></rvt-icon>
-<span class="rvt-icon rvt-p-all-xs"></span>
-```
-
-## Accessibility
-
-Icons are considered decorative images. They are hidden from screen readers via `<svg aria-hidden="true">`. However, [text alternatives should still be provided](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) wherever icons are used.
-
-In this example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. Providing an accessible description of the icon itself (in addition to the link text) provides little value and may be undesired.
+In this first example, the link text of "Favorites" is presented to all users. The icon acts as a visual anchor and perhaps a legend to the rest of the page. No additional accessible description is needed.
 
 ```html
 <a href="/favorites">
-  <rvt-icon name="heart"></rvt-icon>
-  Favorites
+	<rvt-icon name="heart"></rvt-icon>
+	Favorites
 </a>
 ```
 
-Revisiting a previous example, this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via CSS in order to communicate equivalent information to visual users.
+In this second example, this icon is used to visually indicate the pressed state of the button. It is "heart" if the button is not pressed. It is "heart-solid" if the button is pressed. `aria-pressed` communicates the necessary information to screen readers. This attribute value changes the icon via the [CSS API](#--name-variable) in order to communicate equivalent information to visual users.
 
 ```html
 <button aria-pressed="true" class="favorite">
-  <rvt-icon class="favorite__icon"></rvt-icon>
-  Favorite
+	<rvt-icon></rvt-icon>
+	Favorite
 </button>
 ```
 
-If a visual label is not desired (because the icon itself may be sufficient for the context), the text label should still be available to screen readers. Wrap the label with the [`.rvt-sr-only` class](https://rivet.iu.edu/components/utilities/visibility/).
+In this case, even if a text label for sighted users is not wanted, it is required for screen reader users.
 
 ```html
 <button aria-pressed="true" class="favorite">
-  <rvt-icon class="favorite__icon"></rvt-icon>
-  <span class="rvt-sr-only">Favorite</span>
+	<rvt-icon></rvt-icon>
+	<span class="rvt-sr-only">Favorite</span>
 </button>
 ```
 
-Some older browsers could cause keyboard focus issues with SVG, but they are easy to work around. First, [add `<svg focusable="false">`](https://allyjs.io/tutorials/focusing-in-svg.html#making-svg-elements-focusable) so the SVG does not gain focus in Internet Explorer and early versions of Edge. Second, [add whitespace around `<use>`](https://allyjs.io/tutorials/focusing-in-svg.html#the-use-element) so Safari 10 keeps all focusable elements tabbable. The `<rvt-icon>` element and the `rvt-icon-*.html` include these fixes.
+### Testing
 
-## Build a custom icon set
-
-The Rivet icon set includes dozens of icons. If only a few icons or custom icons are needed, then build a custom icon set. After [installing the `rivet-icons` package](#install), write a Node script to build the icons.
-
-```js
-// ./scripts/build-icons.js
-const { buildIcons } = require('rivet-icons')
-
-async function buildCustomIcons () {
-  await buildIcons({
-    icons: [
-      'arrow*',
-      'plus'
-    ],
-    include: [
-      './src/assets/*',
-      './favicon.svg'
-    ],
-    out: 'build'
-  })
-}
-
-buildCustomIcons()
-
-// Generates:
-// ./build/rivet-icon-element.js
-// ./build/rivet-icons.css
-// ./build/rivet-icons.html
-// ./build/rivet-icons.js
-// ./build/rivet-icons.svg
-// ./build/rvt-icon-[name].html
-// ./build/rvt-icon-[name].svg
-```
-
-This could be integrated as a npm run script and run before (or after) another build step. The package [`npm-run-all`](https://github.com/mysticatea/npm-run-all) is a good way to sequence multiple scripts.
-
-```json
-{
-  "scripts": {
-    "build": "npm-run-all -s build-icons build-app",
-    "build-app": "webpack",
-    "build-icons": "node scripts/build-icons.js"
-  }
-}
-```
-
-See the [`rivet-icons-webpack-react` guide](https://github.com/basham/rivet-icons-webpack-react) to learn how to incorporate Rivet icons in a Webpack/React environment.
-
-## API
-
-### `buildIcons()`
-
-`buildIcons(options: Object) => void`
-
-Returns a promise that resolves when the icon files are written.
-
-```js
-await buildIcons()
-```
-
-### options.icons
-
-**Type:** `string[]` (optional)
-
-**Default:** `['*']`
-
-Specify the Rivet icons to include. By default, it includes the entire set. To include specific icons, pass an array of icon names or [glob patterns](https://github.com/mrmlnc/fast-glob). Exclude the `.svg` file extention. If an empty array is used, no icons will be included.
-
-```js
-buildIcons({
-  icons: ['arrow*', 'plus']
-})
-
-// Generates icon set with:
-// arrow-down
-// arrow-left
-// arrow-right
-// arrow-up
-// plus
-```
-
-### options.include
-
-**Type:** `string[]` (optional)
-
-**Default:** `[]`
-
-Specify an array of custom icons to include in the icon set, using [glob patterns](https://github.com/mrmlnc/fast-glob). Any custom icons matching a Rivet icon name will override the Rivet icon. Any non-SVG files are ignored.
-
-```js
-buildIcons({
-  include: ['assets/*']
-})
-
-// Generates icon set with all Rivet icons
-// and all SVG files in the local assets directory.
-```
-
-### options.out
-
-**Type:** `string` (optional)
-
-**Default:** `'.'`
-
-Specify the directory for generated icon files. It defaults to the current working directory.
-
-```js
-buildIcons({
-  out: 'build'
-})
-
-// Outputs the icon set to the `build` directory.
-```
-
-## Request a new icon
-
-[Submit a new issue](https://github.com/indiana-university/rivet-icons/issues/new) to request a new icon. Include anything that may help to visually describe this new icon, such as examples from other icon sets, examples of usage in various apps or websites, the SVG source code of the icon, or even a sketch.
-
-## Icon specifications
-
-Each icon is drawn to the following specifications:
-
-- 16&times;16px grid
-- 2px stroke for all icon outlines
-- Expand all strokes before exporting and merge/flatten artwork in to one group.
-- Set `fill` attribute to `currentColor` on exported SVGs.
-
-## Run the docs site
-
-To run the docs site locally, clone or download this repo.
-
-Install dependencies.
+Download or clone this repo, then install dependencies.
 
 ```
 npm install
 ```
 
-Build the site and start a local development server.
+Start the server to launch the local test environment.
 
 ```
 npm run start
 ```
 
-[Open the browser to localhost](http://localhost:8080/).
+## HTML API
 
+### `name` attribute
+
+Use the `name` attribute to declare the icon to be rendered. The name of an icon matches its corresponding SVG file name (`./src/icons/*.svg`).
+
+```html
+<rvt-icon name="heart"></rvt-icon>
 ```
-http://localhost:8080/
+
+## CSS API
+
+### `--name` variable
+
+Change the icon in CSS by setting the `--name` variable on the `rvt-icon` element to the desired icon name, such as `var(--heart)` for the "heart" icon.
+
+In this example, the button toggles the value of `aria-pressed` for screen reader users, while the icon updates between the solid heart and outlined heart for visual users.
+
+```html
+<button aria-pressed="true" class="favorite">
+	<rvt-icon></rvt-icon>
+	Favorite
+</button>
+<style>
+.favorite[aria-pressed="false"] > rvt-icon {
+	--name: var(--heart);
+}
+.favorite[aria-pressed="true"] > rvt-icon {
+	--name: var(--heart-solid);
+}
+</style>
 ```
+
+The `--name` CSS variable declaration overrides the `name` HTML attribute. In this case, the icon will render as `heart-solid`, not `heart`.
+
+```html
+<rvt-icon name="heart" class="heart-solid"></rvt-icon>
+<style>
+.heart-solid {
+	--name: var(--heart-solid);
+}
+</style>
+```
+
+### `color` property
+
+Change the icon color with the CSS `color` property. It is recommended to use the [Rivet color utility classes](https://rivet.uits.iu.edu/utilities/color/).
+
+```html
+<rvt-icon name="heart" class="rvt-color-orange"></rvt-icon>
+```
+
+## JavaScript API
+
+### `registerIcon()` function
+
+If the provided icon set does not have an icon you need, first [request a new icon](#request-a-new-icon) from the Rivet team.
+
+If you must proceed with designing your own SVG icon, follow these specifications so they best align with the provided icon set:
+
+- `16px` square grid
+- `2px` stroke for all icon outlines
+- Expand all strokes before exporting and merge/flatten artwork in to one group.
+- Set `fill` attribute to `currentColor` on exported SVGs.
+
+Use the `registerIcon()` function to register the name and SVG code for this custom icon. Then, it can be used like any of the provided icons.
+
+```js
+// ./src/icon-diamond.js
+import { registerIcon } from 'rivet-icons';
+
+const name = 'diamond';
+const svg = `<svg><polyline points="8,2 14,8 8,14 2,8" /></svg>`;
+
+registerIcon(name, svg);
+```
+
+If left unspecified, the `<svg>` will default to the following attributes when rendered:
+
+```html
+<svg
+	aria-hidden="true"
+	fill="currentColor"
+	focusable="false"
+	height="16"
+	viewBox="0 0 16 16"
+	width="16"
+	xmlns="http://www.w3.org/2000/svg"
+>
+```
+
+Include this custom icon in the module for the custom icon set.
+
+```diff
+// ./src/icons.js
+import 'rivet-icons/dist/heart.js';
+import 'rivet-icons/dist/heart-solid.js';
++ import './icon-diamond.js';
+```
+
+## Request a new icon
+
+[Submit a Rivet support request](https://rivet.uits.iu.edu/help/#support-request-form) to request a new icon.

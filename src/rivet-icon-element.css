@@ -1,0 +1,21 @@
+rvt-icon {
+	--name: 0;
+	align-items: center;
+	display: inline-flex;
+	height: min-content;
+	justify-content: center;
+	width: min-content;
+}
+
+rvt-icon:not(:defined)::before {
+	content: "";
+	display: block;
+	height: 1rem;
+	width: 1rem;
+}
+
+rvt-icon > svg {
+	flex-shrink: 0;
+	transition: z-index 0.001ms step-start;
+	z-index: var(--name);
+}
