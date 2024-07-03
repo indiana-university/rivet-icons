@@ -1,6 +1,6 @@
 {
   "name": "rivet-icons",
-  "version": "3.0.0-alpha",
+  "version": "3.0.0",
   "description": "Icons for Indiana University's Rivet Design System",
   "files": [
     "dist/**/*",
