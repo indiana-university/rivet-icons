@@ -1,0 +1,11 @@
+html {
+	-webkit-text-size-adjust: none;
+}
+
+.test-icon-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}

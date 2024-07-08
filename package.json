@@ -1,20 +1,17 @@
 {
   "name": "rivet-icons",
-  "version": "2.0.0",
-  "description": "Icon set for Indiana University's Rivet design system",
+  "version": "3.0.0",
+  "description": "Icons for Indiana University's Rivet Design System",
   "files": [
     "dist/**/*",
-    "lib/**/*",
     "src/**/*"
   ],
-  "main": "index.js",
+  "type": "module",
+  "browser": "./dist/rivet-icon-element.js",
   "scripts": {
-    "build": "run-s build-icons build-docs",
-    "build-docs": "eleventy",
-    "build-icons": "node scripts/build.js",
-    "lint": "standard",
-    "serve-docs": "eleventy --serve",
-    "start": "run-s build-icons serve-docs"
+    "build": "node scripts/build.js",
+    "start": "run-s build test",
+    "test": "astro dev --open"
   },
   "repository": {
     "type": "git",
@@ -26,13 +23,9 @@
     "url": "https://github.com/indiana-university/rivet-icons/issues"
   },
   "homepage": "https://github.com/indiana-university/rivet-icons#readme",
-  "dependencies": {
-    "fast-glob": "3.2.12",
-    "svg-sprite": "2.0.2"
-  },
   "devDependencies": {
-    "@11ty/eleventy": "2.0.1",
+    "astro": "4.5.2",
     "npm-run-all": "4.1.5",
-    "standard": "17.0.0"
+    "vite": "5.1.6"
   }
 }
