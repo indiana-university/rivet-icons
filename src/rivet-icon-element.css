@@ -7,7 +7,8 @@ rvt-icon {
 	width: min-content;
 }
 
-rvt-icon:not(:defined)::before {
+rvt-icon:empty::before,
+rvt-icon > svg {
 	content: "";
 	display: block;
 	height: 1rem;
