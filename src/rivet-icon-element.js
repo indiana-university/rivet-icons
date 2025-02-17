@@ -93,7 +93,9 @@ class RivetIconElement extends window.HTMLElement {
 	}
 }
 
-window.customElements.define(elementName, RivetIconElement);
+if (!window.customElements.get(elementName)) {
+	window.customElements.define(elementName, RivetIconElement);
+}
 
 //
 // Utilities
