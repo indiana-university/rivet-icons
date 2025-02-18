@@ -19,35 +19,7 @@ style.setAttribute(`data-${elementName}`, '');
 document.head.appendChild(style);
 
 export function registerIcon (name, content) {
-	if (!name || typeof name !== 'string') {
-		throw new Error(`${packageName}: Name must be a string.`);
-	}
-	const template = document.createElement('template');
-	template.innerHTML = content;
-	if (template.content.children.length !== 1) {
-		throw new Error(`${packageName} (${name}): Content must contain one SVG element.`);
-	}
-	const svg = template.content.firstChild;
-	if (svg.nodeName.toLowerCase() !== 'svg') {
-		throw new Error(`${packageName} (${name}): Content must be a SVG element.`);
-	}
-	setDefaultAttributes(svg, {
-		'aria-hidden': 'true',
-		fill: 'currentColor',
-		focusable: 'false',
-		height: size,
-		viewBox: `0 0 ${size} ${size}`,
-		width: size,
-		xmlns: 'http://www.w3.org/2000/svg'
-	});
-	nameToTemplateMap.set(name, template);
-	const index = nameToTemplateMap.size;
-	indexToNameMap.set(index, name);
-	style.sheet.insertRule(`${elementName} { --${name}: ${index}; }`);
-	const event = new CustomEvent(registeredEventName, {
-		detail: { name }
-	});
-	document.dispatchEvent(event);
+	window.customElements.get(elementName).register?.(name, content);
 }
 
 class RivetIconElement extends window.HTMLElement {
@@ -56,6 +28,38 @@ class RivetIconElement extends window.HTMLElement {
 
 	static get observedAttributes () {
 		return [nameAttributeName];
+	}
+
+	static register (name, content) {
+		if (!name || typeof name !== 'string') {
+			throw new Error(`${packageName}: Name must be a string.`);
+		}
+		const template = document.createElement('template');
+		template.innerHTML = content;
+		if (template.content.children.length !== 1) {
+			throw new Error(`${packageName} (${name}): Content must contain one SVG element.`);
+		}
+		const svg = template.content.firstChild;
+		if (svg.nodeName.toLowerCase() !== 'svg') {
+			throw new Error(`${packageName} (${name}): Content must be a SVG element.`);
+		}
+		setDefaultAttributes(svg, {
+			'aria-hidden': 'true',
+			fill: 'currentColor',
+			focusable: 'false',
+			height: size,
+			viewBox: `0 0 ${size} ${size}`,
+			width: size,
+			xmlns: 'http://www.w3.org/2000/svg'
+		});
+		nameToTemplateMap.set(name, template);
+		const index = nameToTemplateMap.size;
+		indexToNameMap.set(index, name);
+		style.sheet.insertRule(`${elementName} { --${name}: ${index}; }`);
+		const event = new CustomEvent(registeredEventName, {
+			detail: { name }
+		});
+		document.dispatchEvent(event);
 	}
 
 	attributeChangedCallback () {
@@ -93,7 +97,9 @@ class RivetIconElement extends window.HTMLElement {
 	}
 }
 
-window.customElements.define(elementName, RivetIconElement);
+if (!window.customElements.get(elementName)) {
+	window.customElements.define(elementName, RivetIconElement);
+}
 
 //
 // Utilities
